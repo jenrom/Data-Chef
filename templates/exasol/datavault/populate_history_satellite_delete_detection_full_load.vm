@@ -1,0 +1,24 @@
+## Satellite Delete Detection on full load
+#set( $sat_pk           = "${object.name}${object.keySuffix}" )##
+#set( $core_schema      = ${dwhConfig.schemaNameServed()} )##
+#set( $sat_name         = "${vaultConfig.satNamePrefix()}${object.name}${vaultConfig.histSatSuffix()}" )##
+#set( $ckd_table        = ${mapping.name} )##
+#set( $ckd_schema       = ${dwhConfig.schemaNameCooked()} )##
+#set( $load_date        = ${vaultConfig.loadDateName()} )##
+#set( $load_date_end    = ${vaultConfig.loadDateEndName()} )##
+#set( $inf_value        = ${vaultConfig.loadDateEndInfinityValue()} )##
+#set( $parent           = "${object.namePrefix}${object.name}" )##
+##
+update ${core_schema}.${sat_name}
+   set ${load_date_end} = add_seconds(sat.${load_date},-0.001)
+  from ${core_schema}.${parent} lnk,
+       ${core_schema}.${sat_name} sat
+ where 1=1
+   and lnk.${sat_pk} = sat.${sat_pk}
+   and sat.${load_date_end} = to_timestamp('${inf_value}')
+   and not exists (
+        select 1
+        from ${ckd_schema}.${ckd_table} ckd
+        where ckd.${sat_pk} = lnk.${sat_pk}
+       )
+;

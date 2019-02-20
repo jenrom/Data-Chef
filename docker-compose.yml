@@ -1,0 +1,92 @@
+version: '3.5'
+
+services:
+  data-chef-app:
+    image: data-chef-app
+    restart: always
+    environment:
+      - ENV_VERSION=${VERSION}
+      - ENV_RAMMB=${RAMMB}
+      - ENV_DWH_dbType=${DWH_DBTYPE}
+      - ENV_DWH_jdbcDriverURL=${DWH_JDBCDRIVERURL}
+      - ENV_DWH_jdbcDriverClass=${DWH_JDBCDRIVERCLASS}
+      - ENV_DWH_scanAndCheckSupportedDataTypes=${DWH_SCANANDCHECKSUPPORTEDDATATYPES}
+      - ENV_DWH_jdbcConnectionString=${DWH_JDBCCONNECTIONSTRING}
+      - ENV_DWH_catalog=${DWH_CATALOG}
+      - ENV_DWH_username=${DWH_USERNAME}
+      - ENV_DWH_password=${DWH_PASSWORD}
+      - ENV_DWH_schemaNameDiner=${DWH_SCHEMANAMEDINER}
+      - ENV_DWH_schemaNameRaw=${DWH_SCHEMANAMERAW}
+      - ENV_DWH_schemaNameCooked=${DWH_SCHEMANAMECOOKED}
+      - ENV_DWH_schemaNameServed=${DWH_SCHEMANAMESERVED}
+      - ENV_DWH_schemaNameViews=${DWH_SCHEMANAMEVIEWS}
+      - ENV_DWH_schemaNameAdmin=${DWH_SCHEMANAMEADMIN}
+      - ENV_DWH_dbName=${DWH_DBNAME}
+      - ENV_DWH_snowflakeSchemaNameStage=${DWH_SNOWFLAKESCHEMANAMESTAGE}
+      - ENV_DWH_snowflakeStageName=${DWH_SNOWFLAKESTAGENAME}
+      - ENV_DWH_snowflakeWarehouseName=${DWH_SNOWFLAKEWAREHOUSENAME}
+      - ENV_DWH_snowflakeWarehouseSize=${DWH_SNOWFLAKEWAREHOUSESIZE}
+      - ENV_DWH_snowflakeWarehouseType=${DWH_SNOWFLAKEWAREHOUSETYPE}
+      - ENV_REPOSITORY_jdbcConnectionString=${REPOSITORY_JDBCCONNECTIONSTRING}
+      - ENV_REPOSITORY_username=${REPOSITORY_USERNAME}
+      - ENV_REPOSITORY_password=${REPOSITORY_PASSWORD}
+      - ENV_TEMPLATE_templatePath=${TEMPLATE_TEMPLATEPATH}
+      - ENV_TEMPLATE_enablePreRunScript=${TEMPLATE_ENABLEPRERUNSCRIPT}
+      - ENV_TEMPLATE_enablePostRunScript=${TEMPLATE_ENABLEPOSTRUNSCRIPT}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ARG_VERSION: "3.2"
+    links:
+      - mariadb
+      - exasol
+    networks:
+      - data-chef-network
+    ports:
+      - 4567:4567
+    volumes:
+      - /DataChef/sink:/DataChef/sink
+      - /DataChef/logs:/DataChef/logs
+
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: areto
+      MYSQL_DATABASE: datachef
+      MYSQL_USER: datachef
+      MYSQL_PASSWORD: datachef
+    networks:
+      - data-chef-network
+    volumes:
+      - repo_volume:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - data-chef-network
+    links:
+      - mariadb
+
+  exasol:
+    image: exasol/docker-db
+    restart: always
+    privileged: true
+    networks:
+      - data-chef-network
+    ports:
+      - 8888:8888
+    volumes:
+      - dwh_volume:/exa
+
+networks:
+  data-chef-network:
+    driver: bridge
+
+volumes:
+  dwh_volume:
+  repo_volume:

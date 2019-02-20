@@ -1,0 +1,119 @@
+#set($page_name = "Executions plam for Worker #${cargo.dbId} (${cargo.class.simpleName})")
+#parse('common/head.vm')
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Execution plan for Worker #${cargo.dbId}
+            <span class="badge">${cargo.class.simpleName}</span>
+            <span class="badge">${cargo.name}</span>
+            #set($badge_class = "badge-error")##
+            #if($cargo.status == "OKAY") #set($badge_class = "badge-success")#end##
+            #if($cargo.status == "WARNING") #set($badge_class = "badge-warning")#end##
+            <span class="badge ${badge_class}">Status: ${cargo.status}</span>
+        </h1>
+    </div>
+</div>
+
+#set($large = true)##
+#if($cargo.hasErrors() || $cargo.hasMessages()) #set($large = false) #end##
+
+<div class="row">
+    <div class="#if($large)col-lg-12 #else col-lg-6 #end">
+        <div class="panel panel-default">
+            <div class="panel-heading">Executions</div>
+            <div class="panel-body">
+                #if($cargo.fileName)
+                    <p><strong>Data File: </strong> ${cargo.fileName}</p>
+                #end
+
+                #if($cargo.hasExecutions())
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Type</th>
+                            #if($large)<th>Description</th>#end
+                            <th>Runtime</th>
+                            <th>Updates</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        #foreach($exec in $cargo.executions)
+                            <tr>
+                                <td>${foreach.count}</td>
+                                <td>
+                                    #if(!$large)<a href="#" data-toggle="tooltip" title="${exec.expression.description}"><span class="fa fa-comment"></span></a>#end
+                                    ${exec.expression.queryType}
+                                </td>
+                                #if($large)
+                                    <td>${exec.expression.description}</td>
+                                #end
+                                <td>${StringUtility.millisToTimeString($exec.runtime)}</td>
+                                <td>${exec.updateCount}</td>
+                                <td>
+                                    <div class="hidden" id="sql_code_${foreach.count}">${exec.expression.sqlCode}</div>
+                                    #if($exec.errorFlag)
+                                    <div class="hidden" id="sql_error_message_${foreach.count}">${exec.errorMessage}</div>
+                                    #end
+                                    <button class="btn btn-xs #if($exec.errorFlag)btn-danger #else btn-success#end"
+                                            onclick="showSqlModal('DDL SQL #${foreach.count}', 'sql_code_${foreach.count}');">
+                                        #if($exec.errorFlag)
+                                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                        #else
+                                            <span class="glyphicon glyphicon-ok-sign"></span>
+                                        #end
+                                        SQL
+                                    </button>
+                                    #if($exec.errorFlag)
+                                        <button class="btn btn-xs btn-danger" onclick="showErrorMessage('sql_error_message_${foreach.count}')">Msg.</button>
+                                    #end
+                                </td>
+                            </tr>
+                        #end
+                        </tbody>
+                    </table>
+                </div>
+                #else
+                    <p>No SQL statements were executed!</p>
+                #end
+            </div>
+        </div>
+    </div>
+#if($cargo.hasErrors() || $cargo.hasMessages())
+    <div class="col-lg-6">
+    #if($cargo.hasErrors())
+        <div class="panel panel-danger">
+            <div class="panel-heading">Errors</div>
+            <div class="panel-body">
+                <ul>
+                #foreach($e in $cargo.errors)
+                    <li>$e</li>
+                #end
+                </ul>
+            </div>
+        </div>
+    #end
+    #if($cargo.hasMessages())
+        <div class="panel panel-default">
+            <div class="panel-heading">Messages</div>
+            <div class="panel-body">
+                <ul>
+                    #foreach($msg in $cargo.messages)
+                        <li><span class="label label-primary">Info</span> $msg</li>
+                    #end
+                    #if($cargo.hasWarnings())
+                        #foreach($warn in $cargo.warnings)
+                            <li><span class="label label-warning">Warning</span> $warn</li>
+                        #end
+                    #end
+                </ul>
+            </div>
+        </div>
+    #end
+    </div>
+#end
+</div>
+
+#parse('common/foot.vm')

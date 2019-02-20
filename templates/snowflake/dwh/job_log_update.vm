@@ -1,0 +1,8 @@
+update ${dwhConfig.schemaNameAdmin()}.${dwhConfig.jobLogTableName()}
+    set rollback_flag = true,
+        rollback_time = current_timestamp()
+  where load_id in (
+#foreach($id in $idList)
+    ${id}#if($foreach.hasNext), #end
+#end
+    );

@@ -1,0 +1,6 @@
+import into ${dwhConfig.schemaNameRaw()}.${mapping.name}
+    from ${mapping.connectionType.toString().toLowerCase()} at ${mapping.connectionName}
+    statement '${mapping.customSqlCode}'
+#if($dwhConfig.enableErrorTable())
+    errors into ${dwhConfig.schemaNameRaw()}.${mapping.name}${dwhConfig.errorTableSuffix()}
+#end;

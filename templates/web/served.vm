@@ -1,0 +1,8 @@
+#set($page_name = "Served")
+#parse('common/head.vm')
+
+    <div class="container-fluid" style="padding: 0 0 0 0">
+        <div id="served-network" style="width: 100%; height: 93vh;"></div>
+    </div>
+
+#parse('common/foot.vm')

@@ -1,0 +1,20 @@
+#set($table = $mapping.name)##
+#set($file_path = $vaultConfig.placeholderFilePath())##
+#set($encoding = $mapping.csvType.encoding)##
+#set($row_sep = $mapping.csvType.rowSeparator)##
+#set($col_sep = $mapping.csvType.columnSeparator)##
+#set($col_del = $mapping.csvType.columnDelimiter)##
+#set($skip = $mapping.csvType.skip)##
+#set($reject_limit = $mapping.csvType.rejectLimit)##
+##
+import into ${dwhConfig.schemaNameRaw()}.${table}
+    from local csv file '${file_path}'
+    encoding = '${encoding}'
+    row separator = '${row_sep}'
+    column separator = '${col_sep}'
+    column delimiter = '${col_del}'
+    skip = ${skip}
+#if($dwhConfig.enableErrorTable())
+    errors into ${dwhConfig.schemaNameRaw()}.${table}${dwhConfig.errorTableSuffix()}
+#end
+    reject limit ${reject_limit};

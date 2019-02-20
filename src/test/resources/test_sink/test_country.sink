@@ -1,0 +1,22 @@
+// Mode: file based of default type
+// Load: full load
+
+config {
+    stage   : file of type german_csv
+    load    : full
+}
+
+mapping {
+	ctry_code					:	dd=code, kc, cmnt="Länder ISO Code", rn=country_code
+	ctry_name					:	dd=name, cmnt="Name des Landes"
+	region						:	dd=name, kc, on=region, oa=reg, cmnt="Regionsschlüssel", ocmnt="Region", rn=reg_key
+	subregion					:	dd=name, kc, on=subregion, oa=sreg, cmnt="Subregionsschlüssel", ocmnt="Subregion", rn=reg_key
+	mem_since					:	dd=date, ls=ctry_sreg, sn=mem_info, cmnt="Datum des Begins der Mitgliedschaft"
+	pop_mio						:	dd=int16, sn=ctry_details, cmnt="Population in Mio. Personen"
+	pop_mio2                    :   dd=int16, sn=ctry_details, cmnt="Population verdoppelt", clc="pop_mio * 2"
+}
+on=country, oa=ctry, ocmnt="Land",
+lk = {
+    ctry * -- subregion (ctry_sreg H),
+    sreg * -- reg (reg_sreg)
+}

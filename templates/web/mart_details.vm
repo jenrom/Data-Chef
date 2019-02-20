@@ -1,0 +1,142 @@
+#set($page_name = "Mart: ${mart.name}")
+#parse('common/head.vm')
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Details for Mart '${mart.name}'</h1>
+    </div>
+</div>
+
+#if($mart.isValid())
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Execution</div>
+            <div class="panel-body">
+                <div class="hidden" id="custom_sql_insert">${mart.customSqlCode}</div>
+                <ul>
+                    <li>Type: ${mart.martType} using <button class="btn btn-xs btn-default" onclick="showSqlModal('Custom SQL', 'custom_sql_insert')">SQL</button></li>
+                    <li>
+                        #if($mart.triggeredByCron)
+                            Triggered via CRON: ${mart.describeCronExpression()}
+                        #end
+                        #if($mart.triggeredByMousetrap)
+                            Execute after ${mart.dependencyList} with timeout ${mart.mousetrapTimeout} (${mart.timeoutUnit})
+                        #end
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Mart Columns</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Data Domain</th>
+                            <th>Comment</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            #foreach($mcol in $mart.getMartColumnsOriginalOrder())
+                            <tr >
+                                <td>${foreach.count}</td>
+                                <td>
+                                    ${mcol.name}
+
+                                    #if($mcol.isKeyColumn())<span class="label label-default">KC</span>#end
+                                    #if($mcol.isIdentityColumn())<span class="label label-danger">ID</span>#end
+                                </td>
+                                <td>${mcol.dataDomain.name} <span class="label label-default">${mcol.dataDomain.sqlType}</span></td>
+                                <td>
+                                    #if($mcol.hasComment())
+                                        ${mcol.comment}
+                                    #end
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#end
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">DDL Expressions</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            #foreach($exp in $mart.getDefinitionExpressionsSorted())
+                            <tr>
+                                <td>${foreach.count}</td>
+                                <td>${exp.queryType}</td>
+                                <td>${exp.description}</td>
+                                <td>
+                                    <div class="hidden" id="sql_code_${foreach.count}">${exp.sqlCode}</div>
+                                    <button class="btn btn-xs btn-default" onclick="showSqlModal('DDL SQL #${foreach.count}', 'sql_code_${foreach.count}');">SQL</button>
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">DML Expressions</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            #foreach($exp in $mart.getManipulationExpressionsSorted())
+                            <tr>
+                                <td>${foreach.count}</td>
+                                <td>${exp.queryType}</td>
+                                <td>${exp.description}</td>
+                                <td>
+                                    <div class="hidden" id="sql_code_sql_${foreach.count}">${exp.sqlCode}</div>
+                                    <button class="btn btn-xs btn-default" onclick="showSqlModal('DQL SQL #${foreach.count}', 'sql_code_sql_${foreach.count}');">SQL</button>
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+#parse('common/foot.vm')

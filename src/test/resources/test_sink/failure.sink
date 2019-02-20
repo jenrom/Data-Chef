@@ -1,0 +1,15 @@
+config {
+    csv_type: 'not known'
+}
+
+mapping {
+    v_lfd               : ign,d d=desc
+    version             : dd=code, kc, on=nxg_version, cmnt="v_dat"
+    gemeinde_schluessel : dd=kgs8, kc, cmnt="KGS8 (Gemeinde)"
+    gemeinde_name       : dd=name
+	x_koordinate        : dd=float, cmnt="X-Koordinate, Gauss-Krüger 3, Bessel, DHDN"
+	y_koordinate        : dd=float, cmnt="Y-Koordinate, Gauss-Krüger 3, Bessel, DHDN"
+} on=nxg_kgs8, cmnt="Gemeinden",
+lk= {
+    bla -- bla
+}

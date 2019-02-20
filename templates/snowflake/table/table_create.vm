@@ -1,0 +1,7 @@
+create #if(${dwhConfig.replaceTablesWhenCreated()})or replace#end table ${dwhConfig.dbName()}.${table.schema}.${table.name} (
+#foreach( $col in ${table.getColumns()} )
+    #if(!$foreach.isFirst()),#end ${col.name} ${col.toSqlTypeString()} #if(!$col.nullable)not null#end #if($col.hasComment())comment '${col.comment}'#end
+#end
+) #if($table.comment)
+comment='${table.comment}'
+#end;

@@ -1,0 +1,24 @@
+mapping {
+    pers_no              : dd=int16, kc, cmnt="Personalnummer"
+    pers_no_disc         : dd=int16, kc, rl=disciplinarian, rn=pers_no, cmnt="Personalnummer (Vorgesetzter)"
+    foo1				 : dd=text_small, ls=emp_disciplinarian, clc="'foo1'"
+    vorname                 : dd=text_small, cmnt="Vorname"
+    surname              : dd=text_small, cmnt="Nachname"
+    date_of_birth        : dd=date, cmnt="Geburtsdatum"
+    private_car          : dd=text_small, kc, on=car, oa=car, rn=car_id
+    private_car_brand    : dd=text_small, on=car, oa=car, rn=car_brand
+    private_car_hp       : dd=int16, on=car, rn=car_hp
+    private_car_type	 : dd=text_small, on=car, rn=car_type, clc="'private'"
+    company_car          : dd=text_small, kc, on=car, oa=car, rl=company_car, rn=car_id
+    company_car_brand    : dd=text_small, on=car, oa=car, rl=company_car, rn=car_brand
+    company_car_hp       : dd=int16, on=car, oa=car, rl=company_car, rn=car_hp
+	company_car_type	 : dd=text_small, on=car, rl=company_car, rn=car_type, clc="'company'"    
+}
+on=employee,
+oa=emp,
+ocmnt="Angestellter",
+lk = {
+    emp * -- disciplinarian (emp_disciplinarian),
+    emp * -- car (emp_private_car),
+    emp * -- company_car (emp_company_car)
+}

@@ -1,0 +1,2 @@
+insert into ${dwhConfig.schemaNameRaw()}.${mapping.name}
+    ${mapping.customSqlCode};

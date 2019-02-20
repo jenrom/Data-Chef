@@ -1,0 +1,48 @@
+insert into ${dwhConfig.schemaNameCooked()}.${mapping.name} (
+#foreach($hCol in $hashColumns)
+    #if(!$foreach.isFirst()), #end ${hCol.name}
+#end
+#foreach($mCol in ${mapping.getMappingColumnsSorted()})
+    #if(!$mCol.ignored), ${mCol.cookedTableName}#end
+#end
+, ${vaultConfig.loadIdName()}
+, ${vaultConfig.loadDateName()}
+ )
+select
+#foreach($hCol in $hashColumns)
+    #if(!$foreach.isFirst()), #end hash_md5 (##
+        #foreach( $c in $hCol.hashColumns)##
+            #if(!$foreach.isFirst())|| '${dwhConfig.hashConcatinationString()}' || #end $c ##
+        #end##
+    ) ${hCol.name}
+#end
+#foreach($mCol in ${mapping.getMappingColumnsSorted()})
+    #if(!$mCol.ignored), ${mCol.cookedTableName}#end
+#end
+    , ${vaultConfig.loadIdName()}
+    , ${vaultConfig.loadDateName()}
+ from (
+select
+#foreach($mCol in ${mapping.getMappingColumnsSorted()})
+    #set ( $cName = $mCol.name )##
+    #if($mCol.hasCalculation()) #set ( $cName = "( $mCol.calculation ) ") #end##
+    #if($mCol.dataDomain.hasDefaultValue())##
+    case when ${cName} is null then '${mCol.dataDomain.defaultValue}' else $cName end##
+    #else##
+    ${cName}##
+    #end##
+    ${mCol.cookedTableName} ,
+#end
+    ${vaultConfig.loadIdName()},
+    ${vaultConfig.loadDateName()}
+from (
+    select
+        #foreach($mCol in ${mapping.getMappingColumnsSorted()}) #if(!$mCol.hasCalculation()) ${mCol.name}, #end #end
+        to_timestamp('${vaultConfig.placeholderPublishDate()}', 'YYYY-MM-DD HH:MI:SS') ${vaultConfig.publishDateName()},
+        '${vaultConfig.placeholderFileGroup()}' ${vaultConfig.fileGroupName()},
+        ${vaultConfig.placeholderDbId()} ${vaultConfig.loadIdName()},
+        current_timestamp() ${vaultConfig.loadDateName()}
+    from
+        ${dwhConfig.schemaNameRaw()}.${mapping.name}
+    )
+);

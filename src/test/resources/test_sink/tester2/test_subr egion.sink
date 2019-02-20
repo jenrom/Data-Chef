@@ -1,0 +1,9 @@
+mapping {
+    subregion   : dd=name, kc, rn=reg_key
+    size        : dd=int16, rn=pop_size
+    detail1     : dd=int16, ign
+    detail2		: dd=int16, clc="size * 5", cmnt="Size multipliziert mit 5"
+}
+on=subregion,
+oa=sreg,
+ocmnt="Kommentar aus Mapping test_subregion"

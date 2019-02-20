@@ -1,0 +1,4 @@
+alter table ${primaryKey.schemaName}.${primaryKey.tableName}
+    add constraint ${primaryKey.name} primary key (
+#foreach($c in $primaryKey.columns)#if(!$foreach.first),#end${c}#end
+    );

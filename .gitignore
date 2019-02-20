@@ -1,0 +1,38 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# virtual machine crash logs
+hs_err_pid*
+
+# OS X
+.DS_Store
+
+/src/main/java/de/areto/datachef/parser/antlr4/
+/target/
+/dist/
+/sink/
+/logs/
+/data/
+/driver/*jar
+.idea/
+*.iml
+*.iws
+*.ipr
+
+*.log
+
+/dataSources/
+.ideaDataSources/
+
+*.zip
+/bin/
+
+# Eclipse
+.factorypath
+.classpath
+.project
+.settings/
+
+.env

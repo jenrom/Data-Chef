@@ -1,0 +1,2114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!DOCTYPE html>
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml' >
+<head>
+<title>Sample Layout with Tools</title>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
+<link rel="shortcut icon" href="https://www.dbschema.com/images/favicon.ico">
+<style type='text/css'>
+body {
+    font-family: 'Segoe UI', 'Lucida sans', Dialog;
+    font-size: 13px;
+    background-color:#f5f5f5;
+    margin: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class='svg-container'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' text-rendering='optimizeLegibility'   width='2925' height='845' viewbox='0 0 2925 845' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','scene'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: Trebuchet MS, 'Trebuchet MS', Dialog; font-size:11px; }
+  a text:hover        { fill:#94025f; text-shadow: 0px 0px 6px #d0ce00; font-size:13px; }
+  text.highlight      { fill:#94025f; text-shadow: 0px 0px 4px #eac533; font-size:13px; }
+  text.colType        { fill:#b3b3b3; }
+  text.relName        { fill:#b09c7c; }
+  path                { stroke:#5c554f; stroke-width:1.15; fill:none; }
+  path                { stroke:#5c554f; stroke-width:1.15; fill:none;}
+  path.virtual        { stroke:#b7642d; }
+  path.logo           { fill:#fbeac0;fill-opacity:1;stroke-width:0.3;stroke:#222222; }
+  path.dotted         { stroke-dasharray:4,2; }
+  path.scene          { stroke-width:10; opacity:0;}
+  path.highlight      { stroke-width:5; stroke:#c1a662; opacity:0.6;}
+  rect.entity         { fill:#ffffff; stroke:#aaa; stroke-width:1;shape-rendering:crispEdges;filter:url(#shadow); }
+  line.delim          { stroke-width:1; shape-rendering:crispEdges; }
+  text.callout        { fill:#000000; font-family: Trebuchet MS, 'Trebuchet MS', Dialog; font-size:12px; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; filter: url(#shadow);}
+  rect.grp            { stroke:#b1b1b1; stroke-width:1.7; opacity:0.8; }
+  path.st0            { fill:#ececec;fill-opacity:1;stroke-width:0.6;stroke:#aaaaaa; }
+</style>
+<defs>
+  <pattern id='layoutBgA' patternUnits='userSpaceOnUse'  width='10' height='20' x='0' y='0' viewBox='0 0 5 10'>  
+     <line x1='-2' y1='1' x2='7' y2='10' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='6' x2='7' y2='15' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='-4' x2='7' y2='5' stroke='#f3f3f3' stroke-width='.5'/>  
+  </pattern>  
+  <radialGradient id='layoutBgB' gradientUnits='userSpaceOnUse' cx='50%' cy='50%' r='75%' fx='46%' fy='22%'>
+     <stop offset='0%' stop-opacity='.2' stop-color='#f5f5f5' />  
+     <stop offset='100%' stop-color='#efefef' />  
+  </radialGradient>
+  <pattern id='layoutBgTr' patternUnits='userSpaceOnUse'  width='300' height='300' x='0' y='0' viewBox='0 0 300 300'>  
+  <path class='st0' d='m 62.011835,91.267143 c 3.536475,3.175214 2.262669,8.705999 -1.637711,11.015197 -3.594697,5.8423 -6.34682,-2.892623 -9.715478,-4.653898 -5.609222,-2.838926 2.050802,-6.680123 4.77004,-8.319046 2.334696,-0.724067 4.935143,0.312302 6.583149,1.957747 z m -2.720492,2.538595 c -2.698397,-3.517732 -9.282815,1.269287 -3.69635,3.568637 2.765331,5.605665 7.052809,-0.56184 3.69635,-3.568637 z' />
+  <path class='st0' d='m 72.25864,84.624638 c 4.108046,3.143003 -0.737059,6.895259 -1.994918,8.323564 -3.586718,5.561143 -6.495079,-4.197379 -10.07759,-5.582178 -4.443422,-1.088878 1.349298,-7.249213 2.503526,-2.503449 2.464639,4.517161 2.304019,-3.70697 6.291113,-1.995914 1.280083,0.137865 2.410691,0.864819 3.277869,1.757977 z m -2.646109,2.323242 c -4.797162,-3.078383 -2.810517,6.305507 0.515161,1.990646 0.296432,-0.688582 0.01209,-1.493412 -0.515161,-1.990646 z' />
+  <path class='st0' d='m 78.230641,79.436735 c 4.142121,3.027466 -2.020102,10.435276 -3.450543,5.477315 3.306312,-5.248112 -9.186019,-2.220094 -5.805994,-8.77679 -0.544141,-3.93011 6.797826,-2.102227 3.386015,0.245477 -0.181085,2.915838 4.637371,1.019311 5.870522,3.053982 z' />
+  <path class='st0' d='m 82.744502,72.597397 c -4.901605,1.926521 1.146497,6.285555 2.559694,2.225783 6.21817,3.539297 -6.640186,8.416664 -7.590325,1.997457 -2.24365,-2.914883 4.026676,-10.148618 5.030631,-4.22324 z' />
+  <path class='st0' d='m 90.727458,64.259158 c 1.583987,1.690029 3.321317,3.2696 4.81267,5.026353 -2.535706,6.849794 -6.445583,-5.918773 -8.388458,-0.167017 0.782768,2.03426 5.877405,3.752079 2.670979,5.711199 -3.315119,1.519161 -5.782422,-5.157931 -8.858893,-6.780537 -4.229842,-1.139816 1.510134,-7.074128 2.586227,-2.385939 3.141198,5.495193 1.840537,-5.598295 7.177489,-1.404062 z' />
+  <path class='st0' d='m 99.622027,58.374253 c 1.493293,1.9548 -6.281936,7.024659 -0.885258,4.740447 0.386238,-4.434477 6.131941,-1.133173 2.175851,1.618005 -4.421491,6.12739 -13.666659,-3.151506 -7.058299,-7.136537 1.785129,-1.119329 4.348209,-0.743179 5.767706,0.778085 z m -2.900824,1.89746 c -3.608188,-2.208543 -2.280489,5.00803 -0.12563,0.329531 z' />
+  <path class='st0' d='m 115.18023,50.570441 c -1.61703,5.201678 -4.6204,-0.364502 -7.01598,-1.749619 -4.40977,2.122562 4.89641,4.913939 1.89606,7.018157 -2.48061,3.877635 -4.11404,-4.060614 -7.01192,-2.6391 -1.76318,3.107252 7.28394,6.252304 0.87346,7.876177 -1.74515,-2.956649 -9.055498,-5.610518 -3.950378,-8.66062 1.696478,1.897023 1.770418,-5.43503 5.347308,-3.072411 -0.44014,-5.474701 6.11995,-4.950882 7.7846,-0.815355 0.69076,0.682329 1.39587,1.351469 2.07685,2.042771 z' />
+  <path class='st0' d='m 120.54891,39.417125 c 2.50681,1.334124 4.80466,4.941837 0.75044,5.297362 -0.46414,1.89865 -5.25369,5.602652 -8.01742,1.815475 -3.87345,-2.809139 -0.0676,-7.603869 2.3036,-8.133924 1.6795,-3.853018 3.16703,-1.199465 4.96338,1.021087 z m -2.2464,2.175828 c -4.8049,-2.992167 -3.08987,6.380358 0.42374,2.036159 0.33052,-0.677508 0.12099,-1.525836 -0.42374,-2.036159 z' />
+  <path class='st0' d='m 128.50836,24.06821 c -5.10403,3.035506 3.20535,6.383175 5.05938,9.450276 -0.91853,2.95886 -4.06493,3.650723 -5.34691,0.265618 -2.25715,-2.089033 -4.65672,-6.948595 -7.07024,-2.584686 -4.71758,-3.764394 3.81217,-5.812054 5.12382,-9.226328 0.75738,0.677487 1.38637,1.498638 2.23389,2.095175 z' />
+  <path class='st0' d='m 137.14366,22.299812 c -3.09615,2.259885 0.71537,4.412454 1.99042,6.435866 -3.08975,5.080354 -5.91384,-2.98648 -8.92144,-4.094939 1.44369,-3.219573 3.3497,-1.335928 4.27156,-4.41058 0.97822,-0.894325 1.75044,1.871047 2.65946,2.069653 z' />
+  <path class='st0' d='m 136.85093,14.890174 c 2.31562,5.283511 -7.17975,1.771993 -1.29675,-0.475107 l 0.7108,0.08973 z m 4.867,5.317354 c 2.56912,1.439678 4.26517,4.725219 0.30678,5.233637 -1.56592,-3.098864 -9.51683,-5.749448 -3.64502,-8.633714 1.17746,0.325095 2.15375,2.591149 3.33824,3.400077 z' />
+  <path class='st0' d='m 149.95578,11.976423 c 2.50679,1.334142 4.80455,4.94192 0.75041,5.297394 -0.4641,1.898604 -5.25368,5.602645 -8.0174,1.81545 -3.87347,-2.80918 -0.0676,-7.603844 2.30366,-8.133968 1.67949,-3.8530525 3.16695,-1.1993573 4.96333,1.021124 z m -2.24641,2.175828 c -4.80489,-2.992177 -3.08986,6.380343 0.42374,2.036167 0.33055,-0.677518 0.121,-1.52585 -0.42374,-2.036167 z' />
+  <path class='st0' d='m 153.26135,7.538431 c 2.60497,1.5799548 6.03999,5.944272 1.08117,6.050232 -2.53319,-3.231828 -7.20316,-6.4304525 -8.84748,-9.4582682 1.89121,-2.8664883 3.78452,-2.247699 5.38514,0.8929426 0.78017,0.8503859 1.57195,1.6911437 2.38118,2.5150667 z' />
+  </pattern>  
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+          <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/> 
+          <stop offset='100%' stop-color='#999999' stop-opacity='0' /> 
+   </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+	   <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id='shadow' width='120%' height='120%'> 
+      <feOffset result='offOut' in='SourceGraphic' dx='1' dy='1' /> 
+      <feColorMatrix result='matrixOut' in='offOut' type='matrix' 
+      values='0.1 0 0 0 0 0 0.4 0 0 0 0 0 0.6 0 0 0 0 0 0.3 0' /> 
+      <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='3' /> 
+      <feBlend in='SourceGraphic' in2='blurOut' mode='normal' /> 
+    </filter> 
+  <filter id='fkShadow' height='130%'> 
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' fx='5%' fy='5%' r='75%' spreadMethod='pad'>
+          <stop offset='0%' stop-color='#eefbf2' stop-opacity='1'/> 
+          <stop offset='100%' stop-color='#cff9cb' stop-opacity='1' /> 
+   </radialGradient>
+  <symbol id='calloutArrowDown' overflow='visible' >
+      <path d='M 0,0 L 7,11 L 15,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+      <path d='M 0,0 L 7,11 L 15,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' overflow='visible' >
+      <path d='M 0,15 L 7,3 L 15,15 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+      <path d='M 0,15 L 7,3 L 15,15' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <path style='fill:#fffa7d;stroke:#765f03;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;'
+        d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+     <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+        style='fill:#ffe5a5;fill-opacity:1;stroke:#854e31;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='dist' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <path style='fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;' d='M 0.177,11.431 12.28,11.449'/>
+      <path style='fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;' d='m 6.124,3.954 0.066,7.154 v 0'/>
+      <rect width='11.78' height='3.40' x='0.40' y='0.44' style='fill:#fffa7d;stroke:#765f03;stroke-width:0.6;' ry='0.83'/>
+      <rect width='11.78' height='3.40' x='0.40' y='5.609' style='fill:#fffa7d;stroke:#765f03;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='unq' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#fbea8e;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.8' y='7.4' style='font-size:7px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#fbea8e;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#f3e1b7;stroke:#7e471f;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+      d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#f3e1b7;stroke:#7e471f;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag0' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag1' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#f4a393;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag2' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#77ec8b;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' overflow='visible' >
+  <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <symbol id='view' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <line x1='12' y1='6' x2='19' y2='0' stroke='black' stroke-width='0.5' />
+     <line x1='0' y1='6' x2='7' y2='0' stroke='black' stroke-width='0.5' />
+     <circle cx='3' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+     <circle cx='10' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+    </g>
+  </symbol>
+  <marker id='arrow01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 7.500,3.750 L 15.000,3.750 L 7.500,0.000 L 15.000,3.750 L 7.500,7.500' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 7.500,3.750 L 15.000,3.750 L 7.500,0.000 L 15.000,3.750 L 7.500,7.500' />
+  </marker>
+  <marker id='foot01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <circle cx='11.25' cy='3.75' r='2.50' style='fill:white;stroke:#5e554d;' />
+    <path d='M 3.75,0.00 L 3.75, 7.50 z' />
+  </marker>
+  <marker id='foot0p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <circle cx='11.25' cy='3.75' r='2.50' style='fill:white;stroke:#5e554d;' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 7.50,0.00 L 7.50, 7.50 z' />
+    <path d='M 3.75,0.00 L 3.75, 7.50 z' />
+  </marker>
+  <marker id='foot1p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 7.50,0.00 L 7.50, 7.50 z' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+  <linearGradient id='tbg_c8f5bf' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e4f8e0' /> 
+     <stop offset='100%' stop-color='#c9eec1' /> 
+  </linearGradient>
+  <linearGradient id='tbg_bfd4f5' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e0e9f8' /> 
+     <stop offset='100%' stop-color='#c1d3ee' /> 
+  </linearGradient>
+  <linearGradient id='tbg_f5ddbf' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#f8ede0' /> 
+     <stop offset='100%' stop-color='#eedac1' /> 
+  </linearGradient>
+  <linearGradient id='tbg_bfbff5' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e0e0f8' /> 
+     <stop offset='100%' stop-color='#c1c1ee' /> 
+  </linearGradient>
+</defs>
+
+<!-- ============= Desktop ============= -->
+<rect x='1' y='1' width='2923' height='843' rx='7' ry='7' style='fill:url(#layoutBgB); stroke:#777777; stroke-width:0.5;' />
+<rect x='1' y='1' width='2923' height='843' rx='7' ry='7' style='fill:url(#layoutBgA); stroke:#777777; stroke-width:0.5;' />
+
+<!-- ============= Legend ============= -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='330' height='56' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='20' y='43'>Sample Layout with Tools</text> 
+  <text x='20' y='57' style='fill:#aaaaaa; font-size:11px;'><tspan>Read table &amp; column comments as mouse-over tooltips.</tspan></text> 
+<a xlink:href='https://www.dbschema.com'> <path class='logo' d='m 32.309685,20.963194 c 0.411708,4.732616 -4.298055,7.925636 -8.723583,6.970196 -6.616967,1.8448 -2.656457,-6.434594 -3.911969,-10.01566 -2.15469,-5.89407 6.06247,-3.508505 9.167655,-2.863689 2.199228,1.054873 3.389343,3.582089 3.467897,5.909153 z m -3.720955,0.01451 c 0.434195,-4.414565 -7.644142,-5.37533 -5.137307,0.107342 -1.812268,5.992146 5.532698,4.379388 5.137307,-0.107342 z' /> <path class='logo' d='m 44.329732,23.050637 c 0.850982,5.097305 -5.250434,4.558924 -7.144836,4.752415 -6.418993,1.64391 -1.872992,-7.49274 -3.541914,-10.942842 -2.499646,-3.817859 5.939283,-4.402698 3.538545,-0.13612 -1.287874,4.989123 4.215411,-1.154796 5.956717,2.809584 0.840273,0.970849 1.168829,2.272413 1.191488,3.516963 z m -3.519477,-0.09299 c -1.398216,-5.518069 -6.361061,2.717467 -0.984368,1.810718 0.686994,-0.30388 1.029454,-1.087638 0.984368,-1.810718 z' /> <path class='logo' d='m 52.234961,23.301163 c 0.954818,5.035675 -8.606408,6.284861 -6.262292,1.674914 6.000358,-1.604717 -5.188764,-7.870044 1.75972,-10.384908 2.288682,-3.253567 6.399287,3.075831 2.304111,2.48058 -2.124941,2.016587 2.688777,3.89858 2.198472,6.229403 z' /> <path class='logo' d='m 60.204336,21.349224 c -4.894917,-1.916474 -3.458707,5.391212 0.347494,3.37231 2.120589,6.821713 -10.599623,1.664746 -6.906229,-3.691132 0.354172,-3.663246 9.875349,-4.711252 6.558735,0.318822 z' /> <path class='logo' d='m 71.730617,20.654299 c 0.0013,2.316285 0.190131,4.655698 0.07825,6.958009 -6.532419,3.303565 -0.660423,-8.722256 -6.009639,-5.821653 -0.818815,2.024533 1.726403,6.746337 -1.95327,6.005484 -3.458346,-1.137537 -0.696275,-7.713407 -1.833252,-10.994208 -2.308916,-3.710131 5.93704,-4.164951 3.518609,0.0063 -1.462376,6.166445 5.169629,-2.857523 6.19931,3.846079 z' /> <path class='logo' d='m 82.245738,22.378957 c -0.24581,2.448954 -9.386766,0.8867 -3.885979,2.877055 3.312576,-2.99157 5.250902,3.334514 0.482647,2.665545 -7.415384,1.492275 -7.823196,-11.597641 -0.275476,-10.032117 2.068161,0.391458 3.682204,2.408824 3.678808,4.489517 z m -3.414436,-0.578473 c -1.124703,-4.072004 -5.087405,2.125488 -0.316922,0.156453 z' /> <path class='logo' d='m 98.936899,27.222794 c -4.73541,2.718339 -3.1239,-3.406557 -3.92611,-6.050494 -4.66985,-1.438471 0.21621,6.932413 -3.41219,6.438039 -4.46096,1.160054 -0.22824,-5.774711 -3.31526,-6.700429 -3.410722,1.082173 1.04451,9.536575 -4.745091,6.372895 0.746632,-3.355214 -2.776394,-10.269232 3.034971,-9.038963 -0.058,2.544602 5.00686,-2.785359 6.00342,1.37844 3.42021,-4.316316 7.851251,0.524966 6.24018,4.690538 0.0379,0.969988 0.0954,1.940046 0.12008,2.909974 z' /> <path class='logo' d='m 110.47859,22.686058 c 0.91826,2.682088 0.13016,6.890551 -3.0725,4.397004 -1.63641,1.077877 -7.664291,0.541832 -7.09365,-4.114836 -0.907891,-4.692933 5.14729,-5.625578 7.24058,-4.40354 3.85932,-1.686263 3.13176,1.271515 2.92557,4.121372 z m -3.12695,0.0704 c -1.46278,-5.460062 -6.61615,2.5826 -1.08221,1.782003 0.70431,-0.272594 1.13111,-1.037444 1.08221,-1.782003 z' /> </a>
+</g>
+
+<g transform='translate(0,110)'>
+<!-- ============= Group 'DVObject' ============= -->
+<rect class='grp' style='fill:#ecf0f7;stroke:#ced5e0' x='29' y='40' width='887' height='410' />
+<text x='40' y='55'>DVObject</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='40' y='58' width='865' height='2' />
+
+<!-- ============= Group 'Mapping' ============= -->
+<rect class='grp' style='fill:#eef7ec;stroke:#d2e0ce' x='974' y='40' width='947' height='440' />
+<text x='985' y='55'>Mapping</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='985' y='58' width='925' height='2' />
+
+<!-- ============= Group 'WorkerCargo' ============= -->
+<rect class='grp' style='fill:#f7f3ec;stroke:#e0dace' x='1979' y='40' width='917' height='455' />
+<text x='1990' y='55'>WorkerCargo</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='1990' y='58' width='895' height='2' />
+
+<!-- ============= Group 'hibernate_sequence' ============= -->
+<rect class='grp' style='fill:#ececf7;stroke:#cecee0' x='974' y='535' width='377' height='140' />
+<text x='985' y='550'>hibernate_sequence</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='985' y='553' width='355' height='2' />
+
+<!-- ============= Fk 'DVColumn_FKte1e3n7r8jvwkr7u2ghb3uq6p' ============= -->
+<path id='DVColumn_FKte1e3n7r8jvwkr7u2ghb3uq6p'  onmouseover="hghl(['DVColumn_FKte1e3n7r8jvwkr7u2ghb3uq6p','datachef.DVColumn.parent_dbId','datachef.DVObject.dbId'])" onmouseout="uhghl(['DVColumn_FKte1e3n7r8jvwkr7u2ghb3uq6p','datachef.DVColumn.parent_dbId','datachef.DVObject.dbId'])" transform='translate(7,0)' class='scene' d='M 465 90 L 420,90' >
+	<title>Fk FKte1e3n7r8jvwkr7u2ghb3uq6p
+DVColumn ref DVObject ( parent_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 465 90 L 420,90' ></path>
+<text x='413' y='85' transform='rotate(0 413,85)' title='Fk FKte1e3n7r8jvwkr7u2ghb3uq6p
+DVColumn ref DVObject ( parent_dbId -&gt; dbId )' class='relName' style='fill:#7488a7'>parent_dbId</text>
+<!-- ============= Fk 'DVColumn_FKiakv7052dw1ulclurq06vwe2q' ============= -->
+<path id='DVColumn_FKiakv7052dw1ulclurq06vwe2q'  onmouseover="hghl(['DVColumn_FKiakv7052dw1ulclurq06vwe2q','datachef.DVColumn.dataDomain_name','datachef.DataDomain.name'])" onmouseout="uhghl(['DVColumn_FKiakv7052dw1ulclurq06vwe2q','datachef.DVColumn.dataDomain_name','datachef.DataDomain.name'])" transform='translate(7,0)' class='scene' d='M 675 90 L 720,90' >
+	<title>Fk FKiakv7052dw1ulclurq06vwe2q
+DVColumn ref DataDomain ( dataDomain_name -&gt; name )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 675 90 L 720,90' ></path>
+<text x='682' y='85' transform='rotate(0 682,85)' title='Fk FKiakv7052dw1ulclurq06vwe2q
+DVColumn ref DataDomain ( dataDomain_name -&gt; name )' class='relName' style='fill:#7488a7'>dataDomain_name</text>
+<!-- ============= Fk 'DVColumn_comments_FKre179bh22mlhfe4a5umt4rviv' ============= -->
+<path id='DVColumn_comments_FKre179bh22mlhfe4a5umt4rviv'  onmouseover="hghl(['DVColumn_comments_FKre179bh22mlhfe4a5umt4rviv','datachef.DVColumn_comments.DVColumn_dbId','datachef.DVColumn.dbId'])" onmouseout="uhghl(['DVColumn_comments_FKre179bh22mlhfe4a5umt4rviv','datachef.DVColumn_comments.DVColumn_dbId','datachef.DVColumn.dbId'])" transform='translate(7,0)' class='scene' d='M 720 255 L 667,255 Q 660,255 660,247 L 660,195' >
+	<title>Fk FKre179bh22mlhfe4a5umt4rviv
+DVColumn_comments ref DVColumn ( DVColumn_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 720 255 L 667,255 Q 660,255 660,247 L 660,195' ></path>
+<text x='650' y='250' transform='rotate(0 650,250)' title='Fk FKre179bh22mlhfe4a5umt4rviv
+DVColumn_comments ref DVColumn ( DVColumn_dbId -&gt; dbId )' class='relName' style='fill:#7488a7'>DVColumn_dbId</text>
+<!-- ============= Fk 'DVObject_FKta93e15wq9io9xv8jbrws7yef' ============= -->
+<path id='DVObject_FKta93e15wq9io9xv8jbrws7yef'  onmouseover="hghl(['DVObject_FKta93e15wq9io9xv8jbrws7yef','datachef.DVObject.parent_dbId','datachef.DVObject.dbId'])" onmouseout="uhghl(['DVObject_FKta93e15wq9io9xv8jbrws7yef','datachef.DVObject.parent_dbId','datachef.DVObject.dbId'])" transform='translate(7,0)' class='scene' d='M 255 75 L 247,75 Q 240,75 240,67 L 240,52 Q 240,45 247,45 L 277,45 Q 285,45 285,52 L 285,60' >
+	<title>Fk FKta93e15wq9io9xv8jbrws7yef
+DVObject ref DVObject ( parent_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 255 75 L 247,75 Q 240,75 240,67 L 240,52 Q 240,45 247,45 L 277,45 Q 285,45 285,52 L 285,60' ></path>
+<text x='203' y='70' transform='rotate(0 203,70)' title='Fk FKta93e15wq9io9xv8jbrws7yef
+DVObject ref DVObject ( parent_dbId -&gt; dbId )' class='relName' style='fill:#7488a7'>parent_dbId</text>
+<!-- ============= Fk 'DVObject_comments_FK8vnefvhu60339ikd1byydsb8h' ============= -->
+<path id='DVObject_comments_FK8vnefvhu60339ikd1byydsb8h'  onmouseover="hghl(['DVObject_comments_FK8vnefvhu60339ikd1byydsb8h','datachef.DVObject_comments.DVObject_dbId','datachef.DVObject.dbId'])" onmouseout="uhghl(['DVObject_comments_FK8vnefvhu60339ikd1byydsb8h','datachef.DVObject_comments.DVObject_dbId','datachef.DVObject.dbId'])" transform='translate(7,0)' class='scene' d='M 195 300 L 195,232 Q 195,225 202,225 L 255,225' >
+	<title>Fk FK8vnefvhu60339ikd1byydsb8h
+DVObject_comments ref DVObject ( DVObject_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 195 300 L 195,232 Q 195,225 202,225 L 255,225' ></path>
+<text x='197' y='295' transform='rotate(270 197,295)' title='Fk FK8vnefvhu60339ikd1byydsb8h
+DVObject_comments ref DVObject ( DVObject_dbId -&gt; dbId )' class='relName' style='fill:#7488a7'>DVObject_dbId</text>
+<!-- ============= Fk 'Leg_FKh4ysp3ujc37nbjdgjtlqpjr47' ============= -->
+<path id='Leg_FKh4ysp3ujc37nbjdgjtlqpjr47'  onmouseover="hghl(['Leg_FKh4ysp3ujc37nbjdgjtlqpjr47','datachef.Leg.parentLink_dbId','datachef.DVObject.dbId'])" onmouseout="uhghl(['Leg_FKh4ysp3ujc37nbjdgjtlqpjr47','datachef.Leg.parentLink_dbId','datachef.DVObject.dbId'])" transform='translate(7,0)' class='scene' d='M 465 315 L 442,315 Q 435,315 435,307 L 435,247 Q 435,240 427,240 L 420,240' >
+	<title>Fk FKh4ysp3ujc37nbjdgjtlqpjr47
+Leg ref DVObject ( parentLink_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 465 315 L 442,315 Q 435,315 435,307 L 435,247 Q 435,240 427,240 L 420,240' ></path>
+<text x='392' y='310' transform='rotate(0 392,310)' title='Fk FKh4ysp3ujc37nbjdgjtlqpjr47
+Leg ref DVObject ( parentLink_dbId -&gt; dbId )' class='relName' style='fill:#7488a7'>parentLink_dbId</text>
+<!-- ============= Fk 'Leg_FKjs9gpnr3lcqd7vh7saor7g3t5' ============= -->
+<path id='Leg_FKjs9gpnr3lcqd7vh7saor7g3t5'  onmouseover="hghl(['Leg_FKjs9gpnr3lcqd7vh7saor7g3t5','datachef.Leg.hub_dbId','datachef.DVObject.dbId'])" onmouseout="uhghl(['Leg_FKjs9gpnr3lcqd7vh7saor7g3t5','datachef.Leg.hub_dbId','datachef.DVObject.dbId'])" transform='translate(7,0)' class='scene' d='M 495 300 L 495,232 Q 495,225 487,225 L 420,225' >
+	<title>Fk FKjs9gpnr3lcqd7vh7saor7g3t5
+Leg ref DVObject ( hub_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 495 300 L 495,232 Q 495,225 487,225 L 420,225' ></path>
+<text x='497' y='295' transform='rotate(270 497,295)' title='Fk FKjs9gpnr3lcqd7vh7saor7g3t5
+Leg ref DVObject ( hub_dbId -&gt; dbId )' class='relName' style='fill:#7488a7'>hub_dbId</text>
+<!-- ============= Fk 'Mapping_FKedgg2pse2dh5ji7n4hd0qvk9w' ============= -->
+<path id='Mapping_FKedgg2pse2dh5ji7n4hd0qvk9w'  onmouseover="hghl(['Mapping_FKedgg2pse2dh5ji7n4hd0qvk9w','datachef.Mapping.csvType_name','datachef.CsvType.name'])" onmouseout="uhghl(['Mapping_FKedgg2pse2dh5ji7n4hd0qvk9w','datachef.Mapping.csvType_name','datachef.CsvType.name'])" transform='translate(7,0)' class='scene' d='M 1215 195 L 1170,195' >
+	<title>Fk FKedgg2pse2dh5ji7n4hd0qvk9w
+Mapping ref CsvType ( csvType_name -&gt; name )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 1215 195 L 1170,195' ></path>
+<text x='1152' y='190' transform='rotate(0 1152,190)' title='Fk FKedgg2pse2dh5ji7n4hd0qvk9w
+Mapping ref CsvType ( csvType_name -&gt; name )' class='relName' style='fill:#7da774'>csvType_name</text>
+<!-- ============= Fk 'MappingColumn_FK95jjll0w12k01lgyw3qnpmm47' ============= -->
+<path id='MappingColumn_FK95jjll0w12k01lgyw3qnpmm47'  onmouseover="hghl(['MappingColumn_FK95jjll0w12k01lgyw3qnpmm47','datachef.MappingColumn.dataDomain_name','datachef.DataDomain.name'])" onmouseout="uhghl(['MappingColumn_FK95jjll0w12k01lgyw3qnpmm47','datachef.MappingColumn.dataDomain_name','datachef.DataDomain.name'])" transform='translate(7,0)' class='scene' d='M 1455 345 L 922,345 Q 915,345 915,337 L 915,157 Q 915,150 907,150 L 900,150' >
+	<title>Fk FK95jjll0w12k01lgyw3qnpmm47
+MappingColumn ref DataDomain ( dataDomain_name -&gt; name )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1455 345 L 922,345 Q 915,345 915,337 L 915,157 Q 915,150 907,150 L 900,150' ></path>
+<text x='1370' y='340' transform='rotate(0 1370,340)' title='Fk FK95jjll0w12k01lgyw3qnpmm47
+MappingColumn ref DataDomain ( dataDomain_name -&gt; name )' class='relName' style='fill:#7da774'>dataDomain_name</text>
+<!-- ============= Fk 'MappingColumn_FKg3rgx3xhhkduy6lr42dd4i6oo' ============= -->
+<path id='MappingColumn_FKg3rgx3xhhkduy6lr42dd4i6oo'  onmouseover="hghl(['MappingColumn_FKg3rgx3xhhkduy6lr42dd4i6oo','datachef.MappingColumn.mapping_dbId','datachef.Mapping.dbId'])" onmouseout="uhghl(['MappingColumn_FKg3rgx3xhhkduy6lr42dd4i6oo','datachef.MappingColumn.mapping_dbId','datachef.Mapping.dbId'])" transform='translate(7,0)' class='scene' d='M 1455 90 L 1410,90' >
+	<title>Fk FKg3rgx3xhhkduy6lr42dd4i6oo
+MappingColumn ref Mapping ( mapping_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 1455 90 L 1410,90' ></path>
+<text x='1393' y='85' transform='rotate(0 1393,85)' title='Fk FKg3rgx3xhhkduy6lr42dd4i6oo
+MappingColumn ref Mapping ( mapping_dbId -&gt; dbId )' class='relName' style='fill:#7da774'>mapping_dbId</text>
+<!-- ============= Fk 'MappingColumnReference_FKky8rltje5mbdrv092wsdgwow8' ============= -->
+<path id='MappingColumnReference_FKky8rltje5mbdrv092wsdgwow8'  onmouseover="hghl(['MappingColumnReference_FKky8rltje5mbdrv092wsdgwow8','datachef.MappingColumnReference.dvColumn_dbId','datachef.DVColumn.dbId'])" onmouseout="uhghl(['MappingColumnReference_FKky8rltje5mbdrv092wsdgwow8','datachef.MappingColumnReference.dvColumn_dbId','datachef.DVColumn.dbId'])" transform='translate(7,0)' class='scene' d='M 1710 75 L 1687,75 Q 1680,75 1680,67 L 1680,52 Q 1680,45 1672,45 L 667,45 Q 660,45 660,52 L 660,60' >
+	<title>Fk FKky8rltje5mbdrv092wsdgwow8
+MappingColumnReference ref DVColumn ( dvColumn_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1710 75 L 1687,75 Q 1680,75 1680,67 L 1680,52 Q 1680,45 1672,45 L 667,45 Q 660,45 660,52 L 660,60' ></path>
+<text x='1642' y='70' transform='rotate(0 1642,70)' title='Fk FKky8rltje5mbdrv092wsdgwow8
+MappingColumnReference ref DVColumn ( dvColumn_dbId -&gt; dbId )' class='relName' style='fill:#7da774'>dvColumn_dbId</text>
+<!-- ============= Fk 'MappingColumnReference_FK11kawphfe12nlgduf1vqspswn' ============= -->
+<path id='MappingColumnReference_FK11kawphfe12nlgduf1vqspswn'  onmouseover="hghl(['MappingColumnReference_FK11kawphfe12nlgduf1vqspswn','datachef.MappingColumnReference.mappingColumn_dbId','datachef.MappingColumn.dbId'])" onmouseout="uhghl(['MappingColumnReference_FK11kawphfe12nlgduf1vqspswn','datachef.MappingColumnReference.mappingColumn_dbId','datachef.MappingColumn.dbId'])" transform='translate(7,0)' class='scene' d='M 1710 90 L 1665,90' >
+	<title>Fk FK11kawphfe12nlgduf1vqspswn
+MappingColumnReference ref MappingColumn ( mappingColumn_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1710 90 L 1665,90' ></path>
+<text x='1611' y='85' transform='rotate(0 1611,85)' title='Fk FK11kawphfe12nlgduf1vqspswn
+MappingColumnReference ref MappingColumn ( mappingColumn_dbId -&gt; dbId )' class='relName' style='fill:#7da774'>mappingColumn_dbId</text>
+<!-- ============= Fk 'MappingObjectReference_FK8rgsrm9qb74lpopds3m4ksiob' ============= -->
+<path id='MappingObjectReference_FK8rgsrm9qb74lpopds3m4ksiob'  onmouseover="hghl(['MappingObjectReference_FK8rgsrm9qb74lpopds3m4ksiob','datachef.MappingObjectReference.object_dbId','datachef.DVObject.dbId'])" onmouseout="uhghl(['MappingObjectReference_FK8rgsrm9qb74lpopds3m4ksiob','datachef.MappingObjectReference.object_dbId','datachef.DVObject.dbId'])" transform='translate(7,0)' class='scene' d='M 285 300 L 285,255' >
+	<title>Fk FK8rgsrm9qb74lpopds3m4ksiob
+MappingObjectReference ref DVObject ( object_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 285 300 L 285,255' ></path>
+<text x='287' y='295' transform='rotate(270 287,295)' title='Fk FK8rgsrm9qb74lpopds3m4ksiob
+MappingObjectReference ref DVObject ( object_dbId -&gt; dbId )' class='relName' style='fill:#7488a7'>object_dbId</text>
+<!-- ============= Fk 'MappingObjectReference_FKanoyc3brkimgyusfh8mn7s0we' ============= -->
+<path id='MappingObjectReference_FKanoyc3brkimgyusfh8mn7s0we'  onmouseover="hghl(['MappingObjectReference_FKanoyc3brkimgyusfh8mn7s0we','datachef.MappingObjectReference.mapping_dbId','datachef.Mapping.dbId'])" onmouseout="uhghl(['MappingObjectReference_FKanoyc3brkimgyusfh8mn7s0we','datachef.MappingObjectReference.mapping_dbId','datachef.Mapping.dbId'])" transform='translate(7,0)' class='scene' d='M 390 420 L 390,472 Q 390,480 397,480 L 1417,480 Q 1425,480 1425,472 L 1425,322 Q 1425,315 1417,315 L 1410,315' >
+	<title>Fk FKanoyc3brkimgyusfh8mn7s0we
+MappingObjectReference ref Mapping ( mapping_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 390 420 L 390,472 Q 390,480 397,480 L 1417,480 Q 1425,480 1425,472 L 1425,322 Q 1425,315 1417,315 L 1410,315' ></path>
+<text x='403' y='420' transform='rotate(90 403,420)' title='Fk FKanoyc3brkimgyusfh8mn7s0we
+MappingObjectReference ref Mapping ( mapping_dbId -&gt; dbId )' class='relName' style='fill:#7488a7'>mapping_dbId</text>
+<!-- ============= Fk 'Mapping_dependentMappingNames_FK9x6lvyw2106f26k7prxk2st6k' ============= -->
+<path id='Mapping_dependentMappingNames_FK9x6lvyw2106f26k7prxk2st6k'  onmouseover="hghl(['Mapping_dependentMappingNames_FK9x6lvyw2106f26k7prxk2st6k','datachef.Mapping_dependentMappingNames.Mapping_dbId','datachef.Mapping.dbId'])" onmouseout="uhghl(['Mapping_dependentMappingNames_FK9x6lvyw2106f26k7prxk2st6k','datachef.Mapping_dependentMappingNames.Mapping_dbId','datachef.Mapping.dbId'])" transform='translate(7,0)' class='scene' d='M 1245 375 L 1245,330' >
+	<title>Fk FK9x6lvyw2106f26k7prxk2st6k
+Mapping_dependentMappingNames ref Mapping ( Mapping_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1245 375 L 1245,330' ></path>
+<text x='1247' y='370' transform='rotate(270 1247,370)' title='Fk FK9x6lvyw2106f26k7prxk2st6k
+Mapping_dependentMappingNames ref Mapping ( Mapping_dbId -&gt; dbId )' class='relName' style='fill:#7da774'>Mapping_dbId</text>
+<!-- ============= Fk 'SQLExpression_FK963piyfy9v46kvafqqo0sbuub' ============= -->
+<path id='SQLExpression_FK963piyfy9v46kvafqqo0sbuub'  onmouseover="hghl(['SQLExpression_FK963piyfy9v46kvafqqo0sbuub','datachef.SQLExpression.mapping_dbId','datachef.Mapping.dbId'])" onmouseout="uhghl(['SQLExpression_FK963piyfy9v46kvafqqo0sbuub','datachef.SQLExpression.mapping_dbId','datachef.Mapping.dbId'])" transform='translate(7,0)' class='scene' d='M 2685 75 L 2662,75 Q 2655,75 2655,67 L 2655,37 Q 2655,30 2647,30 L 1402,30 Q 1395,30 1395,37 L 1395,60' >
+	<title>Fk FK963piyfy9v46kvafqqo0sbuub
+SQLExpression ref Mapping ( mapping_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 2685 75 L 2662,75 Q 2655,75 2655,67 L 2655,37 Q 2655,30 2647,30 L 1402,30 Q 1395,30 1395,37 L 1395,60' ></path>
+<text x='2623' y='70' transform='rotate(0 2623,70)' title='Fk FK963piyfy9v46kvafqqo0sbuub
+SQLExpression ref Mapping ( mapping_dbId -&gt; dbId )' class='relName' style='fill:#a79074'>mapping_dbId</text>
+<!-- ============= Fk 'SQLExpressionExecution_FK4747kxc4511bst30syv0h62gf' ============= -->
+<path id='SQLExpressionExecution_FK4747kxc4511bst30syv0h62gf'  onmouseover="hghl(['SQLExpressionExecution_FK4747kxc4511bst30syv0h62gf','datachef.SQLExpressionExecution.expression_dbId','datachef.SQLExpression.dbId'])" onmouseout="uhghl(['SQLExpressionExecution_FK4747kxc4511bst30syv0h62gf','datachef.SQLExpressionExecution.expression_dbId','datachef.SQLExpression.dbId'])" transform='translate(7,0)' class='scene' d='M 2640 90 L 2685,90' >
+	<title>Fk FK4747kxc4511bst30syv0h62gf
+SQLExpressionExecution ref SQLExpression ( expression_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 2640 90 L 2685,90' ></path>
+<text x='2647' y='85' transform='rotate(0 2647,85)' title='Fk FK4747kxc4511bst30syv0h62gf
+SQLExpressionExecution ref SQLExpression ( expression_dbId -&gt; dbId )' class='relName' style='fill:#a79074'>expression_dbId</text>
+<!-- ============= Fk 'SQLExpressionExecution_FK21f7c1livolqsguwfwe24wjd6' ============= -->
+<path id='SQLExpressionExecution_FK21f7c1livolqsguwfwe24wjd6'  onmouseover="hghl(['SQLExpressionExecution_FK21f7c1livolqsguwfwe24wjd6','datachef.SQLExpressionExecution.cargo_dbId','datachef.WorkerCargo.dbId'])" onmouseout="uhghl(['SQLExpressionExecution_FK21f7c1livolqsguwfwe24wjd6','datachef.SQLExpressionExecution.cargo_dbId','datachef.WorkerCargo.dbId'])" transform='translate(7,0)' class='scene' d='M 2475 90 L 2430,90' >
+	<title>Fk FK21f7c1livolqsguwfwe24wjd6
+SQLExpressionExecution ref WorkerCargo ( cargo_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 2475 90 L 2430,90' ></path>
+<text x='2428' y='85' transform='rotate(0 2428,85)' title='Fk FK21f7c1livolqsguwfwe24wjd6
+SQLExpressionExecution ref WorkerCargo ( cargo_dbId -&gt; dbId )' class='relName' style='fill:#a79074'>cargo_dbId</text>
+<!-- ============= Fk 'WorkerCargo_FK5no6sbllidjxv8fnbv9uq4tgm' ============= -->
+<path id='WorkerCargo_FK5no6sbllidjxv8fnbv9uq4tgm'  onmouseover="hghl(['WorkerCargo_FK5no6sbllidjxv8fnbv9uq4tgm','datachef.WorkerCargo.mapping_dbId','datachef.Mapping.dbId'])" onmouseout="uhghl(['WorkerCargo_FK5no6sbllidjxv8fnbv9uq4tgm','datachef.WorkerCargo.mapping_dbId','datachef.Mapping.dbId'])" transform='translate(7,0)' class='scene' d='M 2205 75 L 1927,75 Q 1920,75 1920,67 L 1920,22 Q 1920,15 1912,15 L 1387,15 Q 1380,15 1380,22 L 1380,60' >
+	<title>Fk FK5no6sbllidjxv8fnbv9uq4tgm
+WorkerCargo ref Mapping ( mapping_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 2205 75 L 1927,75 Q 1920,75 1920,67 L 1920,22 Q 1920,15 1912,15 L 1387,15 Q 1380,15 1380,22 L 1380,60' ></path>
+<text x='2143' y='70' transform='rotate(0 2143,70)' title='Fk FK5no6sbllidjxv8fnbv9uq4tgm
+WorkerCargo ref Mapping ( mapping_dbId -&gt; dbId )' class='relName' style='fill:#a79074'>mapping_dbId</text>
+<!-- ============= Fk 'WorkerCargo_errors_FKf2hv5ji8oy8j04qw9a9802ogy' ============= -->
+<path id='WorkerCargo_errors_FKf2hv5ji8oy8j04qw9a9802ogy'  onmouseover="hghl(['WorkerCargo_errors_FKf2hv5ji8oy8j04qw9a9802ogy','datachef.WorkerCargo_errors.WorkerCargo_dbId','datachef.WorkerCargo.dbId'])" onmouseout="uhghl(['WorkerCargo_errors_FKf2hv5ji8oy8j04qw9a9802ogy','datachef.WorkerCargo_errors.WorkerCargo_dbId','datachef.WorkerCargo.dbId'])" transform='translate(7,0)' class='scene' d='M 2475 405 L 2422,405 Q 2415,405 2415,397 L 2415,345' >
+	<title>Fk FKf2hv5ji8oy8j04qw9a9802ogy
+WorkerCargo_errors ref WorkerCargo ( WorkerCargo_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 2475 405 L 2422,405 Q 2415,405 2415,397 L 2415,345' ></path>
+<text x='2391' y='400' transform='rotate(0 2391,400)' title='Fk FKf2hv5ji8oy8j04qw9a9802ogy
+WorkerCargo_errors ref WorkerCargo ( WorkerCargo_dbId -&gt; dbId )' class='relName' style='fill:#a79074'>WorkerCargo_dbId</text>
+<!-- ============= Fk 'WorkerCargo_messages_FKocyk0haeuxspytk3tbxnoxd70' ============= -->
+<path id='WorkerCargo_messages_FKocyk0haeuxspytk3tbxnoxd70'  onmouseover="hghl(['WorkerCargo_messages_FKocyk0haeuxspytk3tbxnoxd70','datachef.WorkerCargo_messages.WorkerCargo_dbId','datachef.WorkerCargo.dbId'])" onmouseout="uhghl(['WorkerCargo_messages_FKocyk0haeuxspytk3tbxnoxd70','datachef.WorkerCargo_messages.WorkerCargo_dbId','datachef.WorkerCargo.dbId'])" transform='translate(7,0)' class='scene' d='M 2235 390 L 2235,345' >
+	<title>Fk FKocyk0haeuxspytk3tbxnoxd70
+WorkerCargo_messages ref WorkerCargo ( WorkerCargo_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 2235 390 L 2235,345' ></path>
+<text x='2237' y='385' transform='rotate(270 2237,385)' title='Fk FKocyk0haeuxspytk3tbxnoxd70
+WorkerCargo_messages ref WorkerCargo ( WorkerCargo_dbId -&gt; dbId )' class='relName' style='fill:#a79074'>WorkerCargo_dbId</text>
+<!-- ============= Fk 'WorkerCargo_warnings_FKqix9yitofi90jj6eq1c1p1p0b' ============= -->
+<path id='WorkerCargo_warnings_FKqix9yitofi90jj6eq1c1p1p0b'  onmouseover="hghl(['WorkerCargo_warnings_FKqix9yitofi90jj6eq1c1p1p0b','datachef.WorkerCargo_warnings.WorkerCargo_dbId','datachef.WorkerCargo.dbId'])" onmouseout="uhghl(['WorkerCargo_warnings_FKqix9yitofi90jj6eq1c1p1p0b','datachef.WorkerCargo_warnings.WorkerCargo_dbId','datachef.WorkerCargo.dbId'])" transform='translate(7,0)' class='scene' d='M 2145 390 L 2145,322 Q 2145,315 2152,315 L 2205,315' >
+	<title>Fk FKqix9yitofi90jj6eq1c1p1p0b
+WorkerCargo_warnings ref WorkerCargo ( WorkerCargo_dbId -&gt; dbId )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 2145 390 L 2145,322 Q 2145,315 2152,315 L 2205,315' ></path>
+<text x='2147' y='385' transform='rotate(270 2147,385)' title='Fk FKqix9yitofi90jj6eq1c1p1p0b
+WorkerCargo_warnings ref WorkerCargo ( WorkerCargo_dbId -&gt; dbId )' class='relName' style='fill:#a79074'>WorkerCargo_dbId</text>
+<!-- ============= Table 'CsvType' ============= -->
+<rect class='entity' x='990' y='173' width='180' height='150' rx='7' ry='7' style='stroke:none'/>
+<path d='M 990.00 199.00 L 990.00 180.00 Q 990.00 173.00 997.00 173.00 L 1163.00 173.00 Q 1170.00 173.00 1170.00 180.00 L 1170.00 199.00 L990.00 199.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='990' y='173' width='180' height='150' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='990.000000' y1='199.000000' x2='1170.000000' y2='199.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1005.000000' y1='199.000000' x2='1005.000000' y2='323.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1159.000000' y1='199.000000' x2='1159.000000' y2='323.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#CsvType'><text x='1057' y='191'>CsvType</text><title>Table datachef.CsvType</title></a>
+  <use id='nn' x='992' y='207' xlink:href='#nn'/><a xlink:href='#CsvType.name'><use id='pk' x='992' y='206' xlink:href='#pk'/><title>Pk pk_csvtype ( name ) </title></a>
+<a xlink:href='#CsvType.name'><text id='datachef.CsvType.name' x='1008' y='216' onmouseover="hghl(['Mapping_FKedgg2pse2dh5ji7n4hd0qvk9w','datachef.Mapping.csvType_name'])" onmouseout="uhghl(['Mapping_FKedgg2pse2dh5ji7n4hd0qvk9w','datachef.Mapping.csvType_name'])">name</text><text x='1155' y='217' text-anchor='end' class='colType'>varchar(255)</text><title>name
+* varchar(255)</title></a>
+<a xlink:href='#CsvType.name'><use id='ref' x='1159' y='206' xlink:href='#ref'/><title>Referred by Mapping ( csvType_name -&gt; name ) </title></a>
+  <a xlink:href='#CsvType.columnDelimiter'><text id='datachef.CsvType.columnDelimiter' x='1008' y='231'>columnDelimiter</text><text x='1155' y='232' text-anchor='end' class='colType'>varchar(255)</text><title>columnDelimiter
+varchar(255)</title></a>
+<text x='1167' y='228' text-anchor='end' class='colType'>t</text>  <a xlink:href='#CsvType.columnSeparator'><text id='datachef.CsvType.columnSeparator' x='1008' y='246'>columnSeparator</text><text x='1155' y='247' text-anchor='end' class='colType'>varchar(255)</text><title>columnSeparator
+varchar(255)</title></a>
+<text x='1167' y='243' text-anchor='end' class='colType'>t</text>  <a xlink:href='#CsvType.encoding'><text id='datachef.CsvType.encoding' x='1008' y='261'>encoding</text><text x='1155' y='262' text-anchor='end' class='colType'>varchar(255)</text><title>encoding
+varchar(255)</title></a>
+<text x='1167' y='258' text-anchor='end' class='colType'>t</text>  <use id='nn' x='992' y='267' xlink:href='#nn'/><a xlink:href='#CsvType.rejectLimit'><text id='datachef.CsvType.rejectLimit' x='1008' y='276'>rejectLimit</text><text x='1155' y='277' text-anchor='end' class='colType'>int</text><title>rejectLimit
+* int</title></a>
+<text x='1167' y='273' text-anchor='end' class='colType'>#</text>  <a xlink:href='#CsvType.rowSeparator'><text id='datachef.CsvType.rowSeparator' x='1008' y='291'>rowSeparator</text><text x='1155' y='292' text-anchor='end' class='colType'>varchar(255)</text><title>rowSeparator
+varchar(255)</title></a>
+<text x='1167' y='288' text-anchor='end' class='colType'>t</text>  <use id='nn' x='992' y='297' xlink:href='#nn'/><a xlink:href='#CsvType.skip'><text id='datachef.CsvType.skip' x='1008' y='306'>skip</text><text x='1155' y='307' text-anchor='end' class='colType'>int</text><title>skip
+* int</title></a>
+<text x='1167' y='303' text-anchor='end' class='colType'>#</text>
+<!-- ============= Table 'DVColumn' ============= -->
+<rect class='entity' x='480' y='68' width='195' height='120' rx='7' ry='7' style='stroke:none'/>
+<path d='M 480.00 94.00 L 480.00 75.00 Q 480.00 68.00 487.00 68.00 L 668.00 68.00 Q 675.00 68.00 675.00 75.00 L 675.00 94.00 L480.00 94.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='480' y='68' width='195' height='120' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='480.000000' y1='94.000000' x2='675.000000' y2='94.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='495.000000' y1='94.000000' x2='495.000000' y2='188.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='664.000000' y1='94.000000' x2='664.000000' y2='188.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#DVColumn'><text x='549' y='86'>DVColumn</text><title>Table datachef.DVColumn</title></a>
+  <use id='nn' x='482' y='102' xlink:href='#nn'/><a xlink:href='#DVColumn.dbId'><use id='pk' x='482' y='101' xlink:href='#pk'/><title>Pk pk_dvcolumn ( dbId ) </title></a>
+<a xlink:href='#DVColumn.dbId'><text id='datachef.DVColumn.dbId' x='498' y='111' onmouseover="hghl(['MappingColumnReference_FKky8rltje5mbdrv092wsdgwow8','datachef.MappingColumnReference.dvColumn_dbId','DVColumn_comments_FKre179bh22mlhfe4a5umt4rviv','datachef.DVColumn_comments.DVColumn_dbId'])" onmouseout="uhghl(['MappingColumnReference_FKky8rltje5mbdrv092wsdgwow8','datachef.MappingColumnReference.dvColumn_dbId','DVColumn_comments_FKre179bh22mlhfe4a5umt4rviv','datachef.DVColumn_comments.DVColumn_dbId'])">dbId</text><text x='660' y='112' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<a xlink:href='#DVColumn.dbId'><use id='ref' x='664' y='101' xlink:href='#ref'/><title>Referred by MappingColumnReference ( dvColumn_dbId -&gt; dbId ) 
+Referred by DVColumn_comments ( DVColumn_dbId -&gt; dbId ) </title></a>
+  <use id='nn' x='482' y='117' xlink:href='#nn'/><a xlink:href='#DVColumn.name'><use id='unq' x='482' y='116' xlink:href='#unq'/><title>Unq UK_hfl33n6xh75fcb07e9h95fe89 ( name, parent_dbId ) </title></a>
+<a xlink:href='#DVColumn.name'><text id='datachef.DVColumn.name' x='498' y='126'>name</text><text x='660' y='127' text-anchor='end' class='colType'>varchar(255)</text><title>name
+* varchar(255)</title></a>
+<text x='672' y='123' text-anchor='end' class='colType'>t</text>  <use id='nn' x='482' y='132' xlink:href='#nn'/><a xlink:href='#DVColumn.keyColumn'><text id='datachef.DVColumn.keyColumn' x='498' y='141'>keyColumn</text><text x='660' y='142' text-anchor='end' class='colType'>boolean</text><title>keyColumn
+* boolean</title></a>
+<text x='672' y='138' text-anchor='end' class='colType'>b</text>  <use id='nn' x='482' y='147' xlink:href='#nn'/><a xlink:href='#DVColumn.dataDomain_name'><use id='idx' x='482' y='146' xlink:href='#idx'/><title>FKiakv7052dw1ulclurq06vwe2q ( dataDomain_name ) </title></a>
+<a xlink:href='#DVColumn.dataDomain_name'><text id='datachef.DVColumn.dataDomain_name' x='498' y='156' onmouseover="hghl(['DVColumn_FKiakv7052dw1ulclurq06vwe2q','datachef.DataDomain.name'])" onmouseout="uhghl(['DVColumn_FKiakv7052dw1ulclurq06vwe2q','datachef.DataDomain.name'])">dataDomain_name</text><text x='660' y='157' text-anchor='end' class='colType'>varchar(255)</text><title>dataDomain_name
+* varchar(255)</title></a>
+<a xlink:href='#DVColumn.dataDomain_name'><use id='fk' x='664' y='146' xlink:href='#fk'/><title>References DataDomain ( dataDomain_name -&gt; name ) </title></a>
+  <a xlink:href='#DVColumn.parent_dbId'><use id='unq' x='482' y='161' xlink:href='#unq'/><title>Unq UK_hfl33n6xh75fcb07e9h95fe89 ( name, parent_dbId ) FKte1e3n7r8jvwkr7u2ghb3uq6p ( parent_dbId ) </title></a>
+<a xlink:href='#DVColumn.parent_dbId'><text id='datachef.DVColumn.parent_dbId' x='498' y='171' onmouseover="hghl(['DVColumn_FKte1e3n7r8jvwkr7u2ghb3uq6p','datachef.DVObject.dbId'])" onmouseout="uhghl(['DVColumn_FKte1e3n7r8jvwkr7u2ghb3uq6p','datachef.DVObject.dbId'])">parent_dbId</text><text x='660' y='172' text-anchor='end' class='colType'>bigint</text><title>parent_dbId
+bigint</title></a>
+<a xlink:href='#DVColumn.parent_dbId'><use id='fk' x='664' y='161' xlink:href='#fk'/><title>References DVObject ( parent_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'DVColumn_comments' ============= -->
+<rect class='entity' x='735' y='248' width='165' height='75' rx='7' ry='7' style='stroke:none'/>
+<path d='M 735.00 274.00 L 735.00 255.00 Q 735.00 248.00 742.00 248.00 L 893.00 248.00 Q 900.00 248.00 900.00 255.00 L 900.00 274.00 L735.00 274.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='735' y='248' width='165' height='75' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='735.000000' y1='274.000000' x2='900.000000' y2='274.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='750.000000' y1='274.000000' x2='750.000000' y2='323.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='889.000000' y1='274.000000' x2='889.000000' y2='323.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#DVColumn_comments'><text x='762' y='266'>DVColumn_comments</text><title>Table datachef.DVColumn_comments</title></a>
+  <use id='nn' x='737' y='282' xlink:href='#nn'/><a xlink:href='#DVColumn_comments.DVColumn_dbId'><use id='idx' x='737' y='281' xlink:href='#idx'/><title>FKre179bh22mlhfe4a5umt4rviv ( DVColumn_dbId ) </title></a>
+<a xlink:href='#DVColumn_comments.DVColumn_dbId'><text id='datachef.DVColumn_comments.DVColumn_dbId' x='753' y='291' onmouseover="hghl(['DVColumn_comments_FKre179bh22mlhfe4a5umt4rviv','datachef.DVColumn.dbId'])" onmouseout="uhghl(['DVColumn_comments_FKre179bh22mlhfe4a5umt4rviv','datachef.DVColumn.dbId'])">DVColumn_dbId</text><text x='885' y='292' text-anchor='end' class='colType'>bigint</text><title>DVColumn_dbId
+* bigint</title></a>
+<a xlink:href='#DVColumn_comments.DVColumn_dbId'><use id='fk' x='889' y='281' xlink:href='#fk'/><title>References DVColumn ( DVColumn_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#DVColumn_comments.comments'><text id='datachef.DVColumn_comments.comments' x='753' y='306'>comments</text><text x='885' y='307' text-anchor='end' class='colType'>varchar(1000)</text><title>comments
+varchar(1000)</title></a>
+<text x='897' y='303' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'DVObject' ============= -->
+<rect class='entity' x='270' y='68' width='150' height='180' rx='7' ry='7' style='stroke:none'/>
+<path d='M 270.00 94.00 L 270.00 75.00 Q 270.00 68.00 277.00 68.00 L 413.00 68.00 Q 420.00 68.00 420.00 75.00 L 420.00 94.00 L270.00 94.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='270' y='68' width='150' height='180' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='270.000000' y1='94.000000' x2='420.000000' y2='94.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='285.000000' y1='94.000000' x2='285.000000' y2='248.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='409.000000' y1='94.000000' x2='409.000000' y2='248.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#DVObject'><text x='319' y='86'>DVObject</text><title>Table datachef.DVObject</title></a>
+  <use id='nn' x='272' y='102' xlink:href='#nn'/><a xlink:href='#DVObject.dbId'><use id='pk' x='272' y='101' xlink:href='#pk'/><title>Pk pk_dvobject ( dbId ) </title></a>
+<a xlink:href='#DVObject.dbId'><text id='datachef.DVObject.dbId' x='288' y='111' onmouseover="hghl(['MappingObjectReference_FK8rgsrm9qb74lpopds3m4ksiob','datachef.MappingObjectReference.object_dbId','DVObject_comments_FK8vnefvhu60339ikd1byydsb8h','datachef.DVObject_comments.DVObject_dbId','Leg_FKh4ysp3ujc37nbjdgjtlqpjr47','datachef.Leg.parentLink_dbId','Leg_FKjs9gpnr3lcqd7vh7saor7g3t5','datachef.Leg.hub_dbId','DVObject_FKta93e15wq9io9xv8jbrws7yef','datachef.DVObject.parent_dbId','DVColumn_FKte1e3n7r8jvwkr7u2ghb3uq6p','datachef.DVColumn.parent_dbId'])" onmouseout="uhghl(['MappingObjectReference_FK8rgsrm9qb74lpopds3m4ksiob','datachef.MappingObjectReference.object_dbId','DVObject_comments_FK8vnefvhu60339ikd1byydsb8h','datachef.DVObject_comments.DVObject_dbId','Leg_FKh4ysp3ujc37nbjdgjtlqpjr47','datachef.Leg.parentLink_dbId','Leg_FKjs9gpnr3lcqd7vh7saor7g3t5','datachef.Leg.hub_dbId','DVObject_FKta93e15wq9io9xv8jbrws7yef','datachef.DVObject.parent_dbId','DVColumn_FKte1e3n7r8jvwkr7u2ghb3uq6p','datachef.DVColumn.parent_dbId'])">dbId</text><text x='405' y='112' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<a xlink:href='#DVObject.dbId'><use id='ref' x='409' y='101' xlink:href='#ref'/><title>Referred by MappingObjectReference ( object_dbId -&gt; dbId ) 
+Referred by DVObject_comments ( DVObject_dbId -&gt; dbId ) 
+Referred by Leg ( parentLink_dbId -&gt; dbId ) 
+Referred by Leg ( hub_dbId -&gt; dbId ) 
+Referred by DVObject ( parent_dbId -&gt; dbId ) 
+Referred by DVColumn ( parent_dbId -&gt; dbId ) </title></a>
+  <use id='nn' x='272' y='117' xlink:href='#nn'/><a xlink:href='#DVObject.DTYPE'><text id='datachef.DVObject.DTYPE' x='288' y='126'>DTYPE</text><text x='405' y='127' text-anchor='end' class='colType'>varchar(31)</text><title>DTYPE
+* varchar(31)</title></a>
+<text x='417' y='123' text-anchor='end' class='colType'>t</text>  <use id='nn' x='272' y='132' xlink:href='#nn'/><a xlink:href='#DVObject.name'><use id='unq' x='272' y='131' xlink:href='#unq'/><title>Unq UK_7cc48b3rkoix11f8eu4c4jix8 ( name, type ) </title></a>
+<a xlink:href='#DVObject.name'><text id='datachef.DVObject.name' x='288' y='141'>name</text><text x='405' y='142' text-anchor='end' class='colType'>varchar(255)</text><title>name
+* varchar(255)</title></a>
+<text x='417' y='138' text-anchor='end' class='colType'>t</text>  <a xlink:href='#DVObject.type'><use id='unq' x='272' y='146' xlink:href='#unq'/><title>Unq UK_7cc48b3rkoix11f8eu4c4jix8 ( name, type ) </title></a>
+<a xlink:href='#DVObject.type'><text id='datachef.DVObject.type' x='288' y='156'>type</text><text x='405' y='157' text-anchor='end' class='colType'>varchar(255)</text><title>type
+varchar(255)</title></a>
+<text x='417' y='153' text-anchor='end' class='colType'>t</text>  <a xlink:href='#DVObject.alias'><text id='datachef.DVObject.alias' x='288' y='171'>alias</text><text x='405' y='172' text-anchor='end' class='colType'>varchar(255)</text><title>alias
+varchar(255)</title></a>
+<text x='417' y='168' text-anchor='end' class='colType'>t</text>  <a xlink:href='#DVObject.historySatellite'><text id='datachef.DVObject.historySatellite' x='288' y='186'>historySatellite</text><text x='405' y='187' text-anchor='end' class='colType'>boolean</text><title>historySatellite
+boolean</title></a>
+<text x='417' y='183' text-anchor='end' class='colType'>b</text>  <a xlink:href='#DVObject.historicized'><text id='datachef.DVObject.historicized' x='288' y='201'>historicized</text><text x='405' y='202' text-anchor='end' class='colType'>boolean</text><title>historicized
+boolean</title></a>
+<text x='417' y='198' text-anchor='end' class='colType'>b</text>  <a xlink:href='#DVObject.selfReference'><text id='datachef.DVObject.selfReference' x='288' y='216'>selfReference</text><text x='405' y='217' text-anchor='end' class='colType'>boolean</text><title>selfReference
+boolean</title></a>
+<text x='417' y='213' text-anchor='end' class='colType'>b</text>  <a xlink:href='#DVObject.parent_dbId'><use id='idx' x='272' y='221' xlink:href='#idx'/><title>FKta93e15wq9io9xv8jbrws7yef ( parent_dbId ) </title></a>
+<a xlink:href='#DVObject.parent_dbId'><text id='datachef.DVObject.parent_dbId' x='288' y='231' onmouseover="hghl(['DVObject_FKta93e15wq9io9xv8jbrws7yef','datachef.DVObject.dbId'])" onmouseout="uhghl(['DVObject_FKta93e15wq9io9xv8jbrws7yef','datachef.DVObject.dbId'])">parent_dbId</text><text x='405' y='232' text-anchor='end' class='colType'>bigint</text><title>parent_dbId
+bigint</title></a>
+<a xlink:href='#DVObject.parent_dbId'><use id='fk' x='409' y='221' xlink:href='#fk'/><title>References DVObject ( parent_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'DVObject_comments' ============= -->
+<rect class='entity' x='45' y='308' width='165' height='75' rx='7' ry='7' style='stroke:none'/>
+<path d='M 45.00 334.00 L 45.00 315.00 Q 45.00 308.00 52.00 308.00 L 203.00 308.00 Q 210.00 308.00 210.00 315.00 L 210.00 334.00 L45.00 334.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='45' y='308' width='165' height='75' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='45.000000' y1='334.000000' x2='210.000000' y2='334.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='60.000000' y1='334.000000' x2='60.000000' y2='383.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='199.000000' y1='334.000000' x2='199.000000' y2='383.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#DVObject_comments'><text x='74' y='326'>DVObject_comments</text><title>Table datachef.DVObject_comments</title></a>
+  <use id='nn' x='47' y='342' xlink:href='#nn'/><a xlink:href='#DVObject_comments.DVObject_dbId'><use id='idx' x='47' y='341' xlink:href='#idx'/><title>FK8vnefvhu60339ikd1byydsb8h ( DVObject_dbId ) </title></a>
+<a xlink:href='#DVObject_comments.DVObject_dbId'><text id='datachef.DVObject_comments.DVObject_dbId' x='63' y='351' onmouseover="hghl(['DVObject_comments_FK8vnefvhu60339ikd1byydsb8h','datachef.DVObject.dbId'])" onmouseout="uhghl(['DVObject_comments_FK8vnefvhu60339ikd1byydsb8h','datachef.DVObject.dbId'])">DVObject_dbId</text><text x='195' y='352' text-anchor='end' class='colType'>bigint</text><title>DVObject_dbId
+* bigint</title></a>
+<a xlink:href='#DVObject_comments.DVObject_dbId'><use id='fk' x='199' y='341' xlink:href='#fk'/><title>References DVObject ( DVObject_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#DVObject_comments.comments'><text id='datachef.DVObject_comments.comments' x='63' y='366'>comments</text><text x='195' y='367' text-anchor='end' class='colType'>varchar(1000)</text><title>comments
+varchar(1000)</title></a>
+<text x='207' y='363' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'DataDomain' ============= -->
+<rect class='entity' x='735' y='68' width='165' height='90' rx='7' ry='7' style='stroke:none'/>
+<path d='M 735.00 94.00 L 735.00 75.00 Q 735.00 68.00 742.00 68.00 L 893.00 68.00 Q 900.00 68.00 900.00 75.00 L 900.00 94.00 L735.00 94.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='735' y='68' width='165' height='90' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='735.000000' y1='94.000000' x2='900.000000' y2='94.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='750.000000' y1='94.000000' x2='750.000000' y2='158.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='889.000000' y1='94.000000' x2='889.000000' y2='158.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#DataDomain'><text x='784' y='86'>DataDomain</text><title>Table datachef.DataDomain</title></a>
+  <use id='nn' x='737' y='102' xlink:href='#nn'/><a xlink:href='#DataDomain.name'><use id='pk' x='737' y='101' xlink:href='#pk'/><title>Pk pk_datadomain ( name ) </title></a>
+<a xlink:href='#DataDomain.name'><text id='datachef.DataDomain.name' x='753' y='111' onmouseover="hghl(['MappingColumn_FK95jjll0w12k01lgyw3qnpmm47','datachef.MappingColumn.dataDomain_name','DVColumn_FKiakv7052dw1ulclurq06vwe2q','datachef.DVColumn.dataDomain_name'])" onmouseout="uhghl(['MappingColumn_FK95jjll0w12k01lgyw3qnpmm47','datachef.MappingColumn.dataDomain_name','DVColumn_FKiakv7052dw1ulclurq06vwe2q','datachef.DVColumn.dataDomain_name'])">name</text><text x='885' y='112' text-anchor='end' class='colType'>varchar(255)</text><title>name
+* varchar(255)</title></a>
+<a xlink:href='#DataDomain.name'><use id='ref' x='889' y='101' xlink:href='#ref'/><title>Referred by MappingColumn ( dataDomain_name -&gt; name ) 
+Referred by DVColumn ( dataDomain_name -&gt; name ) </title></a>
+  <a xlink:href='#DataDomain.defaultValue'><text id='datachef.DataDomain.defaultValue' x='753' y='126'>defaultValue</text><text x='885' y='127' text-anchor='end' class='colType'>varchar(255)</text><title>defaultValue
+varchar(255)</title></a>
+<text x='897' y='123' text-anchor='end' class='colType'>t</text>  <use id='nn' x='737' y='132' xlink:href='#nn'/><a xlink:href='#DataDomain.sqlType'><text id='datachef.DataDomain.sqlType' x='753' y='141'>sqlType</text><text x='885' y='142' text-anchor='end' class='colType'>varchar(255)</text><title>sqlType
+* varchar(255)</title></a>
+<text x='897' y='138' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'Leg' ============= -->
+<rect class='entity' x='480' y='308' width='150' height='120' rx='7' ry='7' style='stroke:none'/>
+<path d='M 480.00 334.00 L 480.00 315.00 Q 480.00 308.00 487.00 308.00 L 623.00 308.00 Q 630.00 308.00 630.00 315.00 L 630.00 334.00 L480.00 334.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='480' y='308' width='150' height='120' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='480.000000' y1='334.000000' x2='630.000000' y2='334.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='495.000000' y1='334.000000' x2='495.000000' y2='428.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='619.000000' y1='334.000000' x2='619.000000' y2='428.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#Leg'><text x='543' y='326'>Leg</text><title>Table datachef.Leg</title></a>
+  <use id='nn' x='482' y='342' xlink:href='#nn'/><a xlink:href='#Leg.dbId'><use id='pk' x='482' y='341' xlink:href='#pk'/><title>Pk pk_leg ( dbId ) </title></a>
+<a xlink:href='#Leg.dbId'><text id='datachef.Leg.dbId' x='498' y='351'>dbId</text><text x='615' y='352' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<text x='627' y='348' text-anchor='end' class='colType'>#</text>  <use id='nn' x='482' y='357' xlink:href='#nn'/><a xlink:href='#Leg.driving'><text id='datachef.Leg.driving' x='498' y='366'>driving</text><text x='615' y='367' text-anchor='end' class='colType'>boolean</text><title>driving
+* boolean</title></a>
+<text x='627' y='363' text-anchor='end' class='colType'>b</text>  <a xlink:href='#Leg.role'><use id='unq' x='482' y='371' xlink:href='#unq'/><title>Unq UK_8hb95ns9xk90p03gnpoqgtkvc ( hub_dbId, parentLink_dbId, role ) </title></a>
+<a xlink:href='#Leg.role'><text id='datachef.Leg.role' x='498' y='381'>role</text><text x='615' y='382' text-anchor='end' class='colType'>varchar(255)</text><title>role
+varchar(255)</title></a>
+<text x='627' y='378' text-anchor='end' class='colType'>t</text>  <a xlink:href='#Leg.hub_dbId'><use id='unq' x='482' y='386' xlink:href='#unq'/><title>Unq UK_8hb95ns9xk90p03gnpoqgtkvc ( hub_dbId, parentLink_dbId, role ) </title></a>
+<a xlink:href='#Leg.hub_dbId'><text id='datachef.Leg.hub_dbId' x='498' y='396' onmouseover="hghl(['Leg_FKjs9gpnr3lcqd7vh7saor7g3t5','datachef.DVObject.dbId'])" onmouseout="uhghl(['Leg_FKjs9gpnr3lcqd7vh7saor7g3t5','datachef.DVObject.dbId'])">hub_dbId</text><text x='615' y='397' text-anchor='end' class='colType'>bigint</text><title>hub_dbId
+bigint</title></a>
+<a xlink:href='#Leg.hub_dbId'><use id='fk' x='619' y='386' xlink:href='#fk'/><title>References DVObject ( hub_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#Leg.parentLink_dbId'><use id='unq' x='482' y='401' xlink:href='#unq'/><title>Unq UK_8hb95ns9xk90p03gnpoqgtkvc ( hub_dbId, parentLink_dbId, role ) FKh4ysp3ujc37nbjdgjtlqpjr47 ( parentLink_dbId ) </title></a>
+<a xlink:href='#Leg.parentLink_dbId'><text id='datachef.Leg.parentLink_dbId' x='498' y='411' onmouseover="hghl(['Leg_FKh4ysp3ujc37nbjdgjtlqpjr47','datachef.DVObject.dbId'])" onmouseout="uhghl(['Leg_FKh4ysp3ujc37nbjdgjtlqpjr47','datachef.DVObject.dbId'])">parentLink_dbId</text><text x='615' y='412' text-anchor='end' class='colType'>bigint</text><title>parentLink_dbId
+bigint</title></a>
+<a xlink:href='#Leg.parentLink_dbId'><use id='fk' x='619' y='401' xlink:href='#fk'/><title>References DVObject ( parentLink_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'Mapping' ============= -->
+<rect class='entity' x='1230' y='68' width='180' height='255' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1230.00 94.00 L 1230.00 75.00 Q 1230.00 68.00 1237.00 68.00 L 1403.00 68.00 Q 1410.00 68.00 1410.00 75.00 L 1410.00 94.00 L1230.00 94.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='1230' y='68' width='180' height='255' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='1230.000000' y1='94.000000' x2='1410.000000' y2='94.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1245.000000' y1='94.000000' x2='1245.000000' y2='323.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1399.000000' y1='94.000000' x2='1399.000000' y2='323.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#Mapping'><text x='1296' y='86'>Mapping</text><title>Table datachef.Mapping</title></a>
+  <use id='nn' x='1232' y='102' xlink:href='#nn'/><a xlink:href='#Mapping.dbId'><use id='pk' x='1232' y='101' xlink:href='#pk'/><title>Pk pk_mapping ( dbId ) </title></a>
+<a xlink:href='#Mapping.dbId'><text id='datachef.Mapping.dbId' x='1248' y='111' onmouseover="hghl(['WorkerCargo_FK5no6sbllidjxv8fnbv9uq4tgm','datachef.WorkerCargo.mapping_dbId','SQLExpression_FK963piyfy9v46kvafqqo0sbuub','datachef.SQLExpression.mapping_dbId','Mapping_dependentMappingNames_FK9x6lvyw2106f26k7prxk2st6k','datachef.Mapping_dependentMappingNames.Mapping_dbId','MappingObjectReference_FKanoyc3brkimgyusfh8mn7s0we','datachef.MappingObjectReference.mapping_dbId','MappingColumn_FKg3rgx3xhhkduy6lr42dd4i6oo','datachef.MappingColumn.mapping_dbId'])" onmouseout="uhghl(['WorkerCargo_FK5no6sbllidjxv8fnbv9uq4tgm','datachef.WorkerCargo.mapping_dbId','SQLExpression_FK963piyfy9v46kvafqqo0sbuub','datachef.SQLExpression.mapping_dbId','Mapping_dependentMappingNames_FK9x6lvyw2106f26k7prxk2st6k','datachef.Mapping_dependentMappingNames.Mapping_dbId','MappingObjectReference_FKanoyc3brkimgyusfh8mn7s0we','datachef.MappingObjectReference.mapping_dbId','MappingColumn_FKg3rgx3xhhkduy6lr42dd4i6oo','datachef.MappingColumn.mapping_dbId'])">dbId</text><text x='1395' y='112' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<a xlink:href='#Mapping.dbId'><use id='ref' x='1399' y='101' xlink:href='#ref'/><title>Referred by WorkerCargo ( mapping_dbId -&gt; dbId ) 
+Referred by SQLExpression ( mapping_dbId -&gt; dbId ) 
+Referred by Mapping_dependentMappingNames ( Mapping_dbId -&gt; dbId ) 
+Referred by MappingObjectReference ( mapping_dbId -&gt; dbId ) 
+Referred by MappingColumn ( mapping_dbId -&gt; dbId ) </title></a>
+  <use id='nn' x='1232' y='117' xlink:href='#nn'/><a xlink:href='#Mapping.name'><use id='unq' x='1232' y='116' xlink:href='#unq'/><title>Unq UK_j74jdcbkt37dni6f8du3vvo74 ( name ) </title></a>
+<a xlink:href='#Mapping.name'><text id='datachef.Mapping.name' x='1248' y='126'>name</text><text x='1395' y='127' text-anchor='end' class='colType'>varchar(255)</text><title>name
+* varchar(255)</title></a>
+<text x='1407' y='123' text-anchor='end' class='colType'>t</text>  <a xlink:href='#Mapping.connectionName'><text id='datachef.Mapping.connectionName' x='1248' y='141'>connectionName</text><text x='1395' y='142' text-anchor='end' class='colType'>varchar(255)</text><title>connectionName
+varchar(255)</title></a>
+<text x='1407' y='138' text-anchor='end' class='colType'>t</text>  <a xlink:href='#Mapping.connectionType'><text id='datachef.Mapping.connectionType' x='1248' y='156'>connectionType</text><text x='1395' y='157' text-anchor='end' class='colType'>varchar(255)</text><title>connectionType
+varchar(255)</title></a>
+<text x='1407' y='153' text-anchor='end' class='colType'>t</text>  <a xlink:href='#Mapping.cronExpression'><text id='datachef.Mapping.cronExpression' x='1248' y='171'>cronExpression</text><text x='1395' y='172' text-anchor='end' class='colType'>varchar(255)</text><title>cronExpression
+varchar(255)</title></a>
+<text x='1407' y='168' text-anchor='end' class='colType'>t</text>  <a xlink:href='#Mapping.customSqlCode'><text id='datachef.Mapping.customSqlCode' x='1248' y='186'>customSqlCode</text><text x='1395' y='187' text-anchor='end' class='colType'>longtext</text><title>customSqlCode
+longtext</title></a>
+<text x='1407' y='183' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1232' y='192' xlink:href='#nn'/><a xlink:href='#Mapping.fullLoad'><text id='datachef.Mapping.fullLoad' x='1248' y='201'>fullLoad</text><text x='1395' y='202' text-anchor='end' class='colType'>boolean</text><title>fullLoad
+* boolean</title></a>
+<text x='1407' y='198' text-anchor='end' class='colType'>b</text>  <use id='nn' x='1232' y='207' xlink:href='#nn'/><a xlink:href='#Mapping.mousetrapTimeout'><text id='datachef.Mapping.mousetrapTimeout' x='1248' y='216'>mousetrapTimeout</text><text x='1395' y='217' text-anchor='end' class='colType'>int</text><title>mousetrapTimeout
+* int</title></a>
+<text x='1407' y='213' text-anchor='end' class='colType'>#</text>  <a xlink:href='#Mapping.sinkCode'><text id='datachef.Mapping.sinkCode' x='1248' y='231'>sinkCode</text><text x='1395' y='232' text-anchor='end' class='colType'>longtext</text><title>sinkCode
+longtext</title></a>
+<text x='1407' y='228' text-anchor='end' class='colType'>t</text>  <a xlink:href='#Mapping.stagingMode'><text id='datachef.Mapping.stagingMode' x='1248' y='246'>stagingMode</text><text x='1395' y='247' text-anchor='end' class='colType'>varchar(255)</text><title>stagingMode
+varchar(255)</title></a>
+<text x='1407' y='243' text-anchor='end' class='colType'>t</text>  <a xlink:href='#Mapping.timeoutUnit'><text id='datachef.Mapping.timeoutUnit' x='1248' y='261'>timeoutUnit</text><text x='1395' y='262' text-anchor='end' class='colType'>varchar(255)</text><title>timeoutUnit
+varchar(255)</title></a>
+<text x='1407' y='258' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1232' y='267' xlink:href='#nn'/><a xlink:href='#Mapping.triggeredByCron'><text id='datachef.Mapping.triggeredByCron' x='1248' y='276'>triggeredByCron</text><text x='1395' y='277' text-anchor='end' class='colType'>boolean</text><title>triggeredByCron
+* boolean</title></a>
+<text x='1407' y='273' text-anchor='end' class='colType'>b</text>  <use id='nn' x='1232' y='282' xlink:href='#nn'/><a xlink:href='#Mapping.triggeredByMousetrap'><text id='datachef.Mapping.triggeredByMousetrap' x='1248' y='291'>triggeredByMousetrap</text><text x='1395' y='292' text-anchor='end' class='colType'>boolean</text><title>triggeredByMousetrap
+* boolean</title></a>
+<text x='1407' y='288' text-anchor='end' class='colType'>b</text>  <a xlink:href='#Mapping.csvType_name'><use id='idx' x='1232' y='296' xlink:href='#idx'/><title>FKedgg2pse2dh5ji7n4hd0qvk9w ( csvType_name ) </title></a>
+<a xlink:href='#Mapping.csvType_name'><text id='datachef.Mapping.csvType_name' x='1248' y='306' onmouseover="hghl(['Mapping_FKedgg2pse2dh5ji7n4hd0qvk9w','datachef.CsvType.name'])" onmouseout="uhghl(['Mapping_FKedgg2pse2dh5ji7n4hd0qvk9w','datachef.CsvType.name'])">csvType_name</text><text x='1395' y='307' text-anchor='end' class='colType'>varchar(255)</text><title>csvType_name
+varchar(255)</title></a>
+<a xlink:href='#Mapping.csvType_name'><use id='fk' x='1399' y='296' xlink:href='#fk'/><title>References CsvType ( csvType_name -&gt; name ) </title></a>
+
+<!-- ============= Table 'MappingColumn' ============= -->
+<rect class='entity' x='1470' y='68' width='195' height='300' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1470.00 94.00 L 1470.00 75.00 Q 1470.00 68.00 1477.00 68.00 L 1658.00 68.00 Q 1665.00 68.00 1665.00 75.00 L 1665.00 94.00 L1470.00 94.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='1470' y='68' width='195' height='300' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='1470.000000' y1='94.000000' x2='1665.000000' y2='94.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1485.000000' y1='94.000000' x2='1485.000000' y2='368.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1654.000000' y1='94.000000' x2='1654.000000' y2='368.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#MappingColumn'><text x='1525' y='86'>MappingColumn</text><title>Table datachef.MappingColumn</title></a>
+  <use id='nn' x='1472' y='102' xlink:href='#nn'/><a xlink:href='#MappingColumn.dbId'><use id='pk' x='1472' y='101' xlink:href='#pk'/><title>Pk pk_mappingcolumn ( dbId ) </title></a>
+<a xlink:href='#MappingColumn.dbId'><text id='datachef.MappingColumn.dbId' x='1488' y='111' onmouseover="hghl(['MappingColumnReference_FK11kawphfe12nlgduf1vqspswn','datachef.MappingColumnReference.mappingColumn_dbId'])" onmouseout="uhghl(['MappingColumnReference_FK11kawphfe12nlgduf1vqspswn','datachef.MappingColumnReference.mappingColumn_dbId'])">dbId</text><text x='1650' y='112' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<a xlink:href='#MappingColumn.dbId'><use id='ref' x='1654' y='101' xlink:href='#ref'/><title>Referred by MappingColumnReference ( mappingColumn_dbId -&gt; dbId ) </title></a>
+  <use id='nn' x='1472' y='117' xlink:href='#nn'/><a xlink:href='#MappingColumn.name'><use id='unq' x='1472' y='116' xlink:href='#unq'/><title>Unq UK_dsipjj94om80hrco1ix87ybqu ( name, mapping_dbId ) </title></a>
+<a xlink:href='#MappingColumn.name'><text id='datachef.MappingColumn.name' x='1488' y='126'>name</text><text x='1650' y='127' text-anchor='end' class='colType'>varchar(255)</text><title>name
+* varchar(255)</title></a>
+<text x='1662' y='123' text-anchor='end' class='colType'>t</text>  <a xlink:href='#MappingColumn.calculation'><text id='datachef.MappingColumn.calculation' x='1488' y='141'>calculation</text><text x='1650' y='142' text-anchor='end' class='colType'>varchar(255)</text><title>calculation
+varchar(255)</title></a>
+<text x='1662' y='138' text-anchor='end' class='colType'>t</text>  <a xlink:href='#MappingColumn.comment'><text id='datachef.MappingColumn.comment' x='1488' y='156'>comment</text><text x='1650' y='157' text-anchor='end' class='colType'>varchar(255)</text><title>comment
+varchar(255)</title></a>
+<text x='1662' y='153' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1472' y='162' xlink:href='#nn'/><a xlink:href='#MappingColumn.ignored'><text id='datachef.MappingColumn.ignored' x='1488' y='171'>ignored</text><text x='1650' y='172' text-anchor='end' class='colType'>boolean</text><title>ignored
+* boolean</title></a>
+<text x='1662' y='168' text-anchor='end' class='colType'>b</text>  <use id='nn' x='1472' y='177' xlink:href='#nn'/><a xlink:href='#MappingColumn.keyColumn'><text id='datachef.MappingColumn.keyColumn' x='1488' y='186'>keyColumn</text><text x='1650' y='187' text-anchor='end' class='colType'>boolean</text><title>keyColumn
+* boolean</title></a>
+<text x='1662' y='183' text-anchor='end' class='colType'>b</text>  <a xlink:href='#MappingColumn.linkSatelliteName'><text id='datachef.MappingColumn.linkSatelliteName' x='1488' y='201'>linkSatelliteName</text><text x='1650' y='202' text-anchor='end' class='colType'>varchar(255)</text><title>linkSatelliteName
+varchar(255)</title></a>
+<text x='1662' y='198' text-anchor='end' class='colType'>t</text>  <a xlink:href='#MappingColumn.newName'><text id='datachef.MappingColumn.newName' x='1488' y='216'>newName</text><text x='1650' y='217' text-anchor='end' class='colType'>varchar(255)</text><title>newName
+varchar(255)</title></a>
+<text x='1662' y='213' text-anchor='end' class='colType'>t</text>  <a xlink:href='#MappingColumn.objectAlias'><text id='datachef.MappingColumn.objectAlias' x='1488' y='231'>objectAlias</text><text x='1650' y='232' text-anchor='end' class='colType'>varchar(255)</text><title>objectAlias
+varchar(255)</title></a>
+<text x='1662' y='228' text-anchor='end' class='colType'>t</text>  <a xlink:href='#MappingColumn.objectComment'><text id='datachef.MappingColumn.objectComment' x='1488' y='246'>objectComment</text><text x='1650' y='247' text-anchor='end' class='colType'>varchar(255)</text><title>objectComment
+varchar(255)</title></a>
+<text x='1662' y='243' text-anchor='end' class='colType'>t</text>  <a xlink:href='#MappingColumn.objectName'><text id='datachef.MappingColumn.objectName' x='1488' y='261'>objectName</text><text x='1650' y='262' text-anchor='end' class='colType'>varchar(255)</text><title>objectName
+varchar(255)</title></a>
+<text x='1662' y='258' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1472' y='267' xlink:href='#nn'/><a xlink:href='#MappingColumn.orderPosition'><text id='datachef.MappingColumn.orderPosition' x='1488' y='276'>orderPosition</text><text x='1650' y='277' text-anchor='end' class='colType'>int</text><title>orderPosition
+* int</title></a>
+<text x='1662' y='273' text-anchor='end' class='colType'>#</text>  <use id='nn' x='1472' y='282' xlink:href='#nn'/><a xlink:href='#MappingColumn.partOfLinkSatellite'><text id='datachef.MappingColumn.partOfLinkSatellite' x='1488' y='291'>partOfLinkSatellite</text><text x='1650' y='292' text-anchor='end' class='colType'>boolean</text><title>partOfLinkSatellite
+* boolean</title></a>
+<text x='1662' y='288' text-anchor='end' class='colType'>b</text>  <a xlink:href='#MappingColumn.roleName'><text id='datachef.MappingColumn.roleName' x='1488' y='306'>roleName</text><text x='1650' y='307' text-anchor='end' class='colType'>varchar(255)</text><title>roleName
+varchar(255)</title></a>
+<text x='1662' y='303' text-anchor='end' class='colType'>t</text>  <a xlink:href='#MappingColumn.satelliteName'><text id='datachef.MappingColumn.satelliteName' x='1488' y='321'>satelliteName</text><text x='1650' y='322' text-anchor='end' class='colType'>varchar(255)</text><title>satelliteName
+varchar(255)</title></a>
+<text x='1662' y='318' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1472' y='327' xlink:href='#nn'/><a xlink:href='#MappingColumn.dataDomain_name'><use id='idx' x='1472' y='326' xlink:href='#idx'/><title>FK95jjll0w12k01lgyw3qnpmm47 ( dataDomain_name ) </title></a>
+<a xlink:href='#MappingColumn.dataDomain_name'><text id='datachef.MappingColumn.dataDomain_name' x='1488' y='336' onmouseover="hghl(['MappingColumn_FK95jjll0w12k01lgyw3qnpmm47','datachef.DataDomain.name'])" onmouseout="uhghl(['MappingColumn_FK95jjll0w12k01lgyw3qnpmm47','datachef.DataDomain.name'])">dataDomain_name</text><text x='1650' y='337' text-anchor='end' class='colType'>varchar(255)</text><title>dataDomain_name
+* varchar(255)</title></a>
+<a xlink:href='#MappingColumn.dataDomain_name'><use id='fk' x='1654' y='326' xlink:href='#fk'/><title>References DataDomain ( dataDomain_name -&gt; name ) </title></a>
+  <a xlink:href='#MappingColumn.mapping_dbId'><use id='unq' x='1472' y='341' xlink:href='#unq'/><title>Unq UK_dsipjj94om80hrco1ix87ybqu ( name, mapping_dbId ) FKg3rgx3xhhkduy6lr42dd4i6oo ( mapping_dbId ) </title></a>
+<a xlink:href='#MappingColumn.mapping_dbId'><text id='datachef.MappingColumn.mapping_dbId' x='1488' y='351' onmouseover="hghl(['MappingColumn_FKg3rgx3xhhkduy6lr42dd4i6oo','datachef.Mapping.dbId'])" onmouseout="uhghl(['MappingColumn_FKg3rgx3xhhkduy6lr42dd4i6oo','datachef.Mapping.dbId'])">mapping_dbId</text><text x='1650' y='352' text-anchor='end' class='colType'>bigint</text><title>mapping_dbId
+bigint</title></a>
+<a xlink:href='#MappingColumn.mapping_dbId'><use id='fk' x='1654' y='341' xlink:href='#fk'/><title>References Mapping ( mapping_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'MappingColumnReference' ============= -->
+<rect class='entity' x='1725' y='68' width='180' height='105' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1725.00 94.00 L 1725.00 75.00 Q 1725.00 68.00 1732.00 68.00 L 1898.00 68.00 Q 1905.00 68.00 1905.00 75.00 L 1905.00 94.00 L1725.00 94.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='1725' y='68' width='180' height='105' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='1725.000000' y1='94.000000' x2='1905.000000' y2='94.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1740.000000' y1='94.000000' x2='1740.000000' y2='173.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1894.000000' y1='94.000000' x2='1894.000000' y2='173.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#MappingColumnReference'><text x='1748' y='86'>MappingColumnReference</text><title>Table datachef.MappingColumnReference</title></a>
+  <use id='nn' x='1727' y='102' xlink:href='#nn'/><a xlink:href='#MappingColumnReference.dbId'><use id='pk' x='1727' y='101' xlink:href='#pk'/><title>Pk pk_mappingcolumnreference ( dbId ) </title></a>
+<a xlink:href='#MappingColumnReference.dbId'><text id='datachef.MappingColumnReference.dbId' x='1743' y='111'>dbId</text><text x='1890' y='112' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<text x='1902' y='108' text-anchor='end' class='colType'>#</text>  <a xlink:href='#MappingColumnReference.role'><use id='unq' x='1727' y='116' xlink:href='#unq'/><title>Unq UK_cjw0fhyelpvo9t1gwtkd4st1j ( dvColumn_dbId, mappingColumn_dbId, role ) </title></a>
+<a xlink:href='#MappingColumnReference.role'><text id='datachef.MappingColumnReference.role' x='1743' y='126'>role</text><text x='1890' y='127' text-anchor='end' class='colType'>varchar(255)</text><title>role
+varchar(255)</title></a>
+<text x='1902' y='123' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1727' y='132' xlink:href='#nn'/><a xlink:href='#MappingColumnReference.dvColumn_dbId'><use id='unq' x='1727' y='131' xlink:href='#unq'/><title>Unq UK_cjw0fhyelpvo9t1gwtkd4st1j ( dvColumn_dbId, mappingColumn_dbId, role ) </title></a>
+<a xlink:href='#MappingColumnReference.dvColumn_dbId'><text id='datachef.MappingColumnReference.dvColumn_dbId' x='1743' y='141' onmouseover="hghl(['MappingColumnReference_FKky8rltje5mbdrv092wsdgwow8','datachef.DVColumn.dbId'])" onmouseout="uhghl(['MappingColumnReference_FKky8rltje5mbdrv092wsdgwow8','datachef.DVColumn.dbId'])">dvColumn_dbId</text><text x='1890' y='142' text-anchor='end' class='colType'>bigint</text><title>dvColumn_dbId
+* bigint</title></a>
+<a xlink:href='#MappingColumnReference.dvColumn_dbId'><use id='fk' x='1894' y='131' xlink:href='#fk'/><title>References DVColumn ( dvColumn_dbId -&gt; dbId ) </title></a>
+  <use id='nn' x='1727' y='147' xlink:href='#nn'/><a xlink:href='#MappingColumnReference.mappingColumn_dbId'><use id='unq' x='1727' y='146' xlink:href='#unq'/><title>Unq UK_cjw0fhyelpvo9t1gwtkd4st1j ( dvColumn_dbId, mappingColumn_dbId, role ) FK11kawphfe12nlgduf1vqspswn ( mappingColumn_dbId ) </title></a>
+<a xlink:href='#MappingColumnReference.mappingColumn_dbId'><text id='datachef.MappingColumnReference.mappingColumn_dbId' x='1743' y='156' onmouseover="hghl(['MappingColumnReference_FK11kawphfe12nlgduf1vqspswn','datachef.MappingColumn.dbId'])" onmouseout="uhghl(['MappingColumnReference_FK11kawphfe12nlgduf1vqspswn','datachef.MappingColumn.dbId'])">mappingColumn_dbId</text><text x='1890' y='157' text-anchor='end' class='colType'>bigint</text><title>mappingColumn_dbId
+* bigint</title></a>
+<a xlink:href='#MappingColumnReference.mappingColumn_dbId'><use id='fk' x='1894' y='146' xlink:href='#fk'/><title>References MappingColumn ( mappingColumn_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'MappingObjectReference' ============= -->
+<rect class='entity' x='270' y='308' width='135' height='105' rx='7' ry='7' style='stroke:none'/>
+<path d='M 270.00 334.00 L 270.00 315.00 Q 270.00 308.00 277.00 308.00 L 398.00 308.00 Q 405.00 308.00 405.00 315.00 L 405.00 334.00 L270.00 334.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='270' y='308' width='135' height='105' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='270.000000' y1='334.000000' x2='405.000000' y2='334.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='285.000000' y1='334.000000' x2='285.000000' y2='413.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='394.000000' y1='334.000000' x2='394.000000' y2='413.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#MappingObjectReference'><text x='273' y='326'>MappingObjectReference</text><title>Table datachef.MappingObjectReference</title></a>
+  <use id='nn' x='272' y='342' xlink:href='#nn'/><a xlink:href='#MappingObjectReference.dbId'><use id='pk' x='272' y='341' xlink:href='#pk'/><title>Pk pk_mappingobjectreference ( dbId ) </title></a>
+<a xlink:href='#MappingObjectReference.dbId'><text id='datachef.MappingObjectReference.dbId' x='288' y='351'>dbId</text><text x='390' y='352' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<text x='402' y='348' text-anchor='end' class='colType'>#</text>  <a xlink:href='#MappingObjectReference.role'><use id='unq' x='272' y='356' xlink:href='#unq'/><title>Unq UK_f57xy5mf8lsahlt18agixeh90 ( mapping_dbId, object_dbId, role ) </title></a>
+<a xlink:href='#MappingObjectReference.role'><text id='datachef.MappingObjectReference.role' x='288' y='366'>role</text><text x='390' y='367' text-anchor='end' class='colType'>varchar(255)</text><title>role
+varchar(255)</title></a>
+<text x='402' y='363' text-anchor='end' class='colType'>t</text>  <use id='nn' x='272' y='372' xlink:href='#nn'/><a xlink:href='#MappingObjectReference.mapping_dbId'><use id='unq' x='272' y='371' xlink:href='#unq'/><title>Unq UK_f57xy5mf8lsahlt18agixeh90 ( mapping_dbId, object_dbId, role ) </title></a>
+<a xlink:href='#MappingObjectReference.mapping_dbId'><text id='datachef.MappingObjectReference.mapping_dbId' x='288' y='381' onmouseover="hghl(['MappingObjectReference_FKanoyc3brkimgyusfh8mn7s0we','datachef.Mapping.dbId'])" onmouseout="uhghl(['MappingObjectReference_FKanoyc3brkimgyusfh8mn7s0we','datachef.Mapping.dbId'])">mapping_dbId</text><text x='390' y='382' text-anchor='end' class='colType'>bigint</text><title>mapping_dbId
+* bigint</title></a>
+<a xlink:href='#MappingObjectReference.mapping_dbId'><use id='fk' x='394' y='371' xlink:href='#fk'/><title>References Mapping ( mapping_dbId -&gt; dbId ) </title></a>
+  <use id='nn' x='272' y='387' xlink:href='#nn'/><a xlink:href='#MappingObjectReference.object_dbId'><use id='unq' x='272' y='386' xlink:href='#unq'/><title>Unq UK_f57xy5mf8lsahlt18agixeh90 ( mapping_dbId, object_dbId, role ) FK8rgsrm9qb74lpopds3m4ksiob ( object_dbId ) </title></a>
+<a xlink:href='#MappingObjectReference.object_dbId'><text id='datachef.MappingObjectReference.object_dbId' x='288' y='396' onmouseover="hghl(['MappingObjectReference_FK8rgsrm9qb74lpopds3m4ksiob','datachef.DVObject.dbId'])" onmouseout="uhghl(['MappingObjectReference_FK8rgsrm9qb74lpopds3m4ksiob','datachef.DVObject.dbId'])">object_dbId</text><text x='390' y='397' text-anchor='end' class='colType'>bigint</text><title>object_dbId
+* bigint</title></a>
+<a xlink:href='#MappingObjectReference.object_dbId'><use id='fk' x='394' y='386' xlink:href='#fk'/><title>References DVObject ( object_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'Mapping_dependentMappingNames' ============= -->
+<rect class='entity' x='1185' y='383' width='225' height='75' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1185.00 409.00 L 1185.00 390.00 Q 1185.00 383.00 1192.00 383.00 L 1403.00 383.00 Q 1410.00 383.00 1410.00 390.00 L 1410.00 409.00 L1185.00 409.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='1185' y='383' width='225' height='75' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='1185.000000' y1='409.000000' x2='1410.000000' y2='409.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1200.000000' y1='409.000000' x2='1200.000000' y2='458.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='1399.000000' y1='409.000000' x2='1399.000000' y2='458.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#Mapping_dependentMappingNames'><text x='1208' y='401'>Mapping_dependentMappingNames</text><title>Table datachef.Mapping_dependentMappingNames</title></a>
+  <use id='nn' x='1187' y='417' xlink:href='#nn'/><a xlink:href='#Mapping_dependentMappingNames.Mapping_dbId'><use id='idx' x='1187' y='416' xlink:href='#idx'/><title>FK9x6lvyw2106f26k7prxk2st6k ( Mapping_dbId ) </title></a>
+<a xlink:href='#Mapping_dependentMappingNames.Mapping_dbId'><text id='datachef.Mapping_dependentMappingNames.Mapping_dbId' x='1203' y='426' onmouseover="hghl(['Mapping_dependentMappingNames_FK9x6lvyw2106f26k7prxk2st6k','datachef.Mapping.dbId'])" onmouseout="uhghl(['Mapping_dependentMappingNames_FK9x6lvyw2106f26k7prxk2st6k','datachef.Mapping.dbId'])">Mapping_dbId</text><text x='1395' y='427' text-anchor='end' class='colType'>bigint</text><title>Mapping_dbId
+* bigint</title></a>
+<a xlink:href='#Mapping_dependentMappingNames.Mapping_dbId'><use id='fk' x='1399' y='416' xlink:href='#fk'/><title>References Mapping ( Mapping_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#Mapping_dependentMappingNames.dependentMappingNames'><text id='datachef.Mapping_dependentMappingNames.dependentMappingNames' x='1203' y='441'>dependentMappingNames</text><text x='1395' y='442' text-anchor='end' class='colType'>varchar(255)</text><title>dependentMappingNames
+varchar(255)</title></a>
+<text x='1407' y='438' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'SQLExpression' ============= -->
+<rect class='entity' x='2700' y='68' width='180' height='150' rx='7' ry='7' style='stroke:none'/>
+<path d='M 2700.00 94.00 L 2700.00 75.00 Q 2700.00 68.00 2707.00 68.00 L 2873.00 68.00 Q 2880.00 68.00 2880.00 75.00 L 2880.00 94.00 L2700.00 94.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='2700' y='68' width='180' height='150' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='2700.000000' y1='94.000000' x2='2880.000000' y2='94.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2715.000000' y1='94.000000' x2='2715.000000' y2='218.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2869.000000' y1='94.000000' x2='2869.000000' y2='218.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#SQLExpression'><text x='2752' y='86'>SQLExpression</text><title>Table datachef.SQLExpression</title></a>
+  <use id='nn' x='2702' y='102' xlink:href='#nn'/><a xlink:href='#SQLExpression.dbId'><use id='pk' x='2702' y='101' xlink:href='#pk'/><title>Pk pk_sqlexpression ( dbId ) </title></a>
+<a xlink:href='#SQLExpression.dbId'><text id='datachef.SQLExpression.dbId' x='2718' y='111' onmouseover="hghl(['SQLExpressionExecution_FK4747kxc4511bst30syv0h62gf','datachef.SQLExpressionExecution.expression_dbId'])" onmouseout="uhghl(['SQLExpressionExecution_FK4747kxc4511bst30syv0h62gf','datachef.SQLExpressionExecution.expression_dbId'])">dbId</text><text x='2865' y='112' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<a xlink:href='#SQLExpression.dbId'><use id='ref' x='2869' y='101' xlink:href='#ref'/><title>Referred by SQLExpressionExecution ( expression_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#SQLExpression.description'><text id='datachef.SQLExpression.description' x='2718' y='126'>description</text><text x='2865' y='127' text-anchor='end' class='colType'>varchar(255)</text><title>description
+varchar(255)</title></a>
+<text x='2877' y='123' text-anchor='end' class='colType'>t</text>  <a xlink:href='#SQLExpression.expressionType'><text id='datachef.SQLExpression.expressionType' x='2718' y='141'>expressionType</text><text x='2865' y='142' text-anchor='end' class='colType'>varchar(255)</text><title>expressionType
+varchar(255)</title></a>
+<text x='2877' y='138' text-anchor='end' class='colType'>t</text>  <use id='nn' x='2702' y='147' xlink:href='#nn'/><a xlink:href='#SQLExpression.orderNumber'><text id='datachef.SQLExpression.orderNumber' x='2718' y='156'>orderNumber</text><text x='2865' y='157' text-anchor='end' class='colType'>int</text><title>orderNumber
+* int</title></a>
+<text x='2877' y='153' text-anchor='end' class='colType'>#</text>  <a xlink:href='#SQLExpression.queryType'><text id='datachef.SQLExpression.queryType' x='2718' y='171'>queryType</text><text x='2865' y='172' text-anchor='end' class='colType'>varchar(255)</text><title>queryType
+varchar(255)</title></a>
+<text x='2877' y='168' text-anchor='end' class='colType'>t</text>  <a xlink:href='#SQLExpression.sqlCode'><text id='datachef.SQLExpression.sqlCode' x='2718' y='186'>sqlCode</text><text x='2865' y='187' text-anchor='end' class='colType'>longtext</text><title>sqlCode
+longtext</title></a>
+<text x='2877' y='183' text-anchor='end' class='colType'>t</text>  <a xlink:href='#SQLExpression.mapping_dbId'><use id='idx' x='2702' y='191' xlink:href='#idx'/><title>FK963piyfy9v46kvafqqo0sbuub ( mapping_dbId ) </title></a>
+<a xlink:href='#SQLExpression.mapping_dbId'><text id='datachef.SQLExpression.mapping_dbId' x='2718' y='201' onmouseover="hghl(['SQLExpression_FK963piyfy9v46kvafqqo0sbuub','datachef.Mapping.dbId'])" onmouseout="uhghl(['SQLExpression_FK963piyfy9v46kvafqqo0sbuub','datachef.Mapping.dbId'])">mapping_dbId</text><text x='2865' y='202' text-anchor='end' class='colType'>bigint</text><title>mapping_dbId
+bigint</title></a>
+<a xlink:href='#SQLExpression.mapping_dbId'><use id='fk' x='2869' y='191' xlink:href='#fk'/><title>References Mapping ( mapping_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'SQLExpressionExecution' ============= -->
+<rect class='entity' x='2490' y='68' width='150' height='180' rx='7' ry='7' style='stroke:none'/>
+<path d='M 2490.00 94.00 L 2490.00 75.00 Q 2490.00 68.00 2497.00 68.00 L 2633.00 68.00 Q 2640.00 68.00 2640.00 75.00 L 2640.00 94.00 L2490.00 94.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='2490' y='68' width='150' height='180' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='2490.000000' y1='94.000000' x2='2640.000000' y2='94.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2505.000000' y1='94.000000' x2='2505.000000' y2='248.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2629.000000' y1='94.000000' x2='2629.000000' y2='248.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#SQLExpressionExecution'><text x='2503' y='86'>SQLExpressionExecution</text><title>Table datachef.SQLExpressionExecution</title></a>
+  <use id='nn' x='2492' y='102' xlink:href='#nn'/><a xlink:href='#SQLExpressionExecution.dbId'><use id='pk' x='2492' y='101' xlink:href='#pk'/><title>Pk pk_sqlexpressionexecution ( dbId ) </title></a>
+<a xlink:href='#SQLExpressionExecution.dbId'><text id='datachef.SQLExpressionExecution.dbId' x='2508' y='111'>dbId</text><text x='2625' y='112' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<text x='2637' y='108' text-anchor='end' class='colType'>#</text>  <use id='nn' x='2492' y='117' xlink:href='#nn'/><a xlink:href='#SQLExpressionExecution.errorFlag'><text id='datachef.SQLExpressionExecution.errorFlag' x='2508' y='126'>errorFlag</text><text x='2625' y='127' text-anchor='end' class='colType'>boolean</text><title>errorFlag
+* boolean</title></a>
+<text x='2637' y='123' text-anchor='end' class='colType'>b</text>  <a xlink:href='#SQLExpressionExecution.errorMessage'><text id='datachef.SQLExpressionExecution.errorMessage' x='2508' y='141'>errorMessage</text><text x='2625' y='142' text-anchor='end' class='colType'>longtext</text><title>errorMessage
+longtext</title></a>
+<text x='2637' y='138' text-anchor='end' class='colType'>t</text>  <a xlink:href='#SQLExpressionExecution.executedTime'><text id='datachef.SQLExpressionExecution.executedTime' x='2508' y='156'>executedTime</text><text x='2625' y='157' text-anchor='end' class='colType'>datetime</text><title>executedTime
+datetime</title></a>
+<text x='2637' y='153' text-anchor='end' class='colType'>d</text>  <use id='nn' x='2492' y='162' xlink:href='#nn'/><a xlink:href='#SQLExpressionExecution.runtime'><text id='datachef.SQLExpressionExecution.runtime' x='2508' y='171'>runtime</text><text x='2625' y='172' text-anchor='end' class='colType'>bigint</text><title>runtime
+* bigint</title></a>
+<text x='2637' y='168' text-anchor='end' class='colType'>#</text>  <use id='nn' x='2492' y='177' xlink:href='#nn'/><a xlink:href='#SQLExpressionExecution.stmntOrder'><text id='datachef.SQLExpressionExecution.stmntOrder' x='2508' y='186'>stmntOrder</text><text x='2625' y='187' text-anchor='end' class='colType'>int</text><title>stmntOrder
+* int</title></a>
+<text x='2637' y='183' text-anchor='end' class='colType'>#</text>  <use id='nn' x='2492' y='192' xlink:href='#nn'/><a xlink:href='#SQLExpressionExecution.updateCount'><text id='datachef.SQLExpressionExecution.updateCount' x='2508' y='201'>updateCount</text><text x='2625' y='202' text-anchor='end' class='colType'>bigint</text><title>updateCount
+* bigint</title></a>
+<text x='2637' y='198' text-anchor='end' class='colType'>#</text>  <a xlink:href='#SQLExpressionExecution.cargo_dbId'><use id='idx' x='2492' y='206' xlink:href='#idx'/><title>FK21f7c1livolqsguwfwe24wjd6 ( cargo_dbId ) </title></a>
+<a xlink:href='#SQLExpressionExecution.cargo_dbId'><text id='datachef.SQLExpressionExecution.cargo_dbId' x='2508' y='216' onmouseover="hghl(['SQLExpressionExecution_FK21f7c1livolqsguwfwe24wjd6','datachef.WorkerCargo.dbId'])" onmouseout="uhghl(['SQLExpressionExecution_FK21f7c1livolqsguwfwe24wjd6','datachef.WorkerCargo.dbId'])">cargo_dbId</text><text x='2625' y='217' text-anchor='end' class='colType'>bigint</text><title>cargo_dbId
+bigint</title></a>
+<a xlink:href='#SQLExpressionExecution.cargo_dbId'><use id='fk' x='2629' y='206' xlink:href='#fk'/><title>References WorkerCargo ( cargo_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#SQLExpressionExecution.expression_dbId'><use id='idx' x='2492' y='221' xlink:href='#idx'/><title>FK4747kxc4511bst30syv0h62gf ( expression_dbId ) </title></a>
+<a xlink:href='#SQLExpressionExecution.expression_dbId'><text id='datachef.SQLExpressionExecution.expression_dbId' x='2508' y='231' onmouseover="hghl(['SQLExpressionExecution_FK4747kxc4511bst30syv0h62gf','datachef.SQLExpression.dbId'])" onmouseout="uhghl(['SQLExpressionExecution_FK4747kxc4511bst30syv0h62gf','datachef.SQLExpression.dbId'])">expression_dbId</text><text x='2625' y='232' text-anchor='end' class='colType'>bigint</text><title>expression_dbId
+bigint</title></a>
+<a xlink:href='#SQLExpressionExecution.expression_dbId'><use id='fk' x='2629' y='221' xlink:href='#fk'/><title>References SQLExpression ( expression_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'User' ============= -->
+<rect class='entity' x='1170' y='563' width='165' height='90' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1170.00 589.00 L 1170.00 570.00 Q 1170.00 563.00 1177.00 563.00 L 1328.00 563.00 Q 1335.00 563.00 1335.00 570.00 L 1335.00 589.00 L1170.00 589.00 ' style='fill:url(#tbg_bfbff5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='1170' y='563' width='165' height='90' rx='7' ry='7' style='fill:none;stroke:#aeaebf'/>
+<line class='delim' x1='1170.000000' y1='589.000000' x2='1335.000000' y2='589.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='1185.000000' y1='589.000000' x2='1185.000000' y2='653.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='1324.000000' y1='589.000000' x2='1324.000000' y2='653.000000' style='stroke:#aeaebf'/>
+<a xlink:href='#User'><text x='1239' y='581'>User</text><title>Table datachef.User</title></a>
+  <use id='nn' x='1172' y='597' xlink:href='#nn'/><a xlink:href='#User.username'><use id='pk' x='1172' y='596' xlink:href='#pk'/><title>Pk pk_user ( username ) </title></a>
+<a xlink:href='#User.username'><text id='datachef.User.username' x='1188' y='606'>username</text><text x='1320' y='607' text-anchor='end' class='colType'>varchar(255)</text><title>username
+* varchar(255)</title></a>
+<text x='1332' y='603' text-anchor='end' class='colType'>t</text>  <a xlink:href='#User.passwordHash'><text id='datachef.User.passwordHash' x='1188' y='621'>passwordHash</text><text x='1320' y='622' text-anchor='end' class='colType'>varchar(255)</text><title>passwordHash
+varchar(255)</title></a>
+<text x='1332' y='618' text-anchor='end' class='colType'>t</text>  <a xlink:href='#User.role'><text id='datachef.User.role' x='1188' y='636'>role</text><text x='1320' y='637' text-anchor='end' class='colType'>varchar(255)</text><title>role
+varchar(255)</title></a>
+<text x='1332' y='633' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'WorkerCargo' ============= -->
+<rect class='entity' x='2220' y='68' width='210' height='270' rx='7' ry='7' style='stroke:none'/>
+<path d='M 2220.00 94.00 L 2220.00 75.00 Q 2220.00 68.00 2227.00 68.00 L 2423.00 68.00 Q 2430.00 68.00 2430.00 75.00 L 2430.00 94.00 L2220.00 94.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='2220' y='68' width='210' height='270' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='2220.000000' y1='94.000000' x2='2430.000000' y2='94.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2235.000000' y1='94.000000' x2='2235.000000' y2='338.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2419.000000' y1='94.000000' x2='2419.000000' y2='338.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#WorkerCargo'><text x='2290' y='86'>WorkerCargo</text><title>Table datachef.WorkerCargo</title></a>
+  <use id='nn' x='2222' y='102' xlink:href='#nn'/><a xlink:href='#WorkerCargo.dbId'><use id='pk' x='2222' y='101' xlink:href='#pk'/><title>Pk pk_workercargo ( dbId ) </title></a>
+<a xlink:href='#WorkerCargo.dbId'><text id='datachef.WorkerCargo.dbId' x='2238' y='111' onmouseover="hghl(['SQLExpressionExecution_FK21f7c1livolqsguwfwe24wjd6','datachef.SQLExpressionExecution.cargo_dbId','WorkerCargo_errors_FKf2hv5ji8oy8j04qw9a9802ogy','datachef.WorkerCargo_errors.WorkerCargo_dbId','WorkerCargo_messages_FKocyk0haeuxspytk3tbxnoxd70','datachef.WorkerCargo_messages.WorkerCargo_dbId','WorkerCargo_warnings_FKqix9yitofi90jj6eq1c1p1p0b','datachef.WorkerCargo_warnings.WorkerCargo_dbId'])" onmouseout="uhghl(['SQLExpressionExecution_FK21f7c1livolqsguwfwe24wjd6','datachef.SQLExpressionExecution.cargo_dbId','WorkerCargo_errors_FKf2hv5ji8oy8j04qw9a9802ogy','datachef.WorkerCargo_errors.WorkerCargo_dbId','WorkerCargo_messages_FKocyk0haeuxspytk3tbxnoxd70','datachef.WorkerCargo_messages.WorkerCargo_dbId','WorkerCargo_warnings_FKqix9yitofi90jj6eq1c1p1p0b','datachef.WorkerCargo_warnings.WorkerCargo_dbId'])">dbId</text><text x='2415' y='112' text-anchor='end' class='colType'>bigint</text><title>dbId
+* bigint</title></a>
+<a xlink:href='#WorkerCargo.dbId'><use id='ref' x='2419' y='101' xlink:href='#ref'/><title>Referred by SQLExpressionExecution ( cargo_dbId -&gt; dbId ) 
+Referred by WorkerCargo_errors ( WorkerCargo_dbId -&gt; dbId ) 
+Referred by WorkerCargo_messages ( WorkerCargo_dbId -&gt; dbId ) 
+Referred by WorkerCargo_warnings ( WorkerCargo_dbId -&gt; dbId ) </title></a>
+  <use id='nn' x='2222' y='117' xlink:href='#nn'/><a xlink:href='#WorkerCargo.DTYPE'><text id='datachef.WorkerCargo.DTYPE' x='2238' y='126'>DTYPE</text><text x='2415' y='127' text-anchor='end' class='colType'>varchar(31)</text><title>DTYPE
+* varchar(31)</title></a>
+<text x='2427' y='123' text-anchor='end' class='colType'>t</text>  <a xlink:href='#WorkerCargo.checkSum'><text id='datachef.WorkerCargo.checkSum' x='2238' y='141'>checkSum</text><text x='2415' y='142' text-anchor='end' class='colType'>varchar(255)</text><title>checkSum
+varchar(255)</title></a>
+<text x='2427' y='138' text-anchor='end' class='colType'>t</text>  <a xlink:href='#WorkerCargo.executionEndDateTime'><text id='datachef.WorkerCargo.executionEndDateTime' x='2238' y='156'>executionEndDateTime</text><text x='2415' y='157' text-anchor='end' class='colType'>datetime</text><title>executionEndDateTime
+datetime</title></a>
+<text x='2427' y='153' text-anchor='end' class='colType'>d</text>  <a xlink:href='#WorkerCargo.executionStartDateTime'><text id='datachef.WorkerCargo.executionStartDateTime' x='2238' y='171'>executionStartDateTime</text><text x='2415' y='172' text-anchor='end' class='colType'>datetime</text><title>executionStartDateTime
+datetime</title></a>
+<text x='2427' y='168' text-anchor='end' class='colType'>d</text>  <a xlink:href='#WorkerCargo.mappingName'><text id='datachef.WorkerCargo.mappingName' x='2238' y='186'>mappingName</text><text x='2415' y='187' text-anchor='end' class='colType'>varchar(255)</text><title>mappingName
+varchar(255)</title></a>
+<text x='2427' y='183' text-anchor='end' class='colType'>t</text>  <a xlink:href='#WorkerCargo.payloadSize'><text id='datachef.WorkerCargo.payloadSize' x='2238' y='201'>payloadSize</text><text x='2415' y='202' text-anchor='end' class='colType'>bigint</text><title>payloadSize
+bigint</title></a>
+<text x='2427' y='198' text-anchor='end' class='colType'>#</text>  <use id='nn' x='2222' y='207' xlink:href='#nn'/><a xlink:href='#WorkerCargo.runtime'><text id='datachef.WorkerCargo.runtime' x='2238' y='216'>runtime</text><text x='2415' y='217' text-anchor='end' class='colType'>bigint</text><title>runtime
+* bigint</title></a>
+<text x='2427' y='213' text-anchor='end' class='colType'>#</text>  <a xlink:href='#WorkerCargo.status'><text id='datachef.WorkerCargo.status' x='2238' y='231'>status</text><text x='2415' y='232' text-anchor='end' class='colType'>varchar(255)</text><title>status
+varchar(255)</title></a>
+<text x='2427' y='228' text-anchor='end' class='colType'>t</text>  <a xlink:href='#WorkerCargo.dataSize'><text id='datachef.WorkerCargo.dataSize' x='2238' y='246'>dataSize</text><text x='2415' y='247' text-anchor='end' class='colType'>bigint</text><title>dataSize
+bigint</title></a>
+<text x='2427' y='243' text-anchor='end' class='colType'>#</text>  <a xlink:href='#WorkerCargo.fileGroup'><text id='datachef.WorkerCargo.fileGroup' x='2238' y='261'>fileGroup</text><text x='2415' y='262' text-anchor='end' class='colType'>varchar(255)</text><title>fileGroup
+varchar(255)</title></a>
+<text x='2427' y='258' text-anchor='end' class='colType'>t</text>  <a xlink:href='#WorkerCargo.fileName'><text id='datachef.WorkerCargo.fileName' x='2238' y='276'>fileName</text><text x='2415' y='277' text-anchor='end' class='colType'>varchar(255)</text><title>fileName
+varchar(255)</title></a>
+<text x='2427' y='273' text-anchor='end' class='colType'>t</text>  <a xlink:href='#WorkerCargo.publishDate'><text id='datachef.WorkerCargo.publishDate' x='2238' y='291'>publishDate</text><text x='2415' y='292' text-anchor='end' class='colType'>datetime</text><title>publishDate
+datetime</title></a>
+<text x='2427' y='288' text-anchor='end' class='colType'>d</text>  <a xlink:href='#WorkerCargo.stagingMode'><text id='datachef.WorkerCargo.stagingMode' x='2238' y='306'>stagingMode</text><text x='2415' y='307' text-anchor='end' class='colType'>varchar(255)</text><title>stagingMode
+varchar(255)</title></a>
+<text x='2427' y='303' text-anchor='end' class='colType'>t</text>  <a xlink:href='#WorkerCargo.mapping_dbId'><use id='idx' x='2222' y='311' xlink:href='#idx'/><title>FK5no6sbllidjxv8fnbv9uq4tgm ( mapping_dbId ) </title></a>
+<a xlink:href='#WorkerCargo.mapping_dbId'><text id='datachef.WorkerCargo.mapping_dbId' x='2238' y='321' onmouseover="hghl(['WorkerCargo_FK5no6sbllidjxv8fnbv9uq4tgm','datachef.Mapping.dbId'])" onmouseout="uhghl(['WorkerCargo_FK5no6sbllidjxv8fnbv9uq4tgm','datachef.Mapping.dbId'])">mapping_dbId</text><text x='2415' y='322' text-anchor='end' class='colType'>bigint</text><title>mapping_dbId
+bigint</title></a>
+<a xlink:href='#WorkerCargo.mapping_dbId'><use id='fk' x='2419' y='311' xlink:href='#fk'/><title>References Mapping ( mapping_dbId -&gt; dbId ) </title></a>
+
+<!-- ============= Table 'WorkerCargo_errors' ============= -->
+<rect class='entity' x='2490' y='398' width='165' height='75' rx='7' ry='7' style='stroke:none'/>
+<path d='M 2490.00 424.00 L 2490.00 405.00 Q 2490.00 398.00 2497.00 398.00 L 2648.00 398.00 Q 2655.00 398.00 2655.00 405.00 L 2655.00 424.00 L2490.00 424.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='2490' y='398' width='165' height='75' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='2490.000000' y1='424.000000' x2='2655.000000' y2='424.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2505.000000' y1='424.000000' x2='2505.000000' y2='473.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2644.000000' y1='424.000000' x2='2644.000000' y2='473.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#WorkerCargo_errors'><text x='2520' y='416'>WorkerCargo_errors</text><title>Table datachef.WorkerCargo_errors</title></a>
+  <use id='nn' x='2492' y='432' xlink:href='#nn'/><a xlink:href='#WorkerCargo_errors.WorkerCargo_dbId'><use id='idx' x='2492' y='431' xlink:href='#idx'/><title>FKf2hv5ji8oy8j04qw9a9802ogy ( WorkerCargo_dbId ) </title></a>
+<a xlink:href='#WorkerCargo_errors.WorkerCargo_dbId'><text id='datachef.WorkerCargo_errors.WorkerCargo_dbId' x='2508' y='441' onmouseover="hghl(['WorkerCargo_errors_FKf2hv5ji8oy8j04qw9a9802ogy','datachef.WorkerCargo.dbId'])" onmouseout="uhghl(['WorkerCargo_errors_FKf2hv5ji8oy8j04qw9a9802ogy','datachef.WorkerCargo.dbId'])">WorkerCargo_dbId</text><text x='2640' y='442' text-anchor='end' class='colType'>bigint</text><title>WorkerCargo_dbId
+* bigint</title></a>
+<a xlink:href='#WorkerCargo_errors.WorkerCargo_dbId'><use id='fk' x='2644' y='431' xlink:href='#fk'/><title>References WorkerCargo ( WorkerCargo_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#WorkerCargo_errors.errors'><text id='datachef.WorkerCargo_errors.errors' x='2508' y='456'>errors</text><text x='2640' y='457' text-anchor='end' class='colType'>varchar(1000)</text><title>errors
+varchar(1000)</title></a>
+<text x='2652' y='453' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'WorkerCargo_messages' ============= -->
+<rect class='entity' x='2220' y='398' width='165' height='75' rx='7' ry='7' style='stroke:none'/>
+<path d='M 2220.00 424.00 L 2220.00 405.00 Q 2220.00 398.00 2227.00 398.00 L 2378.00 398.00 Q 2385.00 398.00 2385.00 405.00 L 2385.00 424.00 L2220.00 424.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='2220' y='398' width='165' height='75' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='2220.000000' y1='424.000000' x2='2385.000000' y2='424.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2235.000000' y1='424.000000' x2='2235.000000' y2='473.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2374.000000' y1='424.000000' x2='2374.000000' y2='473.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#WorkerCargo_messages'><text x='2242' y='416'>WorkerCargo_messages</text><title>Table datachef.WorkerCargo_messages</title></a>
+  <use id='nn' x='2222' y='432' xlink:href='#nn'/><a xlink:href='#WorkerCargo_messages.WorkerCargo_dbId'><use id='idx' x='2222' y='431' xlink:href='#idx'/><title>FKocyk0haeuxspytk3tbxnoxd70 ( WorkerCargo_dbId ) </title></a>
+<a xlink:href='#WorkerCargo_messages.WorkerCargo_dbId'><text id='datachef.WorkerCargo_messages.WorkerCargo_dbId' x='2238' y='441' onmouseover="hghl(['WorkerCargo_messages_FKocyk0haeuxspytk3tbxnoxd70','datachef.WorkerCargo.dbId'])" onmouseout="uhghl(['WorkerCargo_messages_FKocyk0haeuxspytk3tbxnoxd70','datachef.WorkerCargo.dbId'])">WorkerCargo_dbId</text><text x='2370' y='442' text-anchor='end' class='colType'>bigint</text><title>WorkerCargo_dbId
+* bigint</title></a>
+<a xlink:href='#WorkerCargo_messages.WorkerCargo_dbId'><use id='fk' x='2374' y='431' xlink:href='#fk'/><title>References WorkerCargo ( WorkerCargo_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#WorkerCargo_messages.messages'><text id='datachef.WorkerCargo_messages.messages' x='2238' y='456'>messages</text><text x='2370' y='457' text-anchor='end' class='colType'>varchar(1000)</text><title>messages
+varchar(1000)</title></a>
+<text x='2382' y='453' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'WorkerCargo_warnings' ============= -->
+<rect class='entity' x='1995' y='398' width='165' height='75' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1995.00 424.00 L 1995.00 405.00 Q 1995.00 398.00 2002.00 398.00 L 2153.00 398.00 Q 2160.00 398.00 2160.00 405.00 L 2160.00 424.00 L1995.00 424.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='1995' y='398' width='165' height='75' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='1995.000000' y1='424.000000' x2='2160.000000' y2='424.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2010.000000' y1='424.000000' x2='2010.000000' y2='473.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='2149.000000' y1='424.000000' x2='2149.000000' y2='473.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#WorkerCargo_warnings'><text x='2018' y='416'>WorkerCargo_warnings</text><title>Table datachef.WorkerCargo_warnings</title></a>
+  <use id='nn' x='1997' y='432' xlink:href='#nn'/><a xlink:href='#WorkerCargo_warnings.WorkerCargo_dbId'><use id='idx' x='1997' y='431' xlink:href='#idx'/><title>FKqix9yitofi90jj6eq1c1p1p0b ( WorkerCargo_dbId ) </title></a>
+<a xlink:href='#WorkerCargo_warnings.WorkerCargo_dbId'><text id='datachef.WorkerCargo_warnings.WorkerCargo_dbId' x='2013' y='441' onmouseover="hghl(['WorkerCargo_warnings_FKqix9yitofi90jj6eq1c1p1p0b','datachef.WorkerCargo.dbId'])" onmouseout="uhghl(['WorkerCargo_warnings_FKqix9yitofi90jj6eq1c1p1p0b','datachef.WorkerCargo.dbId'])">WorkerCargo_dbId</text><text x='2145' y='442' text-anchor='end' class='colType'>bigint</text><title>WorkerCargo_dbId
+* bigint</title></a>
+<a xlink:href='#WorkerCargo_warnings.WorkerCargo_dbId'><use id='fk' x='2149' y='431' xlink:href='#fk'/><title>References WorkerCargo ( WorkerCargo_dbId -&gt; dbId ) </title></a>
+  <a xlink:href='#WorkerCargo_warnings.warnings'><text id='datachef.WorkerCargo_warnings.warnings' x='2013' y='456'>warnings</text><text x='2145' y='457' text-anchor='end' class='colType'>varchar(1000)</text><title>warnings
+varchar(1000)</title></a>
+<text x='2157' y='453' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'hibernate_sequence' ============= -->
+<rect class='entity' x='990' y='563' width='120' height='60' rx='7' ry='7' style='stroke:none'/>
+<path d='M 990.00 589.00 L 990.00 570.00 Q 990.00 563.00 997.00 563.00 L 1103.00 563.00 Q 1110.00 563.00 1110.00 570.00 L 1110.00 589.00 L990.00 589.00 ' style='fill:url(#tbg_bfbff5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='990' y='563' width='120' height='60' rx='7' ry='7' style='fill:none;stroke:#aeaebf'/>
+<line class='delim' x1='990.000000' y1='589.000000' x2='1110.000000' y2='589.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='1005.000000' y1='589.000000' x2='1005.000000' y2='623.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='1099.000000' y1='589.000000' x2='1099.000000' y2='623.000000' style='stroke:#aeaebf'/>
+<a xlink:href='#hibernate_sequence'><text x='998' y='581'>hibernate_sequence</text><title>Table datachef.hibernate_sequence</title></a>
+  <a xlink:href='#hibernate_sequence.next_val'><text id='datachef.hibernate_sequence.next_val' x='1008' y='606'>next_val</text><text x='1095' y='607' text-anchor='end' class='colType'>bigint</text><title>next_val
+bigint</title></a>
+<text x='1107' y='603' text-anchor='end' class='colType'>#</text>
+</g></svg></div>
+
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='CsvType' onclick='window.scrollTo(790, 180);return false;' style='cursor:pointer;'><h4 class='card-title'>Table CsvType</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='CsvType.name'>name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='CsvType.columnDelimiter'>columnDelimiter</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='CsvType.columnSeparator'>columnSeparator</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='CsvType.encoding'>encoding</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='CsvType.rejectLimit'>rejectLimit</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='CsvType.rowSeparator'>rowSeparator</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='CsvType.skip'>skip</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;csvtype</td>
+		<td> ON name</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='DVColumn' onclick='window.scrollTo(280, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table DVColumn</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='DVColumn.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='DVColumn.name'>name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='DVColumn.keyColumn'>keyColumn</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='DVColumn.dataDomain_name'>dataDomain&#95;name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='DVColumn.parent_dbId'>parent&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;dvcolumn</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>UK&#95;hfl33n6xh75fcb07e9h95fe89</td>
+		<td> ON name&#44; parent&#95;dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKiakv7052dw1ulclurq06vwe2q</td>
+		<td> ON dataDomain&#95;name</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKte1e3n7r8jvwkr7u2ghb3uq6p</td>
+		<td> ON parent&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKte1e3n7r8jvwkr7u2ghb3uq6p</td>
+		<td > ( parent&#95;dbId ) ref <a href='#DVObject'>DVObject</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKiakv7052dw1ulclurq06vwe2q</td>
+		<td > ( dataDomain&#95;name ) ref <a href='#DataDomain'>DataDomain</a> (name) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='DVColumn_comments' onclick='window.scrollTo(535, 255);return false;' style='cursor:pointer;'><h4 class='card-title'>Table DVColumn_comments</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='DVColumn_comments.DVColumn_dbId'>DVColumn&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='DVColumn_comments.comments'>comments</a></td>
+		<td> varchar&#40; 1000 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKre179bh22mlhfe4a5umt4rviv</td>
+		<td> ON DVColumn&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKre179bh22mlhfe4a5umt4rviv</td>
+		<td > ( DVColumn&#95;dbId ) ref <a href='#DVColumn'>DVColumn</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='DVObject' onclick='window.scrollTo(70, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table DVObject</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='DVObject.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='DVObject.DTYPE'>DTYPE</a></td>
+		<td> varchar&#40; 31 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='DVObject.name'>name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='DVObject.type'>type</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='DVObject.alias'>alias</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='DVObject.historySatellite'>historySatellite</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='DVObject.historicized'>historicized</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='DVObject.selfReference'>selfReference</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='DVObject.parent_dbId'>parent&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;dvobject</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>UK&#95;7cc48b3rkoix11f8eu4c4jix8</td>
+		<td> ON name&#44; type</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKta93e15wq9io9xv8jbrws7yef</td>
+		<td> ON parent&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKta93e15wq9io9xv8jbrws7yef</td>
+		<td > ( parent&#95;dbId ) ref <a href='#DVObject'>DVObject</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='DVObject_comments' onclick='window.scrollTo(60, 315);return false;' style='cursor:pointer;'><h4 class='card-title'>Table DVObject_comments</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='DVObject_comments.DVObject_dbId'>DVObject&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='DVObject_comments.comments'>comments</a></td>
+		<td> varchar&#40; 1000 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK8vnefvhu60339ikd1byydsb8h</td>
+		<td> ON DVObject&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK8vnefvhu60339ikd1byydsb8h</td>
+		<td > ( DVObject&#95;dbId ) ref <a href='#DVObject'>DVObject</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='DataDomain' onclick='window.scrollTo(535, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table DataDomain</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='DataDomain.name'>name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='DataDomain.defaultValue'>defaultValue</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='DataDomain.sqlType'>sqlType</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;datadomain</td>
+		<td> ON name</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='Leg' onclick='window.scrollTo(280, 315);return false;' style='cursor:pointer;'><h4 class='card-title'>Table Leg</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='Leg.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Leg.driving'>driving</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='Leg.role'>role</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='Leg.hub_dbId'>hub&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='Leg.parentLink_dbId'>parentLink&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;leg</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>UK&#95;8hb95ns9xk90p03gnpoqgtkvc</td>
+		<td> ON hub&#95;dbId&#44; parentLink&#95;dbId&#44; role</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKh4ysp3ujc37nbjdgjtlqpjr47</td>
+		<td> ON parentLink&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKh4ysp3ujc37nbjdgjtlqpjr47</td>
+		<td > ( parentLink&#95;dbId ) ref <a href='#DVObject'>DVObject</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKjs9gpnr3lcqd7vh7saor7g3t5</td>
+		<td > ( hub&#95;dbId ) ref <a href='#DVObject'>DVObject</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='Mapping' onclick='window.scrollTo(1030, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table Mapping</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='Mapping.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='Mapping.name'>name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Mapping.connectionName'>connectionName</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Mapping.connectionType'>connectionType</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Mapping.cronExpression'>cronExpression</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Mapping.customSqlCode'>customSqlCode</a></td>
+		<td> longtext   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Mapping.fullLoad'>fullLoad</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Mapping.mousetrapTimeout'>mousetrapTimeout</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Mapping.sinkCode'>sinkCode</a></td>
+		<td> longtext   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Mapping.stagingMode'>stagingMode</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Mapping.timeoutUnit'>timeoutUnit</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Mapping.triggeredByCron'>triggeredByCron</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Mapping.triggeredByMousetrap'>triggeredByMousetrap</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='Mapping.csvType_name'>csvType&#95;name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;mapping</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>UK&#95;j74jdcbkt37dni6f8du3vvo74</td>
+		<td> ON name</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKedgg2pse2dh5ji7n4hd0qvk9w</td>
+		<td> ON csvType&#95;name</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKedgg2pse2dh5ji7n4hd0qvk9w</td>
+		<td > ( csvType&#95;name ) ref <a href='#CsvType'>CsvType</a> (name) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='MappingColumn' onclick='window.scrollTo(1270, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table MappingColumn</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='MappingColumn.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='MappingColumn.name'>name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.calculation'>calculation</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.comment'>comment</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='MappingColumn.ignored'>ignored</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='MappingColumn.keyColumn'>keyColumn</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.linkSatelliteName'>linkSatelliteName</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.newName'>newName</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.objectAlias'>objectAlias</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.objectComment'>objectComment</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.objectName'>objectName</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='MappingColumn.orderPosition'>orderPosition</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='MappingColumn.partOfLinkSatellite'>partOfLinkSatellite</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.roleName'>roleName</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MappingColumn.satelliteName'>satelliteName</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='MappingColumn.dataDomain_name'>dataDomain&#95;name</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='MappingColumn.mapping_dbId'>mapping&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;mappingcolumn</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>UK&#95;dsipjj94om80hrco1ix87ybqu</td>
+		<td> ON name&#44; mapping&#95;dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK95jjll0w12k01lgyw3qnpmm47</td>
+		<td> ON dataDomain&#95;name</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKg3rgx3xhhkduy6lr42dd4i6oo</td>
+		<td> ON mapping&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK95jjll0w12k01lgyw3qnpmm47</td>
+		<td > ( dataDomain&#95;name ) ref <a href='#DataDomain'>DataDomain</a> (name) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKg3rgx3xhhkduy6lr42dd4i6oo</td>
+		<td > ( mapping&#95;dbId ) ref <a href='#Mapping'>Mapping</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='MappingColumnReference' onclick='window.scrollTo(1525, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table MappingColumnReference</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='MappingColumnReference.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='MappingColumnReference.role'>role</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='MappingColumnReference.dvColumn_dbId'>dvColumn&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='MappingColumnReference.mappingColumn_dbId'>mappingColumn&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;mappingcolumnreference</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>UK&#95;cjw0fhyelpvo9t1gwtkd4st1j</td>
+		<td> ON dvColumn&#95;dbId&#44; mappingColumn&#95;dbId&#44; role</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK11kawphfe12nlgduf1vqspswn</td>
+		<td> ON mappingColumn&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKky8rltje5mbdrv092wsdgwow8</td>
+		<td > ( dvColumn&#95;dbId ) ref <a href='#DVColumn'>DVColumn</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK11kawphfe12nlgduf1vqspswn</td>
+		<td > ( mappingColumn&#95;dbId ) ref <a href='#MappingColumn'>MappingColumn</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='MappingObjectReference' onclick='window.scrollTo(70, 315);return false;' style='cursor:pointer;'><h4 class='card-title'>Table MappingObjectReference</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='MappingObjectReference.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='MappingObjectReference.role'>role</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='MappingObjectReference.mapping_dbId'>mapping&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='MappingObjectReference.object_dbId'>object&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;mappingobjectreference</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>UK&#95;f57xy5mf8lsahlt18agixeh90</td>
+		<td> ON mapping&#95;dbId&#44; object&#95;dbId&#44; role</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK8rgsrm9qb74lpopds3m4ksiob</td>
+		<td> ON object&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK8rgsrm9qb74lpopds3m4ksiob</td>
+		<td > ( object&#95;dbId ) ref <a href='#DVObject'>DVObject</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKanoyc3brkimgyusfh8mn7s0we</td>
+		<td > ( mapping&#95;dbId ) ref <a href='#Mapping'>Mapping</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='Mapping_dependentMappingNames' onclick='window.scrollTo(985, 390);return false;' style='cursor:pointer;'><h4 class='card-title'>Table Mapping_dependentMappingNames</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='Mapping_dependentMappingNames.Mapping_dbId'>Mapping&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Mapping_dependentMappingNames.dependentMappingNames'>dependentMappingNames</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK9x6lvyw2106f26k7prxk2st6k</td>
+		<td> ON Mapping&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK9x6lvyw2106f26k7prxk2st6k</td>
+		<td > ( Mapping&#95;dbId ) ref <a href='#Mapping'>Mapping</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='SQLExpression' onclick='window.scrollTo(2500, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table SQLExpression</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='SQLExpression.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='SQLExpression.description'>description</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='SQLExpression.expressionType'>expressionType</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='SQLExpression.orderNumber'>orderNumber</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='SQLExpression.queryType'>queryType</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='SQLExpression.sqlCode'>sqlCode</a></td>
+		<td> longtext   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='SQLExpression.mapping_dbId'>mapping&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;sqlexpression</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK963piyfy9v46kvafqqo0sbuub</td>
+		<td> ON mapping&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK963piyfy9v46kvafqqo0sbuub</td>
+		<td > ( mapping&#95;dbId ) ref <a href='#Mapping'>Mapping</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='SQLExpressionExecution' onclick='window.scrollTo(2290, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table SQLExpressionExecution</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='SQLExpressionExecution.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='SQLExpressionExecution.errorFlag'>errorFlag</a></td>
+		<td> boolean   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='SQLExpressionExecution.errorMessage'>errorMessage</a></td>
+		<td> longtext   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='SQLExpressionExecution.executedTime'>executedTime</a></td>
+		<td> datetime   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='SQLExpressionExecution.runtime'>runtime</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='SQLExpressionExecution.stmntOrder'>stmntOrder</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='SQLExpressionExecution.updateCount'>updateCount</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='SQLExpressionExecution.cargo_dbId'>cargo&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='SQLExpressionExecution.expression_dbId'>expression&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;sqlexpressionexecution</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK21f7c1livolqsguwfwe24wjd6</td>
+		<td> ON cargo&#95;dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK4747kxc4511bst30syv0h62gf</td>
+		<td> ON expression&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK4747kxc4511bst30syv0h62gf</td>
+		<td > ( expression&#95;dbId ) ref <a href='#SQLExpression'>SQLExpression</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK21f7c1livolqsguwfwe24wjd6</td>
+		<td > ( cargo&#95;dbId ) ref <a href='#WorkerCargo'>WorkerCargo</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='User' onclick='window.scrollTo(970, 570);return false;' style='cursor:pointer;'><h4 class='card-title'>Table User</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='User.username'>username</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='User.passwordHash'>passwordHash</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='User.role'>role</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;user</td>
+		<td> ON username</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='WorkerCargo' onclick='window.scrollTo(2020, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Table WorkerCargo</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='WorkerCargo.dbId'>dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='WorkerCargo.DTYPE'>DTYPE</a></td>
+		<td> varchar&#40; 31 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.checkSum'>checkSum</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.executionEndDateTime'>executionEndDateTime</a></td>
+		<td> datetime   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.executionStartDateTime'>executionStartDateTime</a></td>
+		<td> datetime   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.mappingName'>mappingName</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.payloadSize'>payloadSize</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='WorkerCargo.runtime'>runtime</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.status'>status</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.dataSize'>dataSize</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.fileGroup'>fileGroup</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.fileName'>fileName</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.publishDate'>publishDate</a></td>
+		<td> datetime   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo.stagingMode'>stagingMode</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='WorkerCargo.mapping_dbId'>mapping&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;workercargo</td>
+		<td> ON dbId</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FK5no6sbllidjxv8fnbv9uq4tgm</td>
+		<td> ON mapping&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK5no6sbllidjxv8fnbv9uq4tgm</td>
+		<td > ( mapping&#95;dbId ) ref <a href='#Mapping'>Mapping</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='WorkerCargo_errors' onclick='window.scrollTo(2290, 405);return false;' style='cursor:pointer;'><h4 class='card-title'>Table WorkerCargo_errors</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='WorkerCargo_errors.WorkerCargo_dbId'>WorkerCargo&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo_errors.errors'>errors</a></td>
+		<td> varchar&#40; 1000 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKf2hv5ji8oy8j04qw9a9802ogy</td>
+		<td> ON WorkerCargo&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKf2hv5ji8oy8j04qw9a9802ogy</td>
+		<td > ( WorkerCargo&#95;dbId ) ref <a href='#WorkerCargo'>WorkerCargo</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='WorkerCargo_messages' onclick='window.scrollTo(2020, 405);return false;' style='cursor:pointer;'><h4 class='card-title'>Table WorkerCargo_messages</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='WorkerCargo_messages.WorkerCargo_dbId'>WorkerCargo&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo_messages.messages'>messages</a></td>
+		<td> varchar&#40; 1000 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKocyk0haeuxspytk3tbxnoxd70</td>
+		<td> ON WorkerCargo&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKocyk0haeuxspytk3tbxnoxd70</td>
+		<td > ( WorkerCargo&#95;dbId ) ref <a href='#WorkerCargo'>WorkerCargo</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='WorkerCargo_warnings' onclick='window.scrollTo(1795, 405);return false;' style='cursor:pointer;'><h4 class='card-title'>Table WorkerCargo_warnings</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='WorkerCargo_warnings.WorkerCargo_dbId'>WorkerCargo&#95;dbId</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='WorkerCargo_warnings.warnings'>warnings</a></td>
+		<td> varchar&#40; 1000 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>FKqix9yitofi90jj6eq1c1p1p0b</td>
+		<td> ON WorkerCargo&#95;dbId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FKqix9yitofi90jj6eq1c1p1p0b</td>
+		<td > ( WorkerCargo&#95;dbId ) ref <a href='#WorkerCargo'>WorkerCargo</a> (dbId) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='hibernate_sequence' onclick='window.scrollTo(790, 570);return false;' style='cursor:pointer;'><h4 class='card-title'>Table hibernate_sequence</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='hibernate_sequence.next_val'>next&#95;val</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<p align='right'><a href='https://www.dbschema.com' style='color:#aaa'>Powered by DbSchema</a></p></body></html>

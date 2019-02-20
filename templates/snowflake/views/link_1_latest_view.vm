@@ -1,0 +1,66 @@
+#set( $key_column       = "${object.name}${object.keySuffix}" )##
+#set( $core_schema      = ${dwhConfig.schemaNameServed()} )##
+#set( $last_seen        = ${vaultConfig.lastSeenDateName()})##
+#set( $sat_name         = "${vaultConfig.satNamePrefix()}${object.name}${vaultConfig.histSatSuffix()}" )##
+#set( $load_date        = ${vaultConfig.loadDateName()} )##
+#set( $load_date_end    = ${vaultConfig.loadDateEndName()} )##
+#set( $load_id          = ${vaultConfig.loadIdName()} )##
+#set( $view_prefix      = "${vaultConfig.viewPrefix()}${vaultConfig.viewLatestPrefix()}" )##
+#set( $link_name        = "${object.namePrefix}${object.name}" )##
+##
+create or replace view ${dwhConfig.schemaNameViews()}.${view_prefix}${link_name} as
+select
+      link.${key_column} ${link_name}_${key_column}
+    , link.${last_seen} ${link_name}_${last_seen}
+    , link.${load_id} ${link_name}_${load_id}
+## Link's Satellites
+#foreach($sat in $satellites)
+#set($sat_name = "${sat.namePrefix}${sat.name}")##
+#set($sat_alias = "sat_${foreach.count}")##
+    , ${sat_alias}.${load_id} ${sat_name}_${load_id}
+    #foreach($col in $sat.columnsSorted)
+    , ${sat_alias}.${col.name} ${sat_name}_${col.name}
+    #end
+#end
+## Hub + Satellites via Leg
+#foreach($leg in $object.legsSorted)
+#set($leg_alias = "leg_${foreach.count}")##
+#set($hub_name = "${leg.hub.namePrefix}${leg.hub.name}#if($object.selfReference && !$leg.isDefaultRole())_${leg.role}#end")##
+    , ${leg_alias}.${leg.hub.name}${leg.hub.keySuffix} ${hub_name}_${leg.hub.name}${leg.hub.keySuffix}
+    , ${leg_alias}.${load_id} ${hub_name}_${load_id}
+    , ${leg_alias}.${last_seen} ${hub_name}_${last_seen}
+#foreach($col in $leg.hub.columnsSorted)
+    , ${leg_alias}.${col.name} ${hub_name}_${col.name}
+#end
+#foreach($sat in $hubSatMap.get($leg.hub.name))
+#set($sat_alias = "${leg_alias}_${sat.namePrefix}${sat.name}")
+#foreach($col in $sat.columnsSorted)
+    , ${sat_alias}.${col.name} ${hub_name}_${sat.namePrefix}${sat.name}_${col.name}
+#end
+#end
+#end
+from ${core_schema}.${link_name} link
+## History Satellite?
+#if($object.historicized)
+join ${core_schema}.${vaultConfig.satNamePrefix()}${object.name}${vaultConfig.histSatSuffix()} link_hist_sat
+    on link.${key_column} = link_hist_sat.${key_column}
+    and current_timestamp() between link_hist_sat.${load_date} and link_hist_sat.${load_date_end}
+#end
+#foreach($sat in $satellites)
+left join ${core_schema}.${sat.namePrefix}${sat.name} sat_${foreach.count}
+    on sat_${foreach.count}.${key_column} = link.${key_column}
+    and current_timestamp() between sat_${foreach.count}.${load_date} and sat_${foreach.count}.${load_date_end}
+#end
+## Join Hubs via Leg
+#foreach($leg in $object.legsSorted)
+#set($leg_alias = "leg_${foreach.count}")##
+#set($leg_key_col = "${leg.hub.name}${leg.hub.keySuffix}#if($object.selfReference && !$leg.isDefaultRole())_${leg.role}#end")##
+join ${core_schema}.${leg.hub.namePrefix}${leg.hub.name} ${leg_alias}
+    on link.$leg_key_col = ${leg_alias}.${leg.hub.name}${leg.hub.keySuffix}
+#foreach($sat in $hubSatMap.get($leg.hub.name))
+#set($sat_alias = "${leg_alias}_${sat.namePrefix}${sat.name}")
+left join ${core_schema}.${sat.namePrefix}${sat.name} ${sat_alias}
+    on ${sat_alias}.${sat.parent.name}${sat.parent.keySuffix} = link.${leg_key_col}
+    and current_timestamp() between ${sat_alias}.${load_date} and ${sat_alias}.${load_date_end}
+#end
+#end;

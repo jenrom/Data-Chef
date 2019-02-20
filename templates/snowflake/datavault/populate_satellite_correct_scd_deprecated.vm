@@ -1,0 +1,34 @@
+#* Correct gaps in SCD2 history after deletion of one or multiple load ids *#
+#set( $sat_pk = "${sat.parent.name}${sat.parent.keySuffix}" )##
+#set( $sat_dk = "${sat.name}${vaultConfig.satDiffKeySuffix()}" )##
+#set( $sat_schema = $dwhConfig.schemaNameServed() )##
+#set( $sat_name = "${sat.namePrefix}${sat.name}")##
+#set( $stg_tab = ${mapping.name} )##
+#set( $stg_schema = $dwhConfig.schemaNameCooked() )##
+#set( $load_date = $vaultConfig.loadDateName() )##
+#set( $load_date_end = $vaultConfig.loadDateEndName() )##
+#set( $infinity_date = $vaultConfig.loadDateEndInfinityValue() )##
+##
+update ${sat_schema}.${sat_name}
+   set ${load_date_end} = ck.next_load_date
+  from ( select
+              ${sat_pk}
+            , ${sat_dk}
+            , ${load_date}
+            , nvl(
+                dateadd(
+                    millisecond,
+                    -1,
+                    lead(${load_date}) over (partition by  ${sat_pk} order by ${load_date})
+                ),
+                to_timestamp_ltz('$infinity_date')
+              ) next_load_date
+        from ${sat_schema}.${sat_name}
+      ) ck,
+      ${sat_schema}.${sat_name} sat
+where 1=1
+and sat.${sat_pk} = ck.${sat_pk}
+and sat.${sat_dk} = ck.${sat_dk}
+and sat.${load_date} = ck.${load_date}
+and sat.${load_date_end} != ck.next_load_date
+;

@@ -1,0 +1,31 @@
+#set( $load_date = $vaultConfig.loadDateName() )##
+#set($hub_key_col = "${object.name}${object.keySuffix}")##
+##
+merge into ${dwhConfig.schemaNameServed()}.${object.namePrefix}${object.name} hub
+     using (select distinct
+                   stg.${hub_key_col}#if($role)_${role}#end
+                 , stg.${vaultConfig.loadIdName()}
+                 , stg.${load_date}
+          #foreach($col in ${object.columnsSorted})
+                 , stg.${object.namePrefix}${object.name}_${col.name}#if($role)_${role}#end
+          #end
+              from ${dwhConfig.schemaNameCooked()}.${mapping.name} stg
+           ) ckd
+        on (hub.${hub_key_col} = ckd.${hub_key_col}#if($role)_${role}#end)
+  when matched then
+    update
+       set ${vaultConfig.lastSeenDateName()} = ckd.${load_date}
+  when not matched then
+    insert (${hub_key_col}
+          , ${vaultConfig.loadIdName()}
+          #foreach($col in $object.columnsSorted)
+          , ${col.name}
+          #end
+          , ${vaultConfig.lastSeenDateName()})
+    values (ckd.${hub_key_col}#if($role)_${role}#end
+          , ckd.${vaultConfig.loadIdName()}
+          #foreach($col in $object.columnsSorted)
+          , ckd.${object.namePrefix}${object.name}_${col.name}#if($role)_${role}#end
+          #end
+          , ckd.${load_date})
+;

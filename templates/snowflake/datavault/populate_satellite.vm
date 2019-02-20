@@ -1,0 +1,48 @@
+#set( $sat_pk = "${object.parent.name}${object.parent.keySuffix}" )##
+#set( $sat_dk = "${object.name}${vaultConfig.satDiffKeySuffix()}" )##
+#set( $sat_schema = $dwhConfig.schemaNameServed() )##
+#set( $sat_name = "${object.namePrefix}${object.name}")##
+#set( $stg_tab = ${mapping.name} )##
+#set( $stg_schema = $dwhConfig.schemaNameCooked() )##
+#set( $load_id = $vaultConfig.loadIdName() )##
+#set( $load_date = $vaultConfig.loadDateName() )##
+#set( $load_date_end = $vaultConfig.loadDateEndName() )##
+#set( $infinity_date = $vaultConfig.loadDateEndInfinityValue() )##
+##
+insert into ${sat_schema}.${sat_name}
+  			(  ${sat_pk}
+             , ${sat_dk}
+             , ${load_id}
+             , ${load_date}
+             , ${load_date_end}
+             #foreach($col in $object.getColumnsSorted())
+             , ${col.getName()}
+             #end )
+     select distinct
+              s.${sat_pk}#if($role)_${role}#end
+            , s.${sat_dk}#if($role)_${role}#end
+            , s.${load_id}
+            , s.${load_date}
+            , to_timestamp_ltz('${infinity_date}') ${load_date_end}
+            #foreach($col in $object.getColumnsSorted())
+            , s.${object.namePrefix}${object.name}_${col.name}#if($role)_${role}#end
+            #end
+       from ${stg_schema}.${stg_tab} s
+      where not exists (select 1
+                          from ${sat_schema}.${sat_name} t
+                         where t.${sat_pk}        = s.${sat_pk}#if($role)_${role}#end
+                           and t.${sat_dk}        = s.${sat_dk}#if($role)_${role}#end
+                           and t.${load_date_end} = to_timestamp_ltz('${infinity_date}'))
+;
+##
+update ${sat_schema}.${sat_name} sat
+   set ${load_date_end} = dateadd(millisecond, -1, stg.chef_load_date)
+  from (select distinct
+               ${sat_pk}#if($role)_${role}#end,
+               ${sat_dk}#if($role)_${role}#end,
+               ${load_date}
+  from ${stg_schema}.${stg_tab}) stg
+ where sat.${load_date_end} = to_timestamp_ltz('${infinity_date}')
+   and sat.${sat_dk} != stg.${sat_dk}#if($role)_${role}#end
+   and sat.${sat_pk} = stg.${sat_pk}#if($role)_${role}#end
+;

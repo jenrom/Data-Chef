@@ -1,0 +1,31 @@
+drop schema if exists ${dwhConfig.schemaNameAdmin()} cascade;
+drop schema if exists ${dwhConfig.schemaNameRaw()} cascade;
+drop schema if exists ${dwhConfig.schemaNameCooked()} cascade;
+drop schema if exists ${dwhConfig.schemaNameServed()} cascade;
+drop schema if exists ${dwhConfig.schemaNameDiner()} cascade;
+
+create schema ${dwhConfig.schemaNameAdmin()};
+create schema ${dwhConfig.schemaNameRaw()};
+create schema ${dwhConfig.schemaNameCooked()};
+create schema ${dwhConfig.schemaNameServed()};
+create schema ${dwhConfig.schemaNameDiner()};
+
+create or replace table ${dwhConfig.schemaNameAdmin()}.${dwhConfig.jobLogTableName()} (
+    db_id decimal(36, 0) identity,
+    load_id decimal(36, 0) comment is 'Chef Repository ID',
+    load_time timestamp comment is 'Job start timestamp',
+    load_time_end timestamp comment is 'Job end timestamp',
+    job_type varchar(100) comment is 'Worker type',
+    name varchar(255),
+    mapping_group varchar(255),
+    publish_date timestamp,
+    record_source varchar(10000),
+    payload_size int,
+    file_checksum varchar(32),
+    data_size int,
+    status varchar(50),
+    rollback_flag boolean default false,
+    rollback_time timestamp
+);
+
+alter table ${dwhConfig.schemaNameAdmin()}.${dwhConfig.jobLogTableName()} add constraint pk_chef_job_log primary key (db_id);

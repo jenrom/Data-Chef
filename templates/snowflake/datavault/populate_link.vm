@@ -1,0 +1,33 @@
+#set( $load_date = $vaultConfig.loadDateName() )##
+#set($link_name = "${object.namePrefix}${object.name}")##
+#set($link_key_column = "${object.name}${object.keySuffix}")##
+#macro(link_cols $prefix)
+    #foreach($leg in $object.legs)
+    , ${prefix}${leg.hub.name}${leg.hub.keySuffix}#if(!$leg.isDefaultRole())_${leg.role}#end
+    #end
+#end
+##
+merge into ${dwhConfig.schemaNameServed()}.${link_name} lnk
+     using (select distinct
+                   stg.${link_key_column}
+                 , stg.${vaultConfig.loadIdName()}
+                 , stg.${load_date}
+                   #link_cols('stg.')
+              from ${dwhConfig.schemaNameCooked()}.${mapping.name} stg
+           ) ckd
+        on (lnk.${link_key_column} = ckd.${link_key_column})
+  when matched then
+    update
+       set ${vaultConfig.lastSeenDateName()} = ckd.${load_date}
+  when not matched then
+    insert (${link_key_column}
+          , ${vaultConfig.loadIdName()}
+          #foreach($leg in $object.legs)
+          , ${leg.hub.name}${leg.hub.keySuffix}#if(!$leg.isDefaultRole() && ${object.selfReference})_${leg.role}#end
+          #end
+          , ${vaultConfig.lastSeenDateName()})
+    values (ckd.${link_key_column}
+          , ckd.${vaultConfig.loadIdName()}
+          #link_cols('ckd.')
+          , ckd.${load_date})
+;

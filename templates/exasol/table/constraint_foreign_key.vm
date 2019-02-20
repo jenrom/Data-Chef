@@ -1,0 +1,7 @@
+alter table ${foreignKey.schemaName}.${foreignKey.tableName}
+    add constraint ${foreignKey.name} foreign key (
+            #foreach($c in ${foreignKey.columns})#if(!$foreach.first), #end${c}#end
+        )
+        references ${foreignKey.targetSchema}.${foreignKey.targetTable} (
+            #foreach($c in ${foreignKey.referencedColumns})#if(!$foreach.first), #end${c}#end
+        );

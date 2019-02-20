@@ -1,0 +1,8 @@
+delete from $schema.$name
+where ${dvConfig.loadIdName()} in (
+    select db_id
+    from ${dwhConfig.schemaNameAdmin()}.${dwhConfig.jobLogTableName()}
+    where load_id in (
+        #foreach($id in $idList)'${id}'#if($foreach.hasNext), #end#end
+    )
+);

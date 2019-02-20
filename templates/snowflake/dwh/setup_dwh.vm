@@ -1,0 +1,37 @@
+create or replace database ${dwhConfig.dbName()};
+create schema ${dwhConfig.snowflakeSchemaNameStage()};
+
+create or replace warehouse ${dwhConfig.snowflakeWarehouseName()} with
+warehouse_size='${dwhConfig.snowflakeWarehouseSize()}'
+warehouse_type=${dwhConfig.snowflakeWarehouseType()}
+auto_suspend = ${dwhConfig.snowflakeAutoSuspend()}
+auto_resume = ${dwhConfig.snowflakeAutoResume()}
+initially_suspended=${dwhConfig.snowflakeInitiallySuspended()};
+
+create or replace stage ${dwhConfig.dbName()}.${dwhConfig.snowflakeSchemaNameStage()}.${dwhConfig.snowflakeStageName()} comment = 'stage for datachef';
+
+create schema ${dwhConfig.dbName()}.${dwhConfig.schemaNameRaw()};
+create schema ${dwhConfig.dbName()}.${dwhConfig.schemaNameCooked()};
+create schema ${dwhConfig.dbName()}.${dwhConfig.schemaNameServed()};
+create schema ${dwhConfig.dbName()}.${dwhConfig.schemaNameAdmin()};
+create schema ${dwhConfig.dbName()}.${dwhConfig.schemaNameDiner()};
+
+create or replace table ${dwhConfig.dbName()}.${dwhConfig.schemaNameAdmin()}.${dwhConfig.jobLogTableName()} (
+    db_id number identity,
+    load_id number comment 'Chef Repository ID',
+    load_time timestamp_ltz comment 'Job start timestamp',
+    load_time_end timestamp_ltz comment 'Job end timestamp',
+    job_type varchar(100) comment 'Worker type',
+    name varchar(255),
+    mapping_group varchar(255),
+    publish_date timestamp_ltz,
+    record_source varchar(10000),
+    payload_size int,
+    file_checksum varchar(32),
+    data_size int,
+    status varchar(50),
+    rollback_flag boolean default false,
+    rollback_time timestamp_ltz
+);
+
+alter table ${dwhConfig.dbName()}.${dwhConfig.schemaNameAdmin()}.${dwhConfig.jobLogTableName()} add constraint pk_chef_job_log primary key (db_id);

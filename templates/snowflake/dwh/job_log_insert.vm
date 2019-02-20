@@ -1,0 +1,29 @@
+INSERT INTO ${dwhConfig.schemaNameAdmin()}.${dwhConfig.jobLogTableName()}
+(
+    load_id,
+    load_time,
+    load_time_end,
+    job_type,
+    name,
+    mapping_group,
+    publish_date,
+    record_source,
+    payload_size,
+    file_checksum,
+    data_size,
+    status
+)
+VALUES (
+    ${entry.loadId},
+    '${entry.loadTime}',
+    '${entry.loadTimeEnd}',
+    '${entry.jobType}',
+    '${entry.name}',
+    '${entry.mappingGroup}',
+    '${entry.publishDate}',
+    '${entry.recordSource}',
+    ${entry.payloadSize},
+    '${entry.fileChecksum}',
+    ${entry.dataSize},
+    '${entry.status}'
+);

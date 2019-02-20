@@ -1,0 +1,20 @@
+#set($table = $mapping.name)##
+#set($file_path = $vaultConfig.placeholderFilePath())##
+#set($file_name = $vaultConfig.placeholderFileName())##
+#set($encoding = $mapping.csvType.encoding)##
+#set($row_sep = $mapping.csvType.rowSeparator)##
+#set($col_sep = $mapping.csvType.columnSeparator)##
+#set($col_del = $mapping.csvType.columnDelimiter)##
+#set($skip = $mapping.csvType.skip)##
+##set($reject_limit = $mapping.csvType.rejectLimit)##
+put file://${file_path} @${dwhConfig.dbName()}.${dwhConfig.snowflakeSchemaNameStage()}.${dwhConfig.snowflakeStageName()};
+
+COPY INTO ${dwhConfig.dbName()}.${dwhConfig.schemaNameRaw()}.${table}
+    FROM @${dwhConfig.dbName()}.${dwhConfig.snowflakeSchemaNameStage()}.${dwhConfig.snowflakeStageName()}/${file_name} ## only the file name is needed here?!
+    file_format = ( type='csv'
+        ENCODING = '${encoding}' ##'UTF-8'
+        RECORD_DELIMITER = '${row_sep}' ##'\n' -- ${row_sep}
+        FIELD_DELIMITER = '${col_sep}' ##';'
+        FIELD_OPTIONALLY_ENCLOSED_BY = '${col_del}' ##'\"'
+        SKIP_HEADER = ${skip})
+;

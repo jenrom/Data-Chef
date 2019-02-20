@@ -1,0 +1,54 @@
+.page-header {
+    margin-top: 20px;
+    font-size: 28px;
+}
+
+.navbar-top-links li a.active {
+    background-color: #eaeaea;
+}
+
+.badge-error {
+    background-color: #b94a48;
+}
+.badge-warning {
+    background-color: #f89406;
+}
+
+.badge-success {
+    background-color: #468847;
+}
+.badge-info {
+    background-color: #3a87ad;
+}
+.badge-inverse {
+    background-color: #333333;
+}
+
+.login-background {
+    background: url('/img/login_background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar-brand {
+    padding-left: 0px;
+}
+
+.data-chef-logo {
+    display: block;
+    float: left;
+    text-indent: -9999px;
+    width: 50px;
+    height: 50px;
+    background: url('/img/cooking.svg') no-repeat center 7px;
+    background-size: 30px 30px;
+}
+
+div #served-filter {
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+

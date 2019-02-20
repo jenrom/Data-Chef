@@ -1,0 +1,23 @@
+config {
+    type : merged
+    trigger     : after test_country, fact_sales timeout 50 sec
+}
+
+mapping {
+    fact_sales_id : id
+    sale_date   : kc, dd=date, cmnt="Date of sale"
+    customer_id : kc, dd=code, cmnt="Business Key of Entity customer"
+    product_id  : kc, dd=code, cmnt="Business Key of Entity product"
+    amount      : dd=quantity, cmnt="Number of sold products"
+    price       : dd=money, cmnt="Price of sold product"
+}
+
+sql {"
+    SELECT
+        CURRENT_DATE() sale_date,
+        'abc' customer_id,
+        'abc' product_id,
+        100 amount,
+        20.5 price
+    FROM dual
+"}

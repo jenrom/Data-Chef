@@ -1,0 +1,141 @@
+#set($page_name = "Develop: Details")
+#parse('common/head.vm')
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Develop: Details</h1>
+    </div>
+</div>
+
+#if($mapping.isValid())
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info">
+            #if($mapping.stagingMode == "INSERT")
+                <div class="hidden" id="custom_sql_insert">${mapping.customSqlCode}</div>
+                <p>
+                    <strong>Staging</strong> using custom SQL executed as INSERT AS SELECT.
+                    <button class="btn btn-xs btn-default" onclick="showSqlModal('Custom SQL', 'custom_sql_insert')">SQL</button>
+                </p>
+            #elseif($mapping.stagingMode == "CONNECTION")
+                <div class="hidden" id="custom_sql_connection">${mapping.customSqlCode}</div>
+                <p>
+                    <strong>Staging</strong> via connection (${mapping.connectionType}) '${mapping.connectionName}' using custom SQL.
+                    <button class="btn btn-xs btn-default" onclick="showSqlModal('Custom SQL', 'custom_sql_connection')">SQL</button>
+                </p>
+            #else
+                <p>Staging via files of type '${mapping.csvType.name}'.</p>
+            #end
+            #if($mapping.cronTriggered)
+                <p>Triggered via CRON: ${mapping.describeCronExpression()}</p>
+            #end
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-7">
+        <div class="panel panel-default">
+            <div class="panel-heading">Data Model</div>
+            <div class="panel-body">
+                <div id="mapping-model" style="height: 450px"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">References</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Object</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            #foreach($ref in $mapping.getMappingObjectReferencesSorted())
+                            <tr>
+                                <td>${foreach.count}</td>
+                                <td>
+                                    <span class="label label-default">${ref.object.type}</span>
+
+                                    ${ref.object.name}
+
+                                    #if($ref.object.hasComment())
+                                        <a href="#" data-toggle="tooltip" title="${ref.object.comments}">
+                                            <span class="fa fa-comment-o"></span>
+                                        </a>
+                                    #end
+
+                                    #if(!$ref.isDefaultRole())
+                                        <span class="label label-primary">${ref.role}</span>
+                                    #end
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#end
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Mapping Columns</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Data Domain</th>
+                            <th>Object</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            #foreach($mcol in $mapping.getMappingColumnsOriginalOrder())
+                            <tr class="#if($mcol.isIngored())warning#end">
+                                <td>${foreach.count}</td>
+                                <td>
+                                    ${mcol.name}
+                                    #if($mcol.isIgnored())
+                                        <span class="label label-warning">IGN</span>
+                                    #end
+                                    #if($mcol.hasComment())
+                                        <a href="#" data-toggle="tooltip" title="${mcol.comment}">
+                                            <span class="fa fa-comment-o"></span>
+                                        </a>
+                                    #end
+                                    #if($mcol.isKeyColumn())<span class="label label-default">KC</span>#end
+                                    #if($mcol.isPartOfHubSatellite())<span class="label label-default">SA</span>#end
+                                    #if($mcol.isPartOfLinkSatellite())<span class="label label-default">LSA</span>#end
+                                </td>
+                                <td>${mcol.dataDomain.name} <span class="label label-default">${mcol.dataDomain.sqlType}</span></td>
+                                <td>
+                                    #if($mcol.isPartOfLinkSatellite())
+                                        ${mcol.linkSatelliteName}
+                                    #else
+                                        ${mcol.objectName}
+                                        #if($mcol.hasSatelliteName()) -> ${mcol.satelliteName}#end
+                                    #end
+                                    #if($mcol.hasRoleName())
+                                        <span class="label label-primary">${mcol.roleName}</span>
+                                    #end
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+#parse('common/foot.vm')

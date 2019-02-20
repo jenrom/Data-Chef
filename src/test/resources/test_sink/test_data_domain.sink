@@ -1,0 +1,16 @@
+config {
+    stage: import from jdbc datachef_repository
+    load: full
+    trigger: cron "0/45 * * * * ?"
+}
+
+mapping {
+    dd_name            : dd=name, kc, cmnt="Name of the Data Domain"
+    default_value   : dd=name, cmnt="Default if null"
+    sql_type        : dd=name, cmnt="Technical SQL type"
+} on=data_domain, ocmnt="Data Domain"
+
+sql{"
+    select `name`, `defaultValue`, `sqlType`
+    from `datachef`.`DataDomain`
+"}

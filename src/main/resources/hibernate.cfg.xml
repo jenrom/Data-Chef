@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.56.101:3306/datachef?useSSL=false</property>
+        <property name="hibernate.connection.username">mna</property>
+        <property name="hibernate.connection.password">mna</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <!-- <property name="hibernate.hbm2ddl.import_files">config/initial_data.sql</property> -->
+
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.JCacheRegionFactory</property>
+        <!-- <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property> -->
+        <property name="hibernate.javax.cache.uri">ehcache.xml</property>
+
+        <property name="hibernate.c3p0.timeout">5</property>
+        <!--
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">50</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        -->
+
+        <mapping class="de.areto.datachef.model.datavault.Hub" />
+        <mapping class="de.areto.datachef.model.datavault.Satellite" />
+        <mapping class="de.areto.datachef.model.datavault.Link" />
+        <mapping class="de.areto.datachef.model.datavault.Leg" />
+        <mapping class="de.areto.datachef.model.datavault.DVObject" />
+        <mapping class="de.areto.datachef.model.datavault.DataDomain" />
+        <mapping class="de.areto.datachef.model.datavault.DVColumn" />
+
+        <mapping class="de.areto.datachef.model.mapping.Mapping" />
+        <mapping class="de.areto.datachef.model.mapping.MappingColumn" />
+        <mapping class="de.areto.datachef.model.mapping.MappingColumnReference" />
+        <mapping class="de.areto.datachef.model.mapping.MappingObjectReference" />
+        <mapping class="de.areto.datachef.model.mapping.CsvType" />
+
+        <mapping class="de.areto.datachef.model.mart.Mart" />
+        <mapping class="de.areto.datachef.model.mart.MartColumn" />
+
+        <mapping class="de.areto.datachef.model.compilation.CompilationUnit" />
+        <mapping class="de.areto.datachef.model.compilation.SQLExpression" />
+
+        <mapping class="de.areto.datachef.model.worker.WorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.MappingWorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.DataWorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.MappingDataFileWorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.MappingDataSQLWorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.MartDataWorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.MartWorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.RollbackMappingWorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.RollbackMartWorkerCargo" />
+        <mapping class="de.areto.datachef.model.worker.RollbackWorkerCargo" />
+        <mapping class="de.areto.datachef.model.compilation.SQLExpressionExecution" />
+
+        <mapping class="de.areto.datachef.model.web.User" />
+
+    </session-factory>
+</hibernate-configuration>

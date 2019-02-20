@@ -1,0 +1,18 @@
+config {
+    stage       : insert
+    load        : partial
+    trigger     : after test_country timeout 1 sec
+}
+
+mapping {
+    reg_key         : dd=name, kc
+    avg_pop         : dd=decimal_measure_no_default, sn=subregion_business_vault
+}
+on=subregion,
+oa=sreg
+
+sql{"
+    select h_subregion_reg_key reg_key, round(avg(h_country_s_ctry_details_pop_mio), 2) avg_pop
+    from chef_served.v_latest_l_ctry_sreg
+    group by h_subregion_reg_key
+"}

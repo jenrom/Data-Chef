@@ -1,0 +1,5 @@
+pers_no;pers_no_disc;name;surname;date_of_birth;private_car;private_car_brand;private_car_hp;company_car;company_car_brand;company_car_hp
+1;1;"Mustermann";"Max";"1965-04-23";"HH-AC-1234";"BMW";120;"K-AC-743";"VW";150
+2;1;"Meier";"Luise";"1977-05-01";"M-KD-35";"MB";180;"K-AC-34";"VW";160
+3;1;"Müller";"Fritz";"1982-12-12";"HB-TR-666";"Audi";220;"K-AC-778";"VW";170
+4;2;"Schulz";"Heinrich";"1979-11-13";"M-DC-1246";"BMW";180;"K-AC-555";"Skoda";130

@@ -1,0 +1,54 @@
+## History Satellite Update
+#set( $sat_pk           = "${object.name}${object.keySuffix}" )##
+#set( $core_schema      = ${dwhConfig.schemaNameServed()} )##
+#set( $sat_name         = "${vaultConfig.satNamePrefix()}${object.name}${vaultConfig.histSatSuffix()}" )##
+#set( $ckd_table        = ${mapping.name} )##
+#set( $ckd_schema       = ${dwhConfig.schemaNameCooked()} )##
+#set( $load_date        = ${vaultConfig.loadDateName()} )##
+#set( $load_date_end    = ${vaultConfig.loadDateEndName()} )##
+#set( $load_id          = ${vaultConfig.loadIdName()} )##
+#set( $inf_value        = ${vaultConfig.loadDateEndInfinityValue()} )##
+#set( $parent_name      = "${object.namePrefix}${object.name}" )##
+##
+insert into ${core_schema}.${sat_name} (
+    ${sat_pk}, ${load_id}, ${load_date}, ${load_date_end}
+)
+select distinct
+    ckd.${sat_pk} ${sat_pk},
+    ckd.${load_id} ${load_id},
+    ckd.${load_date},
+    to_timestamp('${inf_value}') ${load_date_end}
+from
+    ${ckd_schema}.${ckd_table} ckd
+where 1=1
+  and not exists (
+          select 1
+          from ${core_schema}.${parent_name} lnk,
+               ${core_schema}.${sat_name} sat
+          where 1=1
+            and lnk.${sat_pk} = ckd.${sat_pk}
+            and lnk.${sat_pk} = sat.${sat_pk}
+            and sat.${load_date_end} = to_timestamp('${inf_value}')
+      )
+;
+##
+update ${core_schema}.${sat_name}
+set ${load_date_end} = add_seconds(sub.${load_date},-0.001)
+from (
+select distinct lnk.${sat_pk},
+ckd.${load_date}
+from ${core_schema}.${parent_name} lnk,
+${ckd_schema}.${ckd_table} ckd
+where 1=1
+#foreach($leg in $object.legs)
+    #set($cname = "${leg.hub.name}${leg.hub.keySuffix}")##
+    #set($hub_key_name = $cname) ##
+    #if(!$leg.isDefaultRole())#set($cname = "${cname}_${leg.role}")#end##
+and lnk.${hub_key_name} #if($leg.driving)=#else!=#end ckd.${cname}
+#end
+) sub,
+${core_schema}.${sat_name} sat
+where 1=1
+and sub.${sat_pk} = sat.${sat_pk}
+and sat.${load_date_end} = to_timestamp('${inf_value}')
+;

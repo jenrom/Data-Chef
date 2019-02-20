@@ -1,0 +1,615 @@
+</div> <!-- /#page-wrapper -->
+
+</div> <!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="/vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- DataTables JavaScript -->
+<script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/dist/js/sb-admin-2.js"></script>
+
+<!-- Custom Data Chef -->
+<script src="/dist/js/datachef.js"></script>
+
+<!-- vis.js -->
+<script src="/vendor/visjs/vis.min.js"></script>
+
+<!-- bootboxjs -->
+<script src="/vendor/bootboxjs/bootbox.min.js"></script>
+
+<!-- sql-formatter -->
+<script src="/vendor/sql-formatter/sql-formatter.min.js"></script>
+
+<!-- hightlight-js -->
+<script src="/vendor/highlight-js/highlight.pack.js"></script>
+
+<!-- Default document.ready -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+
+        setInterval(function () {
+            $.ajax({
+                dataType: "json",
+                url: '/qc',
+                success: function (data) {
+                    $('#worker_counter').text(data[0]);
+                    $('#sink_counter').text(data[1]);
+                }
+            });
+        }, 3000);
+    });
+</script>
+
+#if($active == "mappings")
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#table-mappings').DataTable({
+            responsive: true,
+            order: [[ 0, "desc" ]],
+            ajax: "/mappings/list/data",
+            searchDelay: 800,
+            columns: [
+                {"data": "executionDateTime"}, //0
+                {"data": "mappingName"}, //1
+                {"data": "stagingMode"}, //2
+                {"data": "payloadSize"}, //3
+                {"data": "runtime"}, //4
+                {"data": "status"} //5
+            ],
+            serverSide: true,
+            "columnDefs": [
+                {
+                    "targets": 0,
+                    "render": function (data, type, full, meta) {
+                        return formatTimeString(data);
+                    }
+                },
+                {
+                    "targets" : 3,
+                    "render" : function(data, type, full, meta) {
+                        return data.toLocaleString("de-DE");
+                    }
+                },
+                {
+                    "targets": 4,
+                    "orderable": false,
+                    "render": function (data, type, full, meta) {
+                        return new Date(data).toISOString().slice(11, -1);
+                    }
+                },
+                {
+                    "targets": 5,
+                    "render": function (data, type, full, meta) {
+                        var cl = 'btn-success';
+                        if (data == "ERROR") cl = 'btn-danger';
+                        if (data == "WARNING") cl = 'btn-warning';
+
+                        var res = '';
+                        res += '<a href="/worker/details/' + full.dbId + '" class="btn btn-xs ' + cl + '" role="button" title="Executions and messages"><i class="fa fa-gears"></i></a>';
+                        res += ' <a onclick="promptRollback(' + full.dbId + ')" href="#" class="btn btn-xs btn-warning" title="Rollback"><i class="glyphicon glyphicon-remove-sign"></i></a>';
+                        if (data == "OKAY") {
+                            res += ' <a href="/mapping/details/' + full.mappingName + '" class="btn btn-xs btn-default" role="button" title="Details"><i class="glyphicon glyphicon-eye-open"></i></a>';
+                            res += ' <a href="/mapping/regenerate/' + full.mappingName + '" class="btn btn-xs btn-default" role="button" title="Regenerate SQLs" target="_blank"><i class="glyphicon glyphicon-ice-lolly-tasted"></i></a>';
+                            if(full.stagingMode != null && full.stagingMode != "FILE")
+                                res += ' <a href="#" onclick="promtTrigger(\'' + full.mappingName + '\')" class="btn btn-xs btn-default" role="button" title="Trigger manually"><i class="fa fa-magic"></i></a>';
+                        }
+
+                        return res;
+                    }
+                },
+                {
+                    "targets" : 2,
+                    "render" : function(data, type, full, meta) {
+                        if(data == "FILE")
+                            return '<span><i class="fa fa-file-text-o"></i> File</span>';
+                        if(data == "CONNECTION")
+                            return '<span><i class="fa fa-database"></i> Import</span>';
+                        if(data == "INSERT")
+                            return '<span><i class="fa fa-code"></i> Insert</span>';
+                        return "-";
+                    }
+                }
+            ]
+        });
+    });
+</script>
+#end
+#if($active == "marts")
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#table-marts').DataTable({
+            responsive: true,
+            order: [[ 0, "desc" ]],
+            ajax: "/marts/list/data",
+            searchDelay: 800,
+            columns: [
+                {"data": "executionDateTime"}, //0
+                {"data": "martName"}, //1
+                {"data": "type"}, //2
+                {"data": "triggerMode"}, //3
+                {"data": "runtime"}, //4
+                {"data": "status"} //5
+            ],
+            serverSide: true,
+            "columnDefs": [
+                {
+                    "targets": 0,
+                    "render": function (data, type, full, meta) {
+                        return formatTimeString(data);
+                    }
+                },
+                {
+                    "targets" : 2,
+                    "render" : function(data, type, full, meta) {
+                        if(data == "MERGED")
+                            return '<span><i class="fa fa-exchange"></i> Merged</span>';
+                        if(data == "HISTORICAL")
+                            return '<span><i class="fa fa-calendar"></i> Historical</span>';
+                        if(data == "LOAD")
+                            return '<span><i class="fa fa-spinner"></i> Load</span>';
+                        if(data == "RELOAD")
+                            return '<span><i class="fa fa-refresh"></i> Reload</span>';
+                        return "n/a";
+                    }
+                },
+                {
+                    "targets" : 3,
+                    "render" : function(data, type, full, meta) {
+                        if(data == "CRON")
+                            return '<span><i class="fa fa-clock-o"></i> Cron</span>';
+                        if(data == "MOUSETRAP")
+                            return '<span><i class="fa fa-link"></i> Mousetrap</span>';
+
+                        return data;
+                    }
+                },
+                {
+                    "targets": 4,
+                    "orderable": false,
+                    "render": function (data, type, full, meta) {
+                        return new Date(data).toISOString().slice(11, -1);
+                    }
+                },
+                {
+                    "targets": 5,
+                    "render": function (data, type, full, meta) {
+                        var cl = 'btn-success';
+                        if (data == "ERROR") cl = 'btn-danger';
+                        if (data == "WARNING") cl = 'btn-warning';
+
+                        var res = '';
+                        res += '<a href="/worker/details/' + full.dbId + '" class="btn btn-xs ' + cl + '" role="button" title="Executions and messages"><i class="fa fa-gears"></i></a>';
+                        res += ' <a onclick="promptMartRollback(' + full.dbId + ')" href="#" class="btn btn-xs btn-warning" title="Rollback"><i class="glyphicon glyphicon-remove-sign"></i></a>';
+                        if (data == "OKAY") {
+                            res += ' <a href="/mart/details/' + full.martName + '" class="btn btn-xs btn-default" role="button" title="Details"><i class="glyphicon glyphicon-eye-open"></i></a>';
+                            res += ' <a href="#" onclick="promtMartTrigger(\'' + full.martName + '\')" class="btn btn-xs btn-default" role="button" title="Trigger manually"><i class="fa fa-magic"></i></a>';
+                        }
+
+                        return res;
+                    }
+                }
+            ]
+        });
+    });
+</script>
+#end
+#if($active == "rollbacks")
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#table-rollbacks').DataTable({
+            responsive: true,
+            order: [[ 0, "desc" ]],
+            ajax: "/rollbacks/list/data",
+            searchDelay: 800,
+            columns: [
+                {"data": "executionDateTime"},  //0
+                {"data": "dbId"},               //1
+                {"data": "type"},               //2
+                {"data": "name"},               //3
+                {"data": "payloadSize"},        //4
+                {"data": "runtime"},            //5
+                {"data": "status"}              //6
+            ],
+            serverSide: true,
+            "columnDefs": [
+                {
+                    "targets": 0,
+                    "render": function (data, type, full, meta) {
+                        return formatTimeString(data);
+                    }
+                },
+                {
+                    "targets" : 4,
+                    "render" : function(data, type, full, meta) {
+                        return data.toLocaleString("de-DE");
+                    }
+                },
+                {
+                    "targets": 5,
+                    "orderable": false,
+                    "render": function (data, type, full, meta) {
+                        return new Date(data).toISOString().slice(11, -1);
+                    }
+                },
+                {
+                    "targets": 6,
+                    "render": function (data, type, full, meta) {
+                        var cl = 'btn-success';
+                        if (data == "ERROR") cl = 'btn-danger';
+                        if (data == "WARNING") cl = 'btn-warning';
+
+                        var res = '';
+                        res += '<a href="/rollback/details/' + full.dbId + '" class="btn btn-xs ' + cl + '" role="button" title="Executions and messages"><i class="fa fa-gears"></i></a>';
+
+                        return res;
+                    }
+                }
+            ]
+        });
+    });
+</script>
+#end
+#if($active == "worker-data-sql")
+<script type="application/javascript">
+    $(document).ready(function () {
+        var dataListTable = $('#table-data').DataTable({
+            responsive: true,
+            ajax: "/worker/data/sql/list/data",
+            searchDelay: 800,
+            order: [[ 0, "desc" ]],
+            columns: [
+                /*
+                        <th>Exec. Date</th>
+                        <th>Type</th>
+                        <th>Mapping</th>
+                        <th>Payload</th>
+                        <th>Runtime</th>
+                        <th>Status</th>
+                 */
+                {"data": "executionDateTime"}, // 0
+                {"data": "stagingMode"},       // 1
+                {"data": "mappingName"},       // 2
+                {"data": "payloadSize"},       // 3
+                {"data": "runtime"},           // 4
+                {"data": "status"}             // 5
+            ],
+            serverSide: true,
+            columnDefs: [
+                {
+                    "targets": 0,
+                    "render": function (data, type, full, meta) {
+                        return formatTimeString(data);
+                    }
+                },
+                {
+                    "targets": 1,
+                    "render": function (data, type, full, meta) {
+                    if(data == "FILE")
+                        return '<span><i class="fa fa-file-text-o"></i> File</span>';
+                    if(data == "CONNECTION")
+                        return '<span><i class="fa fa-database"></i> Import</span>';
+                    if(data == "INSERT")
+                        return '<span><i class="fa fa-code"></i> Insert</span>';
+                    return "-";
+                    }
+                },
+                {
+                    "targets": 2,
+                    "render": function (data, type, full, meta) {
+                        return '<a href="/mapping/details/' + data + '"><span class="fa fa-paperclip"></span> ' + data + '</a>';
+                    }
+                },
+                {
+                    "targets" : 3,
+                    "render" : function(data, type, full, meta) {
+                        return data.toLocaleString("de-DE");
+                    }
+                },
+                {
+                    "targets": 4,
+                    "orderable": false,
+                    "render": function (data, type, full, meta) {
+                        console.log(data);
+                        return new Date(data).toISOString().slice(11, -1);
+                    }
+                },
+                {
+                    "targets": 5,
+                    "render": function (data, type, full, meta) {
+                        var cl = 'btn-success';
+                        if (data == "ERROR") cl = 'btn-danger';
+                        if (data == "WARNING") cl = 'btn-warning';
+                        return '<a href="/worker/details/' + full.dbId + '" class="btn btn-xs ' + cl + '" role="button" title="Executions and messages"><i class="fa fa-gears"></i></a>';
+                    }
+                }
+            ],
+            drawCallback: function (settings) {
+                $('[data-toggle="tooltip"]').tooltip();
+            },
+        });
+    });
+</script>
+#end
+#if($active == "worker-data-file")
+<script type="application/javascript">
+    $(document).ready(function () {
+        var dataListTable = $('#table-data').DataTable({
+            responsive: true,
+            ajax: "/worker/data/file/list/data",
+            searchDelay: 800,
+            order: [[ 0, "desc" ]],
+            columns: [
+                /*
+                        <th>Exec. Date</th>
+                        <th>Publish Date</th>
+                        <th>Mapping</th>
+                        <th>File</th>
+                        <th>Payload</th>
+                        <th>Runtime</th>
+                        <th>Status</th>
+                 */
+                {"data": "executionDateTime"}, // 0
+                {"data": "mappingName"},       // 1
+                {"data": "fileName"},          // 2
+                {"data": "fileGroup"},         // 3
+                {"data": "publishDate"},       // 4
+                {"data": "payloadSize"},       // 5
+                {"data": "runtime"},           // 6
+                {"data": "status"}             // 7
+            ],
+            serverSide: true,
+            columnDefs: [
+                {
+                    "targets": 0,
+                    "render": function (data, type, full, meta) {
+                        return formatTimeString(data);
+                    }
+                },
+                {
+                    "targets": 4,
+                    "render": function (data, type, full, meta) {
+                        return formatTimeString(data);
+                    }
+                },
+                {
+                    "targets": 1,
+                    "render": function (data, type, full, meta) {
+                        return '<a href="/mapping/details/' + data + '"><span class="fa fa-paperclip"></span> ' + data + '</a>';
+                    }
+                },
+                {
+                    "targets": 2,
+                    "render": function (data, type, full, meta) {
+                        var humSize = humanFileSize(full.size, true);
+                        humSize = '<span class="badge">' + humSize + '</span>';
+                        return '<a href="#" data-toggle="tooltip" title="' + data + '"><span class="fa fa-file-text-o "></span></a> ' + humSize;
+                    }
+                },
+                {
+                    "targets": 6,
+                    "orderable": false,
+                    "render": function (data, type, full, meta) {
+                        return new Date(data).toISOString().slice(11, -1);
+                    }
+                },
+                {
+                    "targets" : 5,
+                    "render" : function(data, type, full, meta) {
+                        return data.toLocaleString("de-DE");
+                    }
+                },
+                {
+                    "targets": 7,
+                    "render": function (data, type, full, meta) {
+                        var cl = 'btn-success';
+                        if (data == "ERROR") cl = 'btn-danger';
+                        if (data == "WARNING") cl = 'btn-warning';
+                        return '<a href="/worker/details/' + full.dbId + '" class="btn btn-xs ' + cl + '" role="button" title="Executions and messages"><i class="fa fa-gears"></i></a>';
+                    }
+                }
+            ],
+            drawCallback: function (settings) {
+                $('[data-toggle="tooltip"]').tooltip();
+            },
+        });
+    });
+</script>
+#end
+#if($active == "mart-worker")
+<script type="application/javascript">
+    $(document).ready(function () {
+        var dataListTable = $('#table-data').DataTable({
+            responsive: true,
+            ajax: "/worker/mart/sql/list/data",
+            searchDelay: 800,
+            order: [[ 0, "desc" ]],
+            columns: [
+                /*
+                        <th>Exec. Date</th>
+                        <th>Type</th>
+                        <th>Mart</th>
+                        <th>Payload</th>
+                        <th>Runtime</th>
+                        <th>Status</th>
+                 */
+                {"data": "executionDateTime"}, // 0
+                {"data": "martType"},          // 1
+                {"data": "martName"},          // 2
+                {"data": "payloadSize"},       // 3
+                {"data": "runtime"},           // 4
+                {"data": "status"}             // 5
+            ],
+            serverSide: true,
+            columnDefs: [
+                {
+                    "targets": 0,
+                    "render": function (data, type, full, meta) {
+                        return formatTimeString(data);
+                    }
+                },
+                {
+                    "targets": 1,
+                    "render": function (data, type, full, meta) {
+                        if(data == "MERGED")
+                            return '<span><i class="fa fa-exchange"></i> Merged</span>';
+                        if(data == "HISTORICAL")
+                            return '<span><i class="fa fa-calendar"></i> Historical</span>';
+                        if(data == "LOAD")
+                            return '<span><i class="fa fa-spinner"></i> Load</span>';
+                        if(data == "RELOAD")
+                            return '<span><i class="fa fa-refresh"></i> Reload</span>';
+                        return "-";
+                    }
+                },
+                {
+                    "targets": 2,
+                    "render": function (data, type, full, meta) {
+                        return '<a href="/mart/details/' + data + '"><span class="fa fa-paperclip"></span> ' + data + '</a>';
+                    }
+                },
+                {
+                    "targets" : 3,
+                    "render" : function(data, type, full, meta) {
+                        return data.toLocaleString("de-DE");
+                    }
+                },
+                {
+                    "targets": 4,
+                    "orderable": false,
+                    "render": function (data, type, full, meta) {
+                        console.log(data);
+                        return new Date(data).toISOString().slice(11, -1);
+                    }
+                },
+                {
+                    "targets": 5,
+                    "render": function (data, type, full, meta) {
+                        var cl = 'btn-success';
+                        if (data == "ERROR") cl = 'btn-danger';
+                        if (data == "WARNING") cl = 'btn-warning';
+                        return '<a href="/worker/details/' + full.dbId + '" class="btn btn-xs ' + cl + '" role="button" title="Executions and messages"><i class="fa fa-gears"></i></a>';
+                    }
+                }
+            ],
+            drawCallback: function (settings) {
+                $('[data-toggle="tooltip"]').tooltip();
+            },
+        });
+    });
+</script>
+#end
+#if($active == "worker-queue")
+<script type="application/javascript">
+    $(document).ready(function () {
+        var worker_table = $('#worker-queue-table').DataTable({
+            responsive: true,
+            ajax: "/worker/queue/data",
+            searching: false,
+            columns: [
+                /*
+                    <th>Queued</th>
+                    <th>Type</th>
+                    <th>Mapping</th>
+                    <th>File</th>
+                 */
+                {"data": "queuedDateTime"},   // 0
+                {"data": "workerClass"},      // 1
+                {"data": "name"},      // 2
+                {"data": "fileName"},         // 3
+            ],
+            columnDefs: [
+                {
+                    "targets": 0,
+                    "render": function (data, type, full, meta) {
+                        return formatTimeString(data);
+                    }
+                },
+                {
+                    "targets": 2,
+                    "render": function (data, type, full, meta) {
+                        return '<a href="/mapping/details/' + data + '"><span class="fa fa-paperclip"></span> ' + data + '</a>';
+                    }
+                }
+            ]
+        });
+
+        setInterval( function () {
+            worker_table.ajax.reload( null, false );
+        }, 3000 );
+    });
+</script>
+#end
+#if($active == "served")
+<script type="text/javascript">
+    var network = renderModelGraph('/object/details/', '/served/data/_all', 'served-network');
+    $('#served-filter-btn').click(function () {
+        network.destroy();
+
+        var val = $('#served-filter-input').val().toLowerCase();
+        if(val === "") {
+            network = renderModelGraph('/object/details/', '/served/data/_all', 'served-network');
+        } else {
+            var search = "_search_" + val;
+            network = renderModelGraph('/object/details/', '/served/data/' + search, 'served-network');
+        }
+    })
+</script>
+#end
+#if($active == "mapping_details" && $mapping && $mapping.name && $mapping.isValid())
+<script type="text/javascript">renderModelGraph('/object/details/', '/served/data/${mapping.name}', 'mapping-model');</script>
+#end
+#if($active == "heartbeat")
+<script type="text/javascript">
+    $(document).ready(function () {
+        setInterval(function () {
+            $.getJSON("/heartbeat/data", function (data) {
+                $('#log_area').text("");
+                $('#log_area').text(data.join("\n"));
+            });
+        }, 3000);
+    });
+</script>
+#end
+#if($active == "develop")
+<script src="/vendor/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/chrome");
+    //editor.getSession().setMode("ace/mode/javascript");
+    var callback = {id: null, valid: false}
+</script>
+#end
+#if($active == "develop-details")
+<script type="text/javascript">
+    var nodeArray = ${nodes};
+    var edgeArray = ${edges};
+    renderModelGraphFull('/develop/object/details/', false, '', 'mapping-model', nodeArray, edgeArray);
+</script>
+#end
+#if($active == "deploy")
+<script type="application/javascript">
+    var file_table;
+    var deploy_data = [];
+
+    $(document).ready(function () {
+        file_table = $('#file-table').DataTable({
+            responsive: true
+        });
+    });
+</script>
+#end
+</body>
+
+</html>

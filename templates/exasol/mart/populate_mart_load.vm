@@ -1,0 +1,7 @@
+INSERT INTO ${dwhConfig.schemaNameDiner()}.${mart.name} (
+    #foreach($col in $mart.getMartColumnsOriginalOrder())
+        #if(!$col.isIdentityColumn())${col.name} #if($foreach.hasNext),#end #end
+    #end
+)
+    ${mart.customSqlCode}
+;
