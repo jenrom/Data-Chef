@@ -6,7 +6,7 @@ The Data Chef source code uses the Maven build system in order to easily build a
 Installation step by step
 -------------------------
 
-1. Clone the GitHub areto Data Chef repository on your local system
+1. Clone the GitHub areto Data Chef repository to your local system
 
 2. Download https://github.com/areto-consulting-gmbh/Data-Chef/releases/download/3.2-rc/datachef-3.2-rc.zip and extract the archive into the Data Chef folder. There should be a target folder inside your Data Chef folder afterwards.
 
