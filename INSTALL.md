@@ -10,7 +10,7 @@ Installation step by step
 
 2. Download https://github.com/areto-consulting-gmbh/Data-Chef/releases/download/3.2-rc/datachef-3.2-rc.zip and extract the archive into the Data Chef folder. There should be a target folder inside your Data Chef folder afterwards.
 
-2.1. (optional) For using Snowflake, download http://central.maven.org/maven2/net/snowflake/snowflake-jdbc/3.6.10/snowflake-jdbc-3.6.10.jar and move it into the drivers subdirectory inside your Data Chef folder.
+(optional) For using Snowflake, download http://central.maven.org/maven2/net/snowflake/snowflake-jdbc/3.6.10/snowflake-jdbc-3.6.10.jar and move it into the drivers subdirectory inside your Data Chef folder.
 
 3. Install Docker and Docker Compose, tested versions are 18.09.1; 1.17.1
 
