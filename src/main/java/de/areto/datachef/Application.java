@@ -51,8 +51,8 @@ public class Application {
         return this;
     }
     volatile boolean isServiceManagerStarted = false;
-    public void startServiceManager() {
-        log.debug("starting ServiceManager...");
+    public synchronized void startServiceManager() {
+        log.debug("starting ServiceManager... (isServiceManagerStarted="+isServiceManagerStarted+")");
         if (!isServiceManagerStarted) {
             final Set<Service> services = new HashSet<>();
             services.add(Application.get().getWorkerService());
@@ -62,15 +62,18 @@ public class Application {
                 @Override
                 public void healthy() {
                     log.info("DataChef is ready to serve...");
+                    isServiceManagerStarted = true;
                 }
                 @Override
                 public void stopped() {
                     log.info("DataChef has stopped");
+                    isServiceManagerStarted = false;
                 }
                 @Override
                 public void failure(Service service) {
                     log.error("Service '{}' failed, Cause: {}", service.getClass().getSimpleName(),
                             service.failureCause().getMessage());
+                    isServiceManagerStarted = false;
                 }
             });
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -98,10 +101,6 @@ public class Application {
             context.put("errorMessageDWH", Constants.STARTUP_ERR_DWH_UNHEALTHY);
         }
 
-
-
-
-
         boolean repositoryReachable = new DbSpoxBuilder().useConfig(ConfigCache.getOrCreate(RepositoryConfig.class))
                 .build().isReachable();
         if (!repositoryReachable) {
@@ -117,8 +116,6 @@ public class Application {
                 context.put("errorMessageRepo", Constants.STARTUP_ERR_REPO_UNHEALTHY);
             }
         }
-
-
 
         return context;
     }

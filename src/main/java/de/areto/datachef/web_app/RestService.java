@@ -37,7 +37,8 @@ public class RestService {
             this.sparkService.staticFileLocation(webAppConfig.staticFileLocation());
         }
 
-        this.sparkService.port(webAppConfig.port()).threadPool(webAppConfig.threads());
+        this.sparkService.port(webAppConfig.port()).threadPool(webAppConfig.maxThreads(), webAppConfig.minThreads(),
+                webAppConfig.timeout());
         // Ensure databases are reachable and setup, User is logged in
         sparkService.before("*", (request, response) -> {
             final boolean isDBOK = request.session().attribute(Constants.DB_OK) != null;

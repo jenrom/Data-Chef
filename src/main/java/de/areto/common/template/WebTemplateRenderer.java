@@ -1,6 +1,5 @@
 package de.areto.common.template;
 
-import de.areto.datachef.config.TemplateConfig;
 import de.areto.datachef.config.WebAppConfig;
 import org.aeonbits.owner.ConfigCache;
 import org.apache.velocity.app.VelocityEngine;

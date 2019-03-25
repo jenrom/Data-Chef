@@ -10,7 +10,13 @@ public interface WebAppConfig extends Config {
     int port();
 
     @DefaultValue("20")
-    int threads();
+    int maxThreads();
+    
+    @DefaultValue("1")
+    int minThreads();
+    
+    @DefaultValue("30000")
+    int timeout();
 
     @DefaultValue("/public")
     String staticFileLocation();

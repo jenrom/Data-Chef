@@ -31,4 +31,4 @@ do
 done
 
 echo "Configs created"
-java -Xmx${ENV_RAMMB}m -jar /DataChef/data-chef-app-ng-${ENV_VERSION}.jar /tmp
+java -Xmx${ENV_RAMMB}m -Xms${ENV_RAMMB}m -jar /DataChef/data-chef-app-ng-${ENV_VERSION}.jar /tmp

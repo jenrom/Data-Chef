@@ -51,6 +51,6 @@ public interface SinkConfig extends Accessible {
     @DefaultValue("true")
     boolean watchSink();
 
-    @DefaultValue("1000")
+    @DefaultValue("10000")
     long waitGrowthTime();
 }
