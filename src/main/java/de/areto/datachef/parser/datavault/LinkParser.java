@@ -9,6 +9,7 @@ import de.areto.datachef.model.mapping.MappingObjectReference;
 import de.areto.datachef.parser.antlr4.SinkDSLBaseVisitor;
 import de.areto.datachef.parser.antlr4.SinkDSLParser;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 
 import java.util.*;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 import static com.google.common.base.Preconditions.checkState;
 
+@Slf4j
 public class LinkParser extends SinkDSLBaseVisitor<Mapping> {
 
     private final Mapping mapping;
@@ -107,6 +109,7 @@ public class LinkParser extends SinkDSLBaseVisitor<Mapping> {
 
         final Set<String> hubNameSet = new HashSet<>();
         final Stack<String> hubNameStack = new Stack<>();
+        final Set<String> hubReferenceSet = new HashSet<>();
 
         for (SinkDSLParser.ReferenceContext referenceContext : relationContext.reference()) {
             final boolean driving = referenceContext.driving != null;
@@ -125,18 +128,24 @@ public class LinkParser extends SinkDSLBaseVisitor<Mapping> {
             final String hubName = refHub.getName();
             hubNameSet.add(hubName);
             hubNameStack.push(hubName);
+            hubReferenceSet.add(hubReference);
 
             final int refCount = Collections.frequency(hubNameStack, hubName);
 
             // Self reference?
-            if(refCount == 2) {
+            if(refCount >= 2) {
                 if(hubNameSet.contains(hubName) && hubNameSet.size() == 1) {
+                	log.debug("True self-reference for link {} detected", link.getName());
                     link.setSelfReference(true);
-                } else {
-                    final String mTpl = "Link '%s' invalid: multiple references to the same Hub '%s' and other Hubs";
-                    final String msg = String.format(mTpl, link.getName(), hubName);
+                } else if (hubReferenceSet.size() < hubNameStack.size()) {
+                	// hubReferenceSet < hubNameStack means we have real duplications
+                	final String mTpl = "Link '%s' invalid: at least %d references to the same Hub '%s'";
+                    final String msg = String.format(mTpl, link.getName(), refCount, hubName);
                     mapping.addIssue(msg);
-                    continue;
+                    break;
+                } else {
+                	log.debug("Fake self-reference for link {} detected (multi-reference case)", link.getName());
+                	link.setSelfReference(true);
                 }
             }
 

@@ -92,7 +92,7 @@ linkRelations:
     ;
 
 relation:
-    references += reference ( '--' reference ) * '(' name = ID ( historized = 'H' )? ')'
+    references += reference ( '--' reference ) * ( '+' reference ) * '(' name = ID ( historized = 'H' )? ')'
     ;
 
 reference:
