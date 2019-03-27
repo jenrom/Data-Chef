@@ -38,17 +38,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
-
-        setInterval(function () {
-            $.ajax({
-                dataType: "json",
-                url: '/qc',
-                success: function (data) {
-                    $('#worker_counter').text(data[0]);
-                    $('#sink_counter').text(data[1]);
-                }
-            });
-        }, 3000);
     });
 </script>
 

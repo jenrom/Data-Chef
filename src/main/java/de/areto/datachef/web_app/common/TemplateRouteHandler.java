@@ -30,8 +30,6 @@ public abstract class TemplateRouteHandler extends RouteHandler {
 
     private Map<String, Object> getDefaultContext() {
         final Map<String, Object> context = new HashMap<>();
-        context.put("def_queue_worker_size", Application.get().getWorkerService().getQueueSize());
-        context.put("def_queue_sink_size", Application.get().getSinkService().getQueueSize());
         return context;
     }
 }
