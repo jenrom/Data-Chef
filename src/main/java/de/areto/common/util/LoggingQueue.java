@@ -8,7 +8,7 @@ import java.util.Queue;
 
 public class LoggingQueue extends AppenderSkeleton {
 
-    private static final int QUEUE_SIZE = 30;
+    private static final int QUEUE_SIZE = 1000;
     public static final Queue<String> MESSAGE_QUEUE = EvictingQueue.create(QUEUE_SIZE);
 
     @Override

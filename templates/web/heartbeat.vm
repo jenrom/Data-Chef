@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Heartbeat <span class="badge">Tail of the last 30 messages</span></h1>
+        <h1 class="page-header">Heartbeat <span class="badge">Tail of the last 1000 messages</span></h1>
     </div>
 </div>
 
