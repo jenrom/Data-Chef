@@ -44,7 +44,7 @@ class PathProcessor implements Callable<SinkFile> {
     @Override
     public SinkFile call() throws Exception {
         if(!isProcessable()) return null;
-        if (log.isDebugEnabled()) log.debug("Processing path '{}'");
+        if (log.isDebugEnabled()) log.debug("Processing path '{}'", path.toString());
 
         final SinkFile file = SinkFileFactory.create(path, fileType);
 
