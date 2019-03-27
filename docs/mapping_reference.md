@@ -173,6 +173,22 @@ lk= {
 
 In the example above, two Links are defined. "link1" links "hub1" and "hub2" marking "hub1" as Driving Key. Secondly, "link2" is historicized and links "hub3" and "hub4" marking "hub3" as Driving Key.
 
+#### Self-recursive link definition
+
+```
+lk= {
+ hub1 * -- hub1_rl1 (link1)
+}
+```
+
+#### Multiple references to the same hub
+
+```
+lk= {
+ hub1 * -- hub2 +hub2_rl1 (link1)
+}
+```
+
 ### Role definition
 
 Hubs and Satellites can have multiple roles as the following example illustrates:

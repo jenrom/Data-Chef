@@ -114,3 +114,24 @@ sql{"
 * Data get's imported every 30 seconds triggered via CRON
 * DWH must have a configured JDBC connection named "datachef_repository"
 * SQL must be compatible with target database
+
+# Example 5: Multiple link references to one hub
+
+![multiple_link_references](multiple_link_references.png)
+
+```
+config {
+    stage : file of type german_csv
+    load  : partial
+}
+
+mapping {
+    one_id         : kc, dd=id, on=target, rn=target_id
+    two_id         : kc, dd=id, on=target, rn=target_id, rl = target_rl1
+    single_id      : kc, dd=id
+} on=source,
+
+lk={
+    source * -- target +target_rl1 (sourcetotarget)
+}
+```
