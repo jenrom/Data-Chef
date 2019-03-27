@@ -105,14 +105,6 @@ public class SinkService extends AbstractIdleService {
         }, eventQueueRemovalExecutor);
     }
 
-    public int getQueueSize() {
-        return sinkEventQueue.size();
-    }
-
-    public boolean isBusy() {
-        return !sinkEventQueue.isEmpty();
-    }
-
     @Override
     protected void shutDown() {
         watchExecutor.shutdown();
