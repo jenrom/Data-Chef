@@ -1,5 +1,6 @@
 #!/bin/sh
 CONFIG_DIR=config
+SINK_DIR=sink
 DWH_CONFIG=$CONFIG_DIR/dwh.config.properties
 REPOSITORY_CONFIG=$CONFIG_DIR/repository.config.properties
 TEMPLATE_CONFIG=$CONFIG_DIR/template.config.properties
@@ -31,4 +32,10 @@ do
 done
 
 echo "Configs created"
+COUNT=`find ${SINK_DIR} -maxdepth 1 -type f -printf '%f\n' | wc -l`
+echo "# files in sink: $COUNT"
+if [$COUNT -gt 0 ] ; then
+	echo "Files in sink directory detected, aborting startup!";
+	exit 1;
+fi
 java -Xmx${ENV_RAMMB}m -Xms${ENV_RAMMB}m -jar /DataChef/data-chef-app-ng-${ENV_VERSION}.jar /tmp
