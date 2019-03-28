@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.apache.commons.lang.exception.ExceptionUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -61,6 +62,7 @@ public class DbSpox {
         try {
             loadExternalDriver(driverURL, driverClass);
         } catch (Exception e) {
+        	log.error("Error while loading jdbc Driver: {}",ExceptionUtils.getStackTrace(e));
             throw new IllegalStateException(e);
         }
 
