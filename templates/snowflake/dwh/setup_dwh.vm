@@ -1,4 +1,6 @@
 create or replace database ${dwhConfig.dbName()};
+alter user ${dwhConfig.username()} SET TIMESTAMP_TYPE_MAPPING = 'TIMESTAMP_LTZ';
+alter user ${dwhConfig.username()} SET TIMEZONE = 'UTC';
 create schema ${dwhConfig.snowflakeSchemaNameStage()};
 
 create or replace warehouse ${dwhConfig.snowflakeWarehouseName()} with

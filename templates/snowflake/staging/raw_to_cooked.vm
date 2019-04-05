@@ -12,7 +12,7 @@ select
 #foreach($hCol in $hashColumns)
     #if(!$foreach.isFirst()), #end md5 (##
         #foreach( $c in $hCol.hashColumns)##
-            #if(!$foreach.isFirst())|| '${dwhConfig.hashConcatinationString()}' || #end $c ##
+            #if(!$foreach.isFirst())|| '${dwhConfig.hashConcatinationString()}' || #end coalesce(to_char($c), '|null-hash-placeholder|')  ##
         #end##
     ) ${hCol.name}
 #end

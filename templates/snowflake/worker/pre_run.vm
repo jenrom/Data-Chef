@@ -1,4 +1,2 @@
 use warehouse ${dwhConfig.snowflakeWarehouseName()};
 use database ${dwhConfig.dbName()};
-alter session set timestamp_type_mapping = 'TIMESTAMP_LTZ';
-alter session set timezone = 'Europe/Berlin';

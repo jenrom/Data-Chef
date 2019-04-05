@@ -40,12 +40,12 @@ Steps:
     `docker pull mariadb`  
     `docker run --name mariadb-local -e MYSQL_ROOT_PASSWORD=areto -e MYSQL_DATABASE=datachef -e MYSQL_USER=datachef -e MYSQL_PASSWORD=datachef -p 3306:3306 -d mariadb`
 2. Open project in Intellj
-    1. Install plugin `lombok` (for annotations). Preferences -> Plugins -> Search for `lombok`
-    2. Build -> Build Project
-3. Modify `datachef-startup-dev.sh`, set `LOWERCASE_DBNAME`, `LOWERCASE_DATAWAREHOUSE_NAME`, `USERNAME` and `PASSWORD`.  
-    1. Execute the script. 
-    2. Check `config/*.config.properties` files are updated with the environment variables.
+    1. Install plugin `lombok` (for annotations). `Preferences` -> `Plugins` -> `Search` for `lombok`
+3. Modify `datachef-startup-dev.sh`, set `LOWERCASE_DBNAME`, `LOWERCASE_DATAWAREHOUSE_NAME`, `USERNAME` and `PASSWORD`
 4. Compile: `mvn compile`
+    1. Execute the script `datachef-startup-dev.sh`
+    2. Check `config/*.config.properties` files are updated with the environment variables
+
 5. To package: `mvn -Dmaven.test.skip=true package`
 6. Run `Application.java`
 7. Open `http://localhost:4567` in your local browser

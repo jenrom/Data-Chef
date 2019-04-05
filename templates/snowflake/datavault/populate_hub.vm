@@ -11,10 +11,10 @@ merge into ${dwhConfig.schemaNameServed()}.${object.namePrefix}${object.name} hu
           #end
               from ${dwhConfig.schemaNameCooked()}.${mapping.name} stg
            ) ckd
-        on (hub.${hub_key_col} = ckd.${hub_key_col}#if($role)_${role}#end)
-  when matched then
-    update
-       set ${vaultConfig.lastSeenDateName()} = ckd.${load_date}
+        on (1 = 1
+        #foreach($col in ${object.columnsSorted})
+        and ckd.${object.namePrefix}${object.name}_${col.name}#if($role)_${role}#end = hub.${col.name}
+        #end)
   when not matched then
     insert (${hub_key_col}
           , ${vaultConfig.loadIdName()}
