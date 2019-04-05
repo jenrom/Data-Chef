@@ -31,6 +31,25 @@ These steps replace the second step of the above step by step instructions.
 
 3. Execute `mvn -Dmaven.test.skip=true package`
 
+Run locally
+------------
+
+Steps:
+
+1. Get and run mariadb on your local system  
+    `docker pull mariadb`  
+    `docker run --name mariadb-local -e MYSQL_ROOT_PASSWORD=areto -e MYSQL_DATABASE=datachef -e MYSQL_USER=datachef -e MYSQL_PASSWORD=datachef -p 3306:3306 -d mariadb`
+2. Open project in Intellj
+    1. Install plugin `lombok` (for annotations). Preferences -> Plugins -> Search for `lombok`
+    2. Build -> Build Project
+3. Modify `datachef-startup-dev.sh`, set `LOWERCASE_DBNAME`, `LOWERCASE_DATAWAREHOUSE_NAME`, `USERNAME` and `PASSWORD`.  
+    1. Execute the script. 
+    2. Check `config/*.config.properties` files are updated with the environment variables.
+4. Compile: `mvn compile`
+5. To package: `mvn -Dmaven.test.skip=true package`
+6. Run `Application.java`
+7. Open `http://localhost:4567` in your local browser
+8. You should see `Setup DWH` and `Setup Repo` in orange color. For the first time, you'll need to setup data warehouse and the repository(`mariadb`). So click first on `Setup DWH` (should turn green), then click `Setup Repo` (should turn green) 
 
 Configuration
 -------------
