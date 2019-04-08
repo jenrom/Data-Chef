@@ -1,6 +1,5 @@
 #set( $key_column       = "${object.name}${object.keySuffix}" )##
 #set( $core_schema      = ${dwhConfig.schemaNameServed()} )##
-#set( $last_seen        = ${vaultConfig.lastSeenDateName()})##
 #set( $sat_name         = "${vaultConfig.satNamePrefix()}${object.name}${vaultConfig.histSatSuffix()}" )##
 #set( $load_date        = ${vaultConfig.loadDateName()} )##
 #set( $load_date_end    = ${vaultConfig.loadDateEndName()} )##
@@ -11,7 +10,6 @@
 create or replace view ${dwhConfig.schemaNameViews()}.${view_prefix}${link_name} as
 select
       link.${key_column} ${link_name}_${key_column}
-    , link.${last_seen} ${link_name}_${last_seen}
     , link.${load_id} ${link_name}_${load_id}
 ## Link's Satellites
 #foreach($sat in $satellites)
@@ -30,7 +28,6 @@ select
 #set($hub_name = "${leg.hub.namePrefix}${leg.hub.name}#if($object.selfReference && !$leg.isDefaultRole())_${leg.role}#end")##
     , ${leg_alias}.${leg.hub.name}${leg.hub.keySuffix} ${hub_name}_${leg.hub.name}${leg.hub.keySuffix}
     , ${leg_alias}.${load_id} ${hub_name}_${load_id}
-    , ${leg_alias}.${last_seen} ${hub_name}_${last_seen}
 #foreach($col in $leg.hub.columnsSorted)
     , ${leg_alias}.${col.name} ${hub_name}_${col.name}
 #end

@@ -21,11 +21,11 @@ merge into ${dwhConfig.schemaNameServed()}.${object.namePrefix}${object.name} hu
           #foreach($col in $object.columnsSorted)
           , ${col.name}
           #end
-          , ${vaultConfig.lastSeenDateName()})
+          )
     values (ckd.${hub_key_col}#if($role)_${role}#end
           , ckd.${vaultConfig.loadIdName()}
           #foreach($col in $object.columnsSorted)
           , ckd.${object.namePrefix}${object.name}_${col.name}#if($role)_${role}#end
           #end
-          , ckd.${load_date})
+          )
 ;

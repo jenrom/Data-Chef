@@ -16,18 +16,15 @@ merge into ${dwhConfig.schemaNameServed()}.${link_name} lnk
               from ${dwhConfig.schemaNameCooked()}.${mapping.name} stg
            ) ckd
         on (lnk.${link_key_column} = ckd.${link_key_column})
-  when matched then
-    update
-       set ${vaultConfig.lastSeenDateName()} = ckd.${load_date}
   when not matched then
     insert (${link_key_column}
           , ${vaultConfig.loadIdName()}
           #foreach($leg in $object.legs)
           , ${leg.hub.name}${leg.hub.keySuffix}#if(!$leg.isDefaultRole() && ${object.selfReference})_${leg.role}#end
           #end
-          , ${vaultConfig.lastSeenDateName()})
+          )
     values (ckd.${link_key_column}
           , ckd.${vaultConfig.loadIdName()}
           #link_cols('ckd.')
-          , ckd.${load_date})
+          )
 ;

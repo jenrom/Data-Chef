@@ -2,7 +2,6 @@
 #set( $core_schema      = ${dwhConfig.schemaNameViews()} )##
 #set( $load_date        = ${vaultConfig.loadDateName()} )##
 #set( $load_date_end    = ${vaultConfig.loadDateEndName()} )##
-#set( $last_seen        = ${vaultConfig.lastSeenDateName()} )##
 #set( $load_id          = ${vaultConfig.loadIdName()} )##
 #set( $view_prefix      = "${vaultConfig.viewPrefix()}${vaultConfig.viewAllPrefix()}" )##
 #set( $hub_name         = "${object.namePrefix}${object.name}")##
@@ -10,7 +9,6 @@
 create or replace view ${core_schema}.${view_prefix}${hub_name} as
 select
       hub.${key_column} ${hub_name}_${key_column}
-    , hub.${last_seen} ${hub_name}_${last_seen}
     , hub.${load_id} ${hub_name}_${load_id}
 #foreach($col in $object.columnsSorted)
     , hub.${col.name} ${hub_name}_${col.name}

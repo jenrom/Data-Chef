@@ -54,10 +54,6 @@ public class DVObjectTableCreator implements DBTableCreator {
 
         table.addColumn(DBColumnFactory.createLoadIdColumn());
 
-        if (object.isHub() || object.isLink()) {
-            table.addColumn(DBColumnFactory.createLastSeenColumn());
-        }
-
         if (object.isSatellite()) {
             table.addColumn(DBColumnFactory.createDiffHashColumn(object.asSatellite()));
             table.addColumn(DBColumnFactory.createLoadDateColumn());
