@@ -6,8 +6,7 @@
 #set($col_sep = $mapping.csvType.columnSeparator)##
 #set($col_del = $mapping.csvType.columnDelimiter)##
 #set($skip = $mapping.csvType.skip)##
-##set($reject_limit = $mapping.csvType.rejectLimit)##
-put file://${file_path} @${dwhConfig.dbName()}.${dwhConfig.snowflakeSchemaNameStage()}.${dwhConfig.snowflakeStageName()};
+
 
 COPY INTO ${dwhConfig.dbName()}.${dwhConfig.schemaNameRaw()}.${table}
     FROM @${dwhConfig.dbName()}.${dwhConfig.snowflakeSchemaNameStage()}.${dwhConfig.snowflakeStageName()}/${file_name} ## only the file name is needed here?!
