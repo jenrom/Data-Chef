@@ -35,24 +35,6 @@ public abstract class MappingDataWorker<T extends WorkerCargo> extends DataWorke
     }
 
     /**
-     * Replace placeholder Strings in previously created {@link SQLExpression}s if StageMode == FILE.
-     *
-     * @param file {@link SinkFile} that contains necessary meta data
-     * @param dbId Numerical ID representing the load id of the ELT process
-     * @param sql  SQL as String that conains the placeholders
-     * @return replaced and executable SQL
-     */
-    public static String fillPlaceHolders(@NonNull SinkFile file, @NonNull Long dbId, @NonNull String sql) {
-        final DataVaultConfig dvConfig = ConfigCache.getOrCreate(DataVaultConfig.class);
-        String newSql = sql.replace(dvConfig.placeholderFilePath(), file.getAbsolutePathString());
-        newSql = newSql.replaceAll(dvConfig.placeholderFileName(), file.getFileName());
-        newSql = newSql.replaceAll(dvConfig.placeholderDbId(), dbId.toString());
-        newSql = newSql.replaceAll(dvConfig.placeholderFileGroup(), file.getFileGroup());
-        newSql = newSql.replaceAll(dvConfig.placeholderPublishDate(), DF_PUB_DATE.format(file.getPublishDate()));
-        return newSql;
-    }
-
-    /**
      * Replace placeholder Strings in previously created {@link SQLExpression}s if {@link StagingMode} is
      * {@link StagingMode#CONNECTION} or {@link StagingMode#INSERT}.
      *

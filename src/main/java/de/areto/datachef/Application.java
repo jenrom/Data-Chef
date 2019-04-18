@@ -42,6 +42,9 @@ public class Application {
     @Getter
     private final SinkService sinkService = new SinkService(workerService);
 
+    @Getter
+    private final SnowflakeSinkService snowflakeSinkService = new SnowflakeSinkService(workerService);
+    
     private Application() { /* Singleton */ }
 
     private Application start() {
@@ -57,6 +60,7 @@ public class Application {
             final Set<Service> services = new HashSet<>();
             services.add(Application.get().getWorkerService());
             services.add(Application.get().getSinkService());
+            services.add(Application.get().getSnowflakeSinkService());
             final ServiceManager manager = new ServiceManager(services);
             manager.addListener(new ServiceManager.Listener() {
                 @Override

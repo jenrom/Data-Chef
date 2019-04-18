@@ -1,6 +1,7 @@
 package de.areto.datachef.worker;
 
 import de.areto.common.util.SizeFormatter;
+import de.areto.datachef.config.DataVaultConfig;
 import de.areto.datachef.model.compilation.SQLExpression;
 import de.areto.datachef.model.mapping.StagingMode;
 import de.areto.datachef.model.sink.SinkFile;
@@ -9,16 +10,22 @@ import de.areto.datachef.model.worker.WorkerInfo;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.aeonbits.owner.ConfigCache;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static de.areto.datachef.config.Constants.DF_PUB_DATE;
 
 @Slf4j
 public class MappingDataFileWorker extends MappingDataWorker<MappingDataFileWorkerCargo> {
 
     @Getter
-    private final SinkFile sinkFile;
+    private final SinkDataFile sinkFile;
 
     public MappingDataFileWorker(@NonNull SinkFile file) {
+        this(new SinkDataFile(file));
+    }
+
+    public MappingDataFileWorker(@NonNull SinkDataFile file) {
         super(new MappingDataFileWorkerCargo(), file.getMappingName());
         this.sinkFile = file;
 
@@ -62,10 +69,10 @@ public class MappingDataFileWorker extends MappingDataWorker<MappingDataFileWork
             String sql = expression.getSqlCode();
 
             if (expression.getQueryType().equals(SQLExpression.QueryType.IMPORT_FILE))
-                sql = MappingDataWorker.fillPlaceHolders(sinkFile, cargo.getDbId(), sql);
+                sql = fillPlaceHolders(sinkFile.getAbsolutePathString(), cargo.getDbId(), sql);
 
             if (expression.getQueryType().equals(SQLExpression.QueryType.RAW_2_COOKED))
-                sql = MappingDataWorker.fillPlaceHolders(sinkFile, cargo.getDbId(), sql);
+                sql = fillPlaceHolders(sinkFile.getAbsolutePathString(), cargo.getDbId(), sql);
 
             executeSQLExpression(expression, sql);
         }
@@ -75,6 +82,24 @@ public class MappingDataFileWorker extends MappingDataWorker<MappingDataFileWork
             log.info("{}: Processed {} lines; {} of data", this, cargo.getPayloadSize(), sizeFormatted);
         }
     }
+    /**
+     * Replace placeholder Strings in previously created {@link SQLExpression}s if StageMode == FILE.
+     *
+     * @param filePath filePath
+     * @param dbId Numerical ID representing the load id of the ELT process
+     * @param sql  SQL as String that conains the placeholders
+     * @return replaced and executable SQL
+     */
+    private  String fillPlaceHolders(@NonNull String filePath, @NonNull Long dbId, @NonNull String sql) {
+        final DataVaultConfig dvConfig = ConfigCache.getOrCreate(DataVaultConfig.class);
+        String newSql = sql.replace(dvConfig.placeholderFilePath(), filePath);
+        newSql = newSql.replaceAll(dvConfig.placeholderFileName(), cargo.getFileName());
+        newSql = newSql.replaceAll(dvConfig.placeholderDbId(), dbId.toString());
+        newSql = newSql.replaceAll(dvConfig.placeholderFileGroup(), cargo.getFileGroup());
+        newSql = newSql.replaceAll(dvConfig.placeholderPublishDate(), DF_PUB_DATE.format(cargo.getPublishDate()));
+        return newSql;
+    }
+
 
     @Override
     public WorkerInfo getWorkerInfo() {
