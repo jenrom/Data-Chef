@@ -95,6 +95,7 @@ public class DbSpox {
         try (Connection connection = getConnection()) {
             return connection.isValid(5);
         } catch (SQLException e) {
+            log.warn("Could not connect read warehouse because of", e);
             return false;
         }
     }
