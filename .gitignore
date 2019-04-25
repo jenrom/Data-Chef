@@ -16,7 +16,6 @@ hs_err_pid*
 /sink/
 /logs/
 /data/
-/driver/*jar
 .idea/
 *.iml
 *.iws
